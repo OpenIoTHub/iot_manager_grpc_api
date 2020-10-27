@@ -17,6 +17,8 @@ jobs:
         - export PATH="$PATH:$(go env GOPATH)/bin"
         - echo $(go env GOPATH)
         - echo "$PATH:$(go env GOPATH)/bin"
+        - ls $(go env GOPATH)/bin
+        - chmod +x "$(go env GOPATH)/bin/protoc-gen-go-grpc"
       script:
         - protoc --go-grpc_out=./pb-go service.proto
     - stage: generateDartFiles
