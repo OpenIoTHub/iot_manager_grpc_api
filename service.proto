@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option go_package = ".;iot_manager_grpc_api";
+
+package pb;
+
+message Empty{}
+
+message StringValue{
+    string Value = 1;
+}
+
+message UserLoginInfo{
+    string UserName = 1;
+    string Password = 2;
+}
+
+message OperationResponse{
+    string Result = 1;
+    int32 ResultCode = 2;
+}
+
+message ServerInfo{
+    string ServerHost = 1;
+    string LoginKey = 2;
+    string ConnectionType = 3;
+    string LastId = 4;
+    int32 TcpPort = 5;
+    int32 KcpPort = 6;
+    int32 UdpApiPort = 7;
+    int32 KcpApiPort = 8;
+    int32 TlsPort = 9;
+    int32 GrpcPort = 10;
+}
+
+message GatewayInfo{
+    string Host = 1;
+}
+
+// 服务的定义
+service UserManager {
+//    登录，对用户的操作
+    rpc LoginWithUserLoginInfo (UserLoginInfo) returns (OperationResponse) {}
+}
+
+// 服务的定义
+service ServerManager {
+    //    对服务器的操作
+    rpc AddServer (ServerInfo) returns (OperationResponse) {}
+}
+
+// 服务的定义
+service GatewayManager {
+    //    对网关的操作
+    rpc AddGateway (GatewayInfo) returns (OperationResponse) {}
+}

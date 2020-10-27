@@ -1,0 +1,27 @@
+cache:
+  directories:
+    - "$HOME/.pub-cache"
+jobs:
+  include:
+    - stage: generateGoFiles
+      os: osx
+      language: go
+      before_script:
+        - brew update
+        - export GO111MODULE=on
+        - go get google.golang.org/grpc@v1.28.1
+        - brew upgrade protobuf
+        - go get github.com/golang/protobuf/protoc-gen-go
+        - export PATH="$PATH:$(go env GOPATH)/bin"
+      script:
+        - protoc --go_out=plugins=grpc:./pb-go service.proto
+    - stage: generateDartFiles
+      os: osx
+      language: dart
+      before_script:
+        - brew update
+        - brew upgrade protobuf
+        - pub global activate protoc_plugin
+        - export PATH=$PATH:$HOME/.pub-cache/bin
+      script:
+        - protoc --dart_out=grpc:./lib/pb service.proto
