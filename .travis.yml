@@ -19,7 +19,7 @@ jobs:
         - go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
         - export PATH="$PATH:$(go env GOPATH)/bin"
       script:
-        - protoc --go-grpc_out=./pb-go service.proto
+        - protoc --go_out=./pb-go --go_opt=paths=source_relative  --go-grpc_out=./pb-go --go-grpc_opt=paths=source_relative service.proto
     - stage: generateDartFiles
       os: osx
       language: dart
