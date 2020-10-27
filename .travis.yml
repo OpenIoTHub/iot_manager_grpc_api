@@ -6,6 +6,8 @@ jobs:
     - stage: generateGoFiles
       os: osx
       language: go
+      go:
+        - "1.15.x"
       before_script:
         - brew update
         - export GO111MODULE=on
