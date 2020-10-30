@@ -7,4 +7,3 @@
 
 import 'dart:core' as $core;
 
-export 'message.pb.dart';
