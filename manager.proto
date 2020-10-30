@@ -1,0 +1,23 @@
+syntax = "proto3";
+import public "message.proto";
+option go_package = ".;pb";
+
+package pb;
+
+// 服务的定义
+service UserManager {
+//    登录，对用户的操作
+    rpc LoginWithUserLoginInfo (UserLoginInfo) returns (OperationResponse) {}
+}
+
+// 服务的定义
+service GatewayManager {
+    //    对网关的操作
+    rpc AddGateway (GatewayInfo) returns (OperationResponse) {}
+}
+
+// 服务的定义
+service ServerManager {
+    //    对服务器的操作
+    rpc AddServer (ServerInfo) returns (OperationResponse) {}
+}
