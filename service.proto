@@ -1,5 +1,0 @@
-syntax = "proto3";
-import public "message.proto";
-option go_package = ".;pb";
-
-package pb;
