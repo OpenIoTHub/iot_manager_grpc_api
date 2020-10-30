@@ -10,7 +10,7 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'service.pb.dart' as $0;
+import 'message.pb.dart' as $0;
 export 'service.pb.dart';
 
 class UserManagerClient extends $grpc.Client {
