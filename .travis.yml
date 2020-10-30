@@ -17,8 +17,8 @@ jobs:
         - go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
         - export PATH="$PATH:$(go env GOPATH)/bin"
       script:
-        - chmod +x generate.sh
-        - ./generate.sh
+        - chmod +x generate-go.sh
+        - ./generate-go.sh
     - stage: generateDartFiles
       os: osx
       language: dart
@@ -28,4 +28,5 @@ jobs:
         - pub global activate protoc_plugin
         - export PATH=$PATH:$HOME/.pub-cache/bin
       script:
-        - protoc --dart_out=grpc:./lib/pb service.proto
+        - chmod +x generate-dart.sh
+        - ./generate-dart.sh
