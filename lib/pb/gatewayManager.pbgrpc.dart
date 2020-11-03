@@ -10,21 +10,22 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'message.pb.dart' as $0;
+import 'gatewayManager.pb.dart' as $0;
+import 'common.pb.dart' as $1;
 export 'gatewayManager.pb.dart';
 
 class GatewayManagerClient extends $grpc.Client {
   static final _$addGateway =
-      $grpc.ClientMethod<$0.GatewayInfo, $0.OperationResponse>(
+      $grpc.ClientMethod<$0.GatewayInfo, $1.OperationResponse>(
           '/pb.GatewayManager/AddGateway',
           ($0.GatewayInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.OperationResponse.fromBuffer(value));
+              $1.OperationResponse.fromBuffer(value));
 
   GatewayManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
 
-  $grpc.ResponseFuture<$0.OperationResponse> addGateway($0.GatewayInfo request,
+  $grpc.ResponseFuture<$1.OperationResponse> addGateway($0.GatewayInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$addGateway, $async.Stream.fromIterable([request]),
@@ -37,20 +38,20 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
   $core.String get $name => 'pb.GatewayManager';
 
   GatewayManagerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.GatewayInfo, $0.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$0.GatewayInfo, $1.OperationResponse>(
         'AddGateway',
         addGateway_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.GatewayInfo.fromBuffer(value),
-        ($0.OperationResponse value) => value.writeToBuffer()));
+        ($1.OperationResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.OperationResponse> addGateway_Pre(
+  $async.Future<$1.OperationResponse> addGateway_Pre(
       $grpc.ServiceCall call, $async.Future<$0.GatewayInfo> request) async {
     return addGateway(call, await request);
   }
 
-  $async.Future<$0.OperationResponse> addGateway(
+  $async.Future<$1.OperationResponse> addGateway(
       $grpc.ServiceCall call, $0.GatewayInfo request);
 }

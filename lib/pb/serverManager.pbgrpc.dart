@@ -10,21 +10,22 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'message.pb.dart' as $0;
+import 'serverManager.pb.dart' as $2;
+import 'common.pb.dart' as $1;
 export 'serverManager.pb.dart';
 
 class ServerManagerClient extends $grpc.Client {
   static final _$addServer =
-      $grpc.ClientMethod<$0.ServerInfo, $0.OperationResponse>(
+      $grpc.ClientMethod<$2.ServerInfo, $1.OperationResponse>(
           '/pb.ServerManager/AddServer',
-          ($0.ServerInfo value) => value.writeToBuffer(),
+          ($2.ServerInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.OperationResponse.fromBuffer(value));
+              $1.OperationResponse.fromBuffer(value));
 
   ServerManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
 
-  $grpc.ResponseFuture<$0.OperationResponse> addServer($0.ServerInfo request,
+  $grpc.ResponseFuture<$1.OperationResponse> addServer($2.ServerInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(_$addServer, $async.Stream.fromIterable([request]),
         options: options);
@@ -36,20 +37,20 @@ abstract class ServerManagerServiceBase extends $grpc.Service {
   $core.String get $name => 'pb.ServerManager';
 
   ServerManagerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.ServerInfo, $0.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$2.ServerInfo, $1.OperationResponse>(
         'AddServer',
         addServer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.ServerInfo.fromBuffer(value),
-        ($0.OperationResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $2.ServerInfo.fromBuffer(value),
+        ($1.OperationResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.OperationResponse> addServer_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.ServerInfo> request) async {
+  $async.Future<$1.OperationResponse> addServer_Pre(
+      $grpc.ServiceCall call, $async.Future<$2.ServerInfo> request) async {
     return addServer(call, await request);
   }
 
-  $async.Future<$0.OperationResponse> addServer(
-      $grpc.ServiceCall call, $0.ServerInfo request);
+  $async.Future<$1.OperationResponse> addServer(
+      $grpc.ServiceCall call, $2.ServerInfo request);
 }

@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "message.proto";
+import "common.proto";
 option go_package = ".;pb";
 
 package pb;
@@ -8,4 +8,20 @@ package pb;
 service UserManager {
 //    登录，对用户的操作
     rpc LoginWithUserLoginInfo (UserLoginInfo) returns (OperationResponse) {}
+}
+
+message UserInfo{
+    string UserName = 1;
+    string Password = 2;
+}
+
+message UserLoginInfo{
+    string UserName = 1;
+    string Password = 2;
+}
+
+message UserLoginResponse{
+    int32 Code = 1;
+    string Msg = 2;
+    string Token = 3;
 }

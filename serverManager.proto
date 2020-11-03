@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "message.proto";
+import "common.proto";
 option go_package = ".;pb";
 
 package pb;
@@ -8,4 +8,17 @@ package pb;
 service ServerManager {
     //    对服务器的操作
     rpc AddServer (ServerInfo) returns (OperationResponse) {}
+}
+
+message ServerInfo{
+    string ServerHost = 1;
+    string LoginKey = 2;
+    string ConnectionType = 3;
+    string LastId = 4;
+    int32 TcpPort = 5;
+    int32 KcpPort = 6;
+    int32 UdpApiPort = 7;
+    int32 KcpApiPort = 8;
+    int32 TlsPort = 9;
+    int32 GrpcPort = 10;
 }
