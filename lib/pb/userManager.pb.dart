@@ -52,8 +52,9 @@ class UserInfo extends $pb.GeneratedMessage {
 
 class UserLoginInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('UserLoginInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'UserName', protoName: 'UserName')
-    ..aOS(2, 'Password', protoName: 'Password')
+    ..aOS(1, 'Uuid', protoName: 'Uuid')
+    ..aOS(2, 'UserName', protoName: 'UserName')
+    ..aOS(3, 'Password', protoName: 'Password')
     ..hasRequiredFields = false
   ;
 
@@ -73,22 +74,31 @@ class UserLoginInfo extends $pb.GeneratedMessage {
   static UserLoginInfo _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get userName => $_getSZ(0);
+  $core.String get uuid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set userName($core.String v) { $_setString(0, v); }
+  set uuid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasUserName() => $_has(0);
+  $core.bool hasUuid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUserName() => clearField(1);
+  void clearUuid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get password => $_getSZ(1);
+  $core.String get userName => $_getSZ(1);
   @$pb.TagNumber(2)
-  set password($core.String v) { $_setString(1, v); }
+  set userName($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasPassword() => $_has(1);
+  $core.bool hasUserName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPassword() => clearField(2);
+  void clearUserName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get password => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set password($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPassword() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPassword() => clearField(3);
 }
 
 class UserLoginResponse extends $pb.GeneratedMessage {

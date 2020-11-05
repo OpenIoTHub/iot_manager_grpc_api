@@ -6,8 +6,12 @@ package pb;
 
 // 服务的定义
 service UserManager {
-//    登录，对用户的操作
-    rpc LoginWithUserLoginInfo (UserLoginInfo) returns (OperationResponse) {}
+//    注册用户
+    rpc RegisterUserWithUserInfo (UserInfo) returns (OperationResponse) {}
+//    登录 获取Token
+    rpc LoginWithUserLoginInfo (UserLoginInfo) returns (UserLoginResponse) {}
+//    更新用户信息
+    rpc UpdateUserInfo (UserInfo) returns (OperationResponse) {}
 }
 
 message UserInfo{
@@ -16,8 +20,9 @@ message UserInfo{
 }
 
 message UserLoginInfo{
-    string UserName = 1;
-    string Password = 2;
+    string Uuid = 1;
+    string UserName = 2;
+    string Password = 3;
 }
 
 message UserLoginResponse{

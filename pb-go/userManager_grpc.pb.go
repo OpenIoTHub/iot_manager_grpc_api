@@ -17,8 +17,12 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserManagerClient interface {
-	//    登录，对用户的操作
-	LoginWithUserLoginInfo(ctx context.Context, in *UserLoginInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    注册用户
+	RegisterUserWithUserInfo(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    登录 获取Token
+	LoginWithUserLoginInfo(ctx context.Context, in *UserLoginInfo, opts ...grpc.CallOption) (*UserLoginResponse, error)
+	//    更新用户信息
+	UpdateUserInfo(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
 type userManagerClient struct {
@@ -29,9 +33,27 @@ func NewUserManagerClient(cc grpc.ClientConnInterface) UserManagerClient {
 	return &userManagerClient{cc}
 }
 
-func (c *userManagerClient) LoginWithUserLoginInfo(ctx context.Context, in *UserLoginInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *userManagerClient) RegisterUserWithUserInfo(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/RegisterUserWithUserInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userManagerClient) LoginWithUserLoginInfo(ctx context.Context, in *UserLoginInfo, opts ...grpc.CallOption) (*UserLoginResponse, error) {
+	out := new(UserLoginResponse)
 	err := c.cc.Invoke(ctx, "/pb.UserManager/LoginWithUserLoginInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userManagerClient) UpdateUserInfo(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/UpdateUserInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,8 +64,12 @@ func (c *userManagerClient) LoginWithUserLoginInfo(ctx context.Context, in *User
 // All implementations must embed UnimplementedUserManagerServer
 // for forward compatibility
 type UserManagerServer interface {
-	//    登录，对用户的操作
-	LoginWithUserLoginInfo(context.Context, *UserLoginInfo) (*OperationResponse, error)
+	//    注册用户
+	RegisterUserWithUserInfo(context.Context, *UserInfo) (*OperationResponse, error)
+	//    登录 获取Token
+	LoginWithUserLoginInfo(context.Context, *UserLoginInfo) (*UserLoginResponse, error)
+	//    更新用户信息
+	UpdateUserInfo(context.Context, *UserInfo) (*OperationResponse, error)
 	mustEmbedUnimplementedUserManagerServer()
 }
 
@@ -51,8 +77,14 @@ type UserManagerServer interface {
 type UnimplementedUserManagerServer struct {
 }
 
-func (UnimplementedUserManagerServer) LoginWithUserLoginInfo(context.Context, *UserLoginInfo) (*OperationResponse, error) {
+func (UnimplementedUserManagerServer) RegisterUserWithUserInfo(context.Context, *UserInfo) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterUserWithUserInfo not implemented")
+}
+func (UnimplementedUserManagerServer) LoginWithUserLoginInfo(context.Context, *UserLoginInfo) (*UserLoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginWithUserLoginInfo not implemented")
+}
+func (UnimplementedUserManagerServer) UpdateUserInfo(context.Context, *UserInfo) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserInfo not implemented")
 }
 func (UnimplementedUserManagerServer) mustEmbedUnimplementedUserManagerServer() {}
 
@@ -65,6 +97,24 @@ type UnsafeUserManagerServer interface {
 
 func RegisterUserManagerServer(s grpc.ServiceRegistrar, srv UserManagerServer) {
 	s.RegisterService(&_UserManager_serviceDesc, srv)
+}
+
+func _UserManager_RegisterUserWithUserInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagerServer).RegisterUserWithUserInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserManager/RegisterUserWithUserInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagerServer).RegisterUserWithUserInfo(ctx, req.(*UserInfo))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _UserManager_LoginWithUserLoginInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -85,13 +135,39 @@ func _UserManager_LoginWithUserLoginInfo_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserManager_UpdateUserInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagerServer).UpdateUserInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserManager/UpdateUserInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagerServer).UpdateUserInfo(ctx, req.(*UserInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UserManager_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.UserManager",
 	HandlerType: (*UserManagerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "RegisterUserWithUserInfo",
+			Handler:    _UserManager_RegisterUserWithUserInfo_Handler,
+		},
+		{
 			MethodName: "LoginWithUserLoginInfo",
 			Handler:    _UserManager_LoginWithUserLoginInfo_Handler,
+		},
+		{
+			MethodName: "UpdateUserInfo",
+			Handler:    _UserManager_UpdateUserInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
