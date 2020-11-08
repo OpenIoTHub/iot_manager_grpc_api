@@ -23,12 +23,6 @@ message UserInfo{
     string Password = 2;
 }
 
-message UserLoginInfo{
-    string Uuid = 1;
-    string UserName = 2;
-    string Password = 3;
-}
-
 message UserLoginResponse{
     int32 Code = 1;
     string Msg = 2;

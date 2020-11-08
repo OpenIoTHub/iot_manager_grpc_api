@@ -19,13 +19,12 @@ message ServerInfo{
     string ServerHost = 2;
     string LoginKey = 3;
     string ConnectionType = 4;
-    string LastId = 5;
-    int32 TcpPort = 6;
-    int32 KcpPort = 7;
-    int32 UdpApiPort = 8;
-    int32 KcpApiPort = 9;
-    int32 TlsPort = 10;
-    int32 GrpcPort = 11;
+    int32 TcpPort = 5;
+    int32 KcpPort = 6;
+    int32 UdpApiPort = 7;
+    int32 KcpApiPort = 8;
+    int32 TlsPort = 9;
+    int32 GrpcPort = 10;
 }
 
 message ServerInfoList{
