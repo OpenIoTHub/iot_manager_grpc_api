@@ -11,7 +11,14 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class GatewayInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('GatewayInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'Host', protoName: 'Host')
+    ..aOS(1, 'Uuid', protoName: 'Uuid')
+    ..aOS(2, 'Name', protoName: 'Name')
+    ..pPS(3, 'ServerUuid', protoName: 'ServerUuid')
+    ..aOS(4, 'SuperUserUuid', protoName: 'SuperUserUuid')
+    ..pPS(5, 'ReadUserUuids', protoName: 'ReadUserUuids')
+    ..pPS(6, 'ReadWriteUserUuids', protoName: 'ReadWriteUserUuids')
+    ..pPS(7, 'Hosts', protoName: 'Hosts')
+    ..aOB(8, 'Status', protoName: 'Status')
     ..hasRequiredFields = false
   ;
 
@@ -31,12 +38,51 @@ class GatewayInfo extends $pb.GeneratedMessage {
   static GatewayInfo _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get host => $_getSZ(0);
+  $core.String get uuid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set host($core.String v) { $_setString(0, v); }
+  set uuid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasHost() => $_has(0);
+  $core.bool hasUuid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearHost() => clearField(1);
+  void clearUuid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.String> get serverUuid => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.String get superUserUuid => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set superUserUuid($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasSuperUserUuid() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSuperUserUuid() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.String> get readUserUuids => $_getList(4);
+
+  @$pb.TagNumber(6)
+  $core.List<$core.String> get readWriteUserUuids => $_getList(5);
+
+  @$pb.TagNumber(7)
+  $core.List<$core.String> get hosts => $_getList(6);
+
+  @$pb.TagNumber(8)
+  $core.bool get status => $_getBF(7);
+  @$pb.TagNumber(8)
+  set status($core.bool v) { $_setBool(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasStatus() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearStatus() => clearField(8);
 }
 

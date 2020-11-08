@@ -61,10 +61,41 @@ class StringValue extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
+class BytesValue extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('BytesValue', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, 'Value', $pb.PbFieldType.OY, protoName: 'Value')
+    ..hasRequiredFields = false
+  ;
+
+  BytesValue._() : super();
+  factory BytesValue() => create();
+  factory BytesValue.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BytesValue.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  BytesValue clone() => BytesValue()..mergeFromMessage(this);
+  BytesValue copyWith(void Function(BytesValue) updates) => super.copyWith((message) => updates(message as BytesValue));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static BytesValue create() => BytesValue._();
+  BytesValue createEmptyInstance() => create();
+  static $pb.PbList<BytesValue> createRepeated() => $pb.PbList<BytesValue>();
+  @$core.pragma('dart2js:noInline')
+  static BytesValue getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BytesValue>(create);
+  static BytesValue _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get value => $_getN(0);
+  @$pb.TagNumber(1)
+  set value($core.List<$core.int> v) { $_setBytes(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasValue() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearValue() => clearField(1);
+}
+
 class OperationResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('OperationResponse', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'Result', protoName: 'Result')
-    ..a<$core.int>(2, 'ResultCode', $pb.PbFieldType.O3, protoName: 'ResultCode')
+    ..a<$core.int>(1, 'Code', $pb.PbFieldType.O3, protoName: 'Code')
+    ..aOS(2, 'Message', protoName: 'Message')
     ..hasRequiredFields = false
   ;
 
@@ -84,21 +115,21 @@ class OperationResponse extends $pb.GeneratedMessage {
   static OperationResponse _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get result => $_getSZ(0);
+  $core.int get code => $_getIZ(0);
   @$pb.TagNumber(1)
-  set result($core.String v) { $_setString(0, v); }
+  set code($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasResult() => $_has(0);
+  $core.bool hasCode() => $_has(0);
   @$pb.TagNumber(1)
-  void clearResult() => clearField(1);
+  void clearCode() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get resultCode => $_getIZ(1);
+  $core.String get message => $_getSZ(1);
   @$pb.TagNumber(2)
-  set resultCode($core.int v) { $_setSignedInt32(1, v); }
+  set message($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasResultCode() => $_has(1);
+  $core.bool hasMessage() => $_has(1);
   @$pb.TagNumber(2)
-  void clearResultCode() => clearField(2);
+  void clearMessage() => clearField(2);
 }
 

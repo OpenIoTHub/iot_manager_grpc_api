@@ -8,17 +8,26 @@ package pb;
 service ServerManager {
     //    对服务器的操作
     rpc AddServer (ServerInfo) returns (OperationResponse) {}
+    rpc DelServer (ServerInfo) returns (OperationResponse) {}
+    rpc UpdateServer (ServerInfo) returns (OperationResponse) {}
+    rpc QueryServer (ServerInfo) returns (OperationResponse) {}
+    rpc GetAllServer (Empty) returns (ServerInfoList) {}
 }
 
 message ServerInfo{
-    string ServerHost = 1;
-    string LoginKey = 2;
-    string ConnectionType = 3;
-    string LastId = 4;
-    int32 TcpPort = 5;
-    int32 KcpPort = 6;
-    int32 UdpApiPort = 7;
-    int32 KcpApiPort = 8;
-    int32 TlsPort = 9;
-    int32 GrpcPort = 10;
+    string Uuid = 1;
+    string ServerHost = 2;
+    string LoginKey = 3;
+    string ConnectionType = 4;
+    string LastId = 5;
+    int32 TcpPort = 6;
+    int32 KcpPort = 7;
+    int32 UdpApiPort = 8;
+    int32 KcpApiPort = 9;
+    int32 TlsPort = 10;
+    int32 GrpcPort = 11;
+}
+
+message ServerInfoList{
+    repeated ServerInfo ServerInfoList = 1;
 }

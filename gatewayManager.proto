@@ -8,8 +8,22 @@ package pb;
 service GatewayManager {
     //    对网关的操作
     rpc AddGateway (GatewayInfo) returns (OperationResponse) {}
+    rpc DelGateway (GatewayInfo) returns (OperationResponse) {}
+    rpc UpdateGateway (GatewayInfo) returns (OperationResponse) {}
+//    rpc QueryGateway (GatewayInfo) returns (OperationResponse) {}
+    rpc GetAllGateway (GatewayInfo) returns (OperationResponse) {}
 }
 
 message GatewayInfo{
-    string Host = 1;
+    string Uuid = 1;
+    string Name = 2;
+    repeated string ServerUuid = 3;
+    string SuperUserUuid = 4;
+    //读取权限的用户
+    repeated string ReadUserUuids = 5;
+    //增加删除操作的用户
+    repeated string ReadWriteUserUuids = 6;
+    repeated string Hosts = 7;
+    //在线状态
+    bool Status  = 8;
 }

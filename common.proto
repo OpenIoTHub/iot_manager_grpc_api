@@ -10,7 +10,11 @@ message StringValue{
     string Value = 1;
 }
 
+message BytesValue{
+    bytes Value = 1;
+}
+
 message OperationResponse{
-    string Result = 1;
-    int32 ResultCode = 2;
+    int32 Code = 1;
+    string Message = 2;
 }

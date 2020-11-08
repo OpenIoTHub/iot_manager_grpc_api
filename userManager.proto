@@ -9,9 +9,13 @@ service UserManager {
 //    注册用户
     rpc RegisterUserWithUserInfo (UserInfo) returns (OperationResponse) {}
 //    登录 获取Token
-    rpc LoginWithUserLoginInfo (UserLoginInfo) returns (UserLoginResponse) {}
+    rpc LoginWithUserLoginInfo (UserInfo) returns (UserLoginResponse) {}
 //    更新用户信息
-    rpc UpdateUserInfo (UserInfo) returns (OperationResponse) {}
+    rpc UpdateUserNanme (StringValue) returns (OperationResponse) {}
+    rpc UpdateUserEmail (StringValue) returns (OperationResponse) {}
+    rpc UpdateUserMobile (StringValue) returns (OperationResponse) {}
+    rpc UpdateUserPassword (StringValue) returns (OperationResponse) {}
+    rpc UpdateUserAvatar (BytesValue) returns (OperationResponse) {}
 }
 
 message UserInfo{
