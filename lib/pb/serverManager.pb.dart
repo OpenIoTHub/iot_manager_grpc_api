@@ -15,13 +15,12 @@ class ServerInfo extends $pb.GeneratedMessage {
     ..aOS(2, 'ServerHost', protoName: 'ServerHost')
     ..aOS(3, 'LoginKey', protoName: 'LoginKey')
     ..aOS(4, 'ConnectionType', protoName: 'ConnectionType')
-    ..aOS(5, 'LastId', protoName: 'LastId')
-    ..a<$core.int>(6, 'TcpPort', $pb.PbFieldType.O3, protoName: 'TcpPort')
-    ..a<$core.int>(7, 'KcpPort', $pb.PbFieldType.O3, protoName: 'KcpPort')
-    ..a<$core.int>(8, 'UdpApiPort', $pb.PbFieldType.O3, protoName: 'UdpApiPort')
-    ..a<$core.int>(9, 'KcpApiPort', $pb.PbFieldType.O3, protoName: 'KcpApiPort')
-    ..a<$core.int>(10, 'TlsPort', $pb.PbFieldType.O3, protoName: 'TlsPort')
-    ..a<$core.int>(11, 'GrpcPort', $pb.PbFieldType.O3, protoName: 'GrpcPort')
+    ..a<$core.int>(5, 'TcpPort', $pb.PbFieldType.O3, protoName: 'TcpPort')
+    ..a<$core.int>(6, 'KcpPort', $pb.PbFieldType.O3, protoName: 'KcpPort')
+    ..a<$core.int>(7, 'UdpApiPort', $pb.PbFieldType.O3, protoName: 'UdpApiPort')
+    ..a<$core.int>(8, 'KcpApiPort', $pb.PbFieldType.O3, protoName: 'KcpApiPort')
+    ..a<$core.int>(9, 'TlsPort', $pb.PbFieldType.O3, protoName: 'TlsPort')
+    ..a<$core.int>(10, 'GrpcPort', $pb.PbFieldType.O3, protoName: 'GrpcPort')
     ..hasRequiredFields = false
   ;
 
@@ -77,67 +76,58 @@ class ServerInfo extends $pb.GeneratedMessage {
   void clearConnectionType() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get lastId => $_getSZ(4);
+  $core.int get tcpPort => $_getIZ(4);
   @$pb.TagNumber(5)
-  set lastId($core.String v) { $_setString(4, v); }
+  set tcpPort($core.int v) { $_setSignedInt32(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasLastId() => $_has(4);
+  $core.bool hasTcpPort() => $_has(4);
   @$pb.TagNumber(5)
-  void clearLastId() => clearField(5);
+  void clearTcpPort() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.int get tcpPort => $_getIZ(5);
+  $core.int get kcpPort => $_getIZ(5);
   @$pb.TagNumber(6)
-  set tcpPort($core.int v) { $_setSignedInt32(5, v); }
+  set kcpPort($core.int v) { $_setSignedInt32(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasTcpPort() => $_has(5);
+  $core.bool hasKcpPort() => $_has(5);
   @$pb.TagNumber(6)
-  void clearTcpPort() => clearField(6);
+  void clearKcpPort() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.int get kcpPort => $_getIZ(6);
+  $core.int get udpApiPort => $_getIZ(6);
   @$pb.TagNumber(7)
-  set kcpPort($core.int v) { $_setSignedInt32(6, v); }
+  set udpApiPort($core.int v) { $_setSignedInt32(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasKcpPort() => $_has(6);
+  $core.bool hasUdpApiPort() => $_has(6);
   @$pb.TagNumber(7)
-  void clearKcpPort() => clearField(7);
+  void clearUdpApiPort() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.int get udpApiPort => $_getIZ(7);
+  $core.int get kcpApiPort => $_getIZ(7);
   @$pb.TagNumber(8)
-  set udpApiPort($core.int v) { $_setSignedInt32(7, v); }
+  set kcpApiPort($core.int v) { $_setSignedInt32(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasUdpApiPort() => $_has(7);
+  $core.bool hasKcpApiPort() => $_has(7);
   @$pb.TagNumber(8)
-  void clearUdpApiPort() => clearField(8);
+  void clearKcpApiPort() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.int get kcpApiPort => $_getIZ(8);
+  $core.int get tlsPort => $_getIZ(8);
   @$pb.TagNumber(9)
-  set kcpApiPort($core.int v) { $_setSignedInt32(8, v); }
+  set tlsPort($core.int v) { $_setSignedInt32(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasKcpApiPort() => $_has(8);
+  $core.bool hasTlsPort() => $_has(8);
   @$pb.TagNumber(9)
-  void clearKcpApiPort() => clearField(9);
+  void clearTlsPort() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.int get tlsPort => $_getIZ(9);
+  $core.int get grpcPort => $_getIZ(9);
   @$pb.TagNumber(10)
-  set tlsPort($core.int v) { $_setSignedInt32(9, v); }
+  set grpcPort($core.int v) { $_setSignedInt32(9, v); }
   @$pb.TagNumber(10)
-  $core.bool hasTlsPort() => $_has(9);
+  $core.bool hasGrpcPort() => $_has(9);
   @$pb.TagNumber(10)
-  void clearTlsPort() => clearField(10);
-
-  @$pb.TagNumber(11)
-  $core.int get grpcPort => $_getIZ(10);
-  @$pb.TagNumber(11)
-  set grpcPort($core.int v) { $_setSignedInt32(10, v); }
-  @$pb.TagNumber(11)
-  $core.bool hasGrpcPort() => $_has(10);
-  @$pb.TagNumber(11)
-  void clearGrpcPort() => clearField(11);
+  void clearGrpcPort() => clearField(10);
 }
 
 class ServerInfoList extends $pb.GeneratedMessage {

@@ -1,0 +1,30 @@
+syntax = "proto3";
+import "common.proto";
+option go_package = ".;pb";
+
+package pb;
+
+// 服务的定义
+service MqttServerManager {
+    //    对网关的操作
+    rpc AddMqttServer (MqttServerInfo) returns (OperationResponse) {}
+    rpc DelMqttServer (MqttServerInfo) returns (OperationResponse) {}
+    rpc UpdateMqttServer (MqttServerInfo) returns (OperationResponse) {}
+//    rpc QueryMqttServer (MqttServerInfo) returns (OperationResponse) {}
+    rpc GetAllMqttServer (MqttServerInfo) returns (OperationResponse) {}
+}
+
+message MqttServerInfo{
+    //    String host;
+    string Host = 1;
+    //    int port;
+    string Port = 2;
+    //    Client ID
+    string ClientId = 3;
+    //    String username;
+    string Username = 4;
+    //    String password;
+    string Password = 5;
+    //    是否匿名
+    bool IsAnonymous = 6;
+}

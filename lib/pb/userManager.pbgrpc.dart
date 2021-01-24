@@ -10,23 +10,23 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'userManager.pb.dart' as $3;
+import 'userManager.pb.dart' as $4;
 import 'common.pb.dart' as $1;
 export 'userManager.pb.dart';
 
 class UserManagerClient extends $grpc.Client {
   static final _$registerUserWithUserInfo =
-      $grpc.ClientMethod<$3.UserInfo, $1.OperationResponse>(
+      $grpc.ClientMethod<$4.UserInfo, $1.OperationResponse>(
           '/pb.UserManager/RegisterUserWithUserInfo',
-          ($3.UserInfo value) => value.writeToBuffer(),
+          ($4.UserInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
   static final _$loginWithUserLoginInfo =
-      $grpc.ClientMethod<$3.UserInfo, $3.UserLoginResponse>(
+      $grpc.ClientMethod<$4.UserInfo, $4.UserLoginResponse>(
           '/pb.UserManager/LoginWithUserLoginInfo',
-          ($3.UserInfo value) => value.writeToBuffer(),
+          ($4.UserInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $3.UserLoginResponse.fromBuffer(value));
+              $4.UserLoginResponse.fromBuffer(value));
   static final _$updateUserNanme =
       $grpc.ClientMethod<$1.StringValue, $1.OperationResponse>(
           '/pb.UserManager/UpdateUserNanme',
@@ -62,7 +62,7 @@ class UserManagerClient extends $grpc.Client {
       : super(channel, options: options);
 
   $grpc.ResponseFuture<$1.OperationResponse> registerUserWithUserInfo(
-      $3.UserInfo request,
+      $4.UserInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$registerUserWithUserInfo, $async.Stream.fromIterable([request]),
@@ -70,8 +70,8 @@ class UserManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$3.UserLoginResponse> loginWithUserLoginInfo(
-      $3.UserInfo request,
+  $grpc.ResponseFuture<$4.UserLoginResponse> loginWithUserLoginInfo(
+      $4.UserInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$loginWithUserLoginInfo, $async.Stream.fromIterable([request]),
@@ -129,20 +129,20 @@ abstract class UserManagerServiceBase extends $grpc.Service {
   $core.String get $name => 'pb.UserManager';
 
   UserManagerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$3.UserInfo, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UserInfo, $1.OperationResponse>(
         'RegisterUserWithUserInfo',
         registerUserWithUserInfo_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.UserInfo.fromBuffer(value),
+        ($core.List<$core.int> value) => $4.UserInfo.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.UserInfo, $3.UserLoginResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UserInfo, $4.UserLoginResponse>(
         'LoginWithUserLoginInfo',
         loginWithUserLoginInfo_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.UserInfo.fromBuffer(value),
-        ($3.UserLoginResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $4.UserInfo.fromBuffer(value),
+        ($4.UserLoginResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.StringValue, $1.OperationResponse>(
         'UpdateUserNanme',
         updateUserNanme_Pre,
@@ -181,12 +181,12 @@ abstract class UserManagerServiceBase extends $grpc.Service {
   }
 
   $async.Future<$1.OperationResponse> registerUserWithUserInfo_Pre(
-      $grpc.ServiceCall call, $async.Future<$3.UserInfo> request) async {
+      $grpc.ServiceCall call, $async.Future<$4.UserInfo> request) async {
     return registerUserWithUserInfo(call, await request);
   }
 
-  $async.Future<$3.UserLoginResponse> loginWithUserLoginInfo_Pre(
-      $grpc.ServiceCall call, $async.Future<$3.UserInfo> request) async {
+  $async.Future<$4.UserLoginResponse> loginWithUserLoginInfo_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.UserInfo> request) async {
     return loginWithUserLoginInfo(call, await request);
   }
 
@@ -216,9 +216,9 @@ abstract class UserManagerServiceBase extends $grpc.Service {
   }
 
   $async.Future<$1.OperationResponse> registerUserWithUserInfo(
-      $grpc.ServiceCall call, $3.UserInfo request);
-  $async.Future<$3.UserLoginResponse> loginWithUserLoginInfo(
-      $grpc.ServiceCall call, $3.UserInfo request);
+      $grpc.ServiceCall call, $4.UserInfo request);
+  $async.Future<$4.UserLoginResponse> loginWithUserLoginInfo(
+      $grpc.ServiceCall call, $4.UserInfo request);
   $async.Future<$1.OperationResponse> updateUserNanme(
       $grpc.ServiceCall call, $1.StringValue request);
   $async.Future<$1.OperationResponse> updateUserEmail(

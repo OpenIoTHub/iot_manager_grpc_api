@@ -13,15 +13,6 @@ const UserInfo$json = const {
   ],
 };
 
-const UserLoginInfo$json = const {
-  '1': 'UserLoginInfo',
-  '2': const [
-    const {'1': 'Uuid', '3': 1, '4': 1, '5': 9, '10': 'Uuid'},
-    const {'1': 'UserName', '3': 2, '4': 1, '5': 9, '10': 'UserName'},
-    const {'1': 'Password', '3': 3, '4': 1, '5': 9, '10': 'Password'},
-  ],
-};
-
 const UserLoginResponse$json = const {
   '1': 'UserLoginResponse',
   '2': const [
