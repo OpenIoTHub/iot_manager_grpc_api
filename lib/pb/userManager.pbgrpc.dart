@@ -28,33 +28,33 @@ class UserManagerClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $4.UserLoginResponse.fromBuffer(value));
   static final _$updateUserNanme =
-      $grpc.ClientMethod<$1.StringValue, $1.OperationResponse>(
+      $grpc.ClientMethod<$4.UpdateInfo, $1.OperationResponse>(
           '/pb.UserManager/UpdateUserNanme',
-          ($1.StringValue value) => value.writeToBuffer(),
+          ($4.UpdateInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
   static final _$updateUserEmail =
-      $grpc.ClientMethod<$1.StringValue, $1.OperationResponse>(
+      $grpc.ClientMethod<$4.UpdateInfo, $1.OperationResponse>(
           '/pb.UserManager/UpdateUserEmail',
-          ($1.StringValue value) => value.writeToBuffer(),
+          ($4.UpdateInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
   static final _$updateUserMobile =
-      $grpc.ClientMethod<$1.StringValue, $1.OperationResponse>(
+      $grpc.ClientMethod<$4.UpdateInfo, $1.OperationResponse>(
           '/pb.UserManager/UpdateUserMobile',
-          ($1.StringValue value) => value.writeToBuffer(),
+          ($4.UpdateInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
   static final _$updateUserPassword =
-      $grpc.ClientMethod<$1.StringValue, $1.OperationResponse>(
+      $grpc.ClientMethod<$4.UpdateInfo, $1.OperationResponse>(
           '/pb.UserManager/UpdateUserPassword',
-          ($1.StringValue value) => value.writeToBuffer(),
+          ($4.UpdateInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
   static final _$updateUserAvatar =
-      $grpc.ClientMethod<$1.BytesValue, $1.OperationResponse>(
+      $grpc.ClientMethod<$4.UpdateAvatar, $1.OperationResponse>(
           '/pb.UserManager/UpdateUserAvatar',
-          ($1.BytesValue value) => value.writeToBuffer(),
+          ($4.UpdateAvatar value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
 
@@ -80,7 +80,7 @@ class UserManagerClient extends $grpc.Client {
   }
 
   $grpc.ResponseFuture<$1.OperationResponse> updateUserNanme(
-      $1.StringValue request,
+      $4.UpdateInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$updateUserNanme, $async.Stream.fromIterable([request]),
@@ -89,7 +89,7 @@ class UserManagerClient extends $grpc.Client {
   }
 
   $grpc.ResponseFuture<$1.OperationResponse> updateUserEmail(
-      $1.StringValue request,
+      $4.UpdateInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$updateUserEmail, $async.Stream.fromIterable([request]),
@@ -98,7 +98,7 @@ class UserManagerClient extends $grpc.Client {
   }
 
   $grpc.ResponseFuture<$1.OperationResponse> updateUserMobile(
-      $1.StringValue request,
+      $4.UpdateInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$updateUserMobile, $async.Stream.fromIterable([request]),
@@ -107,7 +107,7 @@ class UserManagerClient extends $grpc.Client {
   }
 
   $grpc.ResponseFuture<$1.OperationResponse> updateUserPassword(
-      $1.StringValue request,
+      $4.UpdateInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$updateUserPassword, $async.Stream.fromIterable([request]),
@@ -116,7 +116,7 @@ class UserManagerClient extends $grpc.Client {
   }
 
   $grpc.ResponseFuture<$1.OperationResponse> updateUserAvatar(
-      $1.BytesValue request,
+      $4.UpdateAvatar request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$updateUserAvatar, $async.Stream.fromIterable([request]),
@@ -143,40 +143,40 @@ abstract class UserManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.UserInfo.fromBuffer(value),
         ($4.UserLoginResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.StringValue, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UpdateInfo, $1.OperationResponse>(
         'UpdateUserNanme',
         updateUserNanme_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value),
+        ($core.List<$core.int> value) => $4.UpdateInfo.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.StringValue, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UpdateInfo, $1.OperationResponse>(
         'UpdateUserEmail',
         updateUserEmail_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value),
+        ($core.List<$core.int> value) => $4.UpdateInfo.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.StringValue, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UpdateInfo, $1.OperationResponse>(
         'UpdateUserMobile',
         updateUserMobile_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value),
+        ($core.List<$core.int> value) => $4.UpdateInfo.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.StringValue, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UpdateInfo, $1.OperationResponse>(
         'UpdateUserPassword',
         updateUserPassword_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value),
+        ($core.List<$core.int> value) => $4.UpdateInfo.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.BytesValue, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UpdateAvatar, $1.OperationResponse>(
         'UpdateUserAvatar',
         updateUserAvatar_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.BytesValue.fromBuffer(value),
+        ($core.List<$core.int> value) => $4.UpdateAvatar.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
   }
 
@@ -191,27 +191,27 @@ abstract class UserManagerServiceBase extends $grpc.Service {
   }
 
   $async.Future<$1.OperationResponse> updateUserNanme_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.StringValue> request) async {
+      $grpc.ServiceCall call, $async.Future<$4.UpdateInfo> request) async {
     return updateUserNanme(call, await request);
   }
 
   $async.Future<$1.OperationResponse> updateUserEmail_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.StringValue> request) async {
+      $grpc.ServiceCall call, $async.Future<$4.UpdateInfo> request) async {
     return updateUserEmail(call, await request);
   }
 
   $async.Future<$1.OperationResponse> updateUserMobile_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.StringValue> request) async {
+      $grpc.ServiceCall call, $async.Future<$4.UpdateInfo> request) async {
     return updateUserMobile(call, await request);
   }
 
   $async.Future<$1.OperationResponse> updateUserPassword_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.StringValue> request) async {
+      $grpc.ServiceCall call, $async.Future<$4.UpdateInfo> request) async {
     return updateUserPassword(call, await request);
   }
 
   $async.Future<$1.OperationResponse> updateUserAvatar_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.BytesValue> request) async {
+      $grpc.ServiceCall call, $async.Future<$4.UpdateAvatar> request) async {
     return updateUserAvatar(call, await request);
   }
 
@@ -220,13 +220,13 @@ abstract class UserManagerServiceBase extends $grpc.Service {
   $async.Future<$4.UserLoginResponse> loginWithUserLoginInfo(
       $grpc.ServiceCall call, $4.UserInfo request);
   $async.Future<$1.OperationResponse> updateUserNanme(
-      $grpc.ServiceCall call, $1.StringValue request);
+      $grpc.ServiceCall call, $4.UpdateInfo request);
   $async.Future<$1.OperationResponse> updateUserEmail(
-      $grpc.ServiceCall call, $1.StringValue request);
+      $grpc.ServiceCall call, $4.UpdateInfo request);
   $async.Future<$1.OperationResponse> updateUserMobile(
-      $grpc.ServiceCall call, $1.StringValue request);
+      $grpc.ServiceCall call, $4.UpdateInfo request);
   $async.Future<$1.OperationResponse> updateUserPassword(
-      $grpc.ServiceCall call, $1.StringValue request);
+      $grpc.ServiceCall call, $4.UpdateInfo request);
   $async.Future<$1.OperationResponse> updateUserAvatar(
-      $grpc.ServiceCall call, $1.BytesValue request);
+      $grpc.ServiceCall call, $4.UpdateAvatar request);
 }

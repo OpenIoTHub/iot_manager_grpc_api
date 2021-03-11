@@ -22,11 +22,11 @@ type UserManagerClient interface {
 	//    登录 获取Token
 	LoginWithUserLoginInfo(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*UserLoginResponse, error)
 	//    更新用户信息
-	UpdateUserNanme(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
-	UpdateUserEmail(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
-	UpdateUserMobile(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
-	UpdateUserPassword(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
-	UpdateUserAvatar(ctx context.Context, in *BytesValue, opts ...grpc.CallOption) (*OperationResponse, error)
+	UpdateUserNanme(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	UpdateUserEmail(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	UpdateUserMobile(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	UpdateUserPassword(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	UpdateUserAvatar(ctx context.Context, in *UpdateAvatar, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
 type userManagerClient struct {
@@ -55,7 +55,7 @@ func (c *userManagerClient) LoginWithUserLoginInfo(ctx context.Context, in *User
 	return out, nil
 }
 
-func (c *userManagerClient) UpdateUserNanme(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *userManagerClient) UpdateUserNanme(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.UserManager/UpdateUserNanme", in, out, opts...)
 	if err != nil {
@@ -64,7 +64,7 @@ func (c *userManagerClient) UpdateUserNanme(ctx context.Context, in *StringValue
 	return out, nil
 }
 
-func (c *userManagerClient) UpdateUserEmail(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *userManagerClient) UpdateUserEmail(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.UserManager/UpdateUserEmail", in, out, opts...)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *userManagerClient) UpdateUserEmail(ctx context.Context, in *StringValue
 	return out, nil
 }
 
-func (c *userManagerClient) UpdateUserMobile(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *userManagerClient) UpdateUserMobile(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.UserManager/UpdateUserMobile", in, out, opts...)
 	if err != nil {
@@ -82,7 +82,7 @@ func (c *userManagerClient) UpdateUserMobile(ctx context.Context, in *StringValu
 	return out, nil
 }
 
-func (c *userManagerClient) UpdateUserPassword(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *userManagerClient) UpdateUserPassword(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.UserManager/UpdateUserPassword", in, out, opts...)
 	if err != nil {
@@ -91,7 +91,7 @@ func (c *userManagerClient) UpdateUserPassword(ctx context.Context, in *StringVa
 	return out, nil
 }
 
-func (c *userManagerClient) UpdateUserAvatar(ctx context.Context, in *BytesValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *userManagerClient) UpdateUserAvatar(ctx context.Context, in *UpdateAvatar, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.UserManager/UpdateUserAvatar", in, out, opts...)
 	if err != nil {
@@ -109,11 +109,11 @@ type UserManagerServer interface {
 	//    登录 获取Token
 	LoginWithUserLoginInfo(context.Context, *UserInfo) (*UserLoginResponse, error)
 	//    更新用户信息
-	UpdateUserNanme(context.Context, *StringValue) (*OperationResponse, error)
-	UpdateUserEmail(context.Context, *StringValue) (*OperationResponse, error)
-	UpdateUserMobile(context.Context, *StringValue) (*OperationResponse, error)
-	UpdateUserPassword(context.Context, *StringValue) (*OperationResponse, error)
-	UpdateUserAvatar(context.Context, *BytesValue) (*OperationResponse, error)
+	UpdateUserNanme(context.Context, *UpdateInfo) (*OperationResponse, error)
+	UpdateUserEmail(context.Context, *UpdateInfo) (*OperationResponse, error)
+	UpdateUserMobile(context.Context, *UpdateInfo) (*OperationResponse, error)
+	UpdateUserPassword(context.Context, *UpdateInfo) (*OperationResponse, error)
+	UpdateUserAvatar(context.Context, *UpdateAvatar) (*OperationResponse, error)
 	mustEmbedUnimplementedUserManagerServer()
 }
 
@@ -127,19 +127,19 @@ func (UnimplementedUserManagerServer) RegisterUserWithUserInfo(context.Context, 
 func (UnimplementedUserManagerServer) LoginWithUserLoginInfo(context.Context, *UserInfo) (*UserLoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginWithUserLoginInfo not implemented")
 }
-func (UnimplementedUserManagerServer) UpdateUserNanme(context.Context, *StringValue) (*OperationResponse, error) {
+func (UnimplementedUserManagerServer) UpdateUserNanme(context.Context, *UpdateInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserNanme not implemented")
 }
-func (UnimplementedUserManagerServer) UpdateUserEmail(context.Context, *StringValue) (*OperationResponse, error) {
+func (UnimplementedUserManagerServer) UpdateUserEmail(context.Context, *UpdateInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserEmail not implemented")
 }
-func (UnimplementedUserManagerServer) UpdateUserMobile(context.Context, *StringValue) (*OperationResponse, error) {
+func (UnimplementedUserManagerServer) UpdateUserMobile(context.Context, *UpdateInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserMobile not implemented")
 }
-func (UnimplementedUserManagerServer) UpdateUserPassword(context.Context, *StringValue) (*OperationResponse, error) {
+func (UnimplementedUserManagerServer) UpdateUserPassword(context.Context, *UpdateInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserPassword not implemented")
 }
-func (UnimplementedUserManagerServer) UpdateUserAvatar(context.Context, *BytesValue) (*OperationResponse, error) {
+func (UnimplementedUserManagerServer) UpdateUserAvatar(context.Context, *UpdateAvatar) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserAvatar not implemented")
 }
 func (UnimplementedUserManagerServer) mustEmbedUnimplementedUserManagerServer() {}
@@ -192,7 +192,7 @@ func _UserManager_LoginWithUserLoginInfo_Handler(srv interface{}, ctx context.Co
 }
 
 func _UserManager_UpdateUserNanme_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StringValue)
+	in := new(UpdateInfo)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -204,13 +204,13 @@ func _UserManager_UpdateUserNanme_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: "/pb.UserManager/UpdateUserNanme",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserManagerServer).UpdateUserNanme(ctx, req.(*StringValue))
+		return srv.(UserManagerServer).UpdateUserNanme(ctx, req.(*UpdateInfo))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _UserManager_UpdateUserEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StringValue)
+	in := new(UpdateInfo)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -222,13 +222,13 @@ func _UserManager_UpdateUserEmail_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: "/pb.UserManager/UpdateUserEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserManagerServer).UpdateUserEmail(ctx, req.(*StringValue))
+		return srv.(UserManagerServer).UpdateUserEmail(ctx, req.(*UpdateInfo))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _UserManager_UpdateUserMobile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StringValue)
+	in := new(UpdateInfo)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -240,13 +240,13 @@ func _UserManager_UpdateUserMobile_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/pb.UserManager/UpdateUserMobile",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserManagerServer).UpdateUserMobile(ctx, req.(*StringValue))
+		return srv.(UserManagerServer).UpdateUserMobile(ctx, req.(*UpdateInfo))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _UserManager_UpdateUserPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StringValue)
+	in := new(UpdateInfo)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -258,13 +258,13 @@ func _UserManager_UpdateUserPassword_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/pb.UserManager/UpdateUserPassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserManagerServer).UpdateUserPassword(ctx, req.(*StringValue))
+		return srv.(UserManagerServer).UpdateUserPassword(ctx, req.(*UpdateInfo))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _UserManager_UpdateUserAvatar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BytesValue)
+	in := new(UpdateAvatar)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -276,7 +276,7 @@ func _UserManager_UpdateUserAvatar_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/pb.UserManager/UpdateUserAvatar",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserManagerServer).UpdateUserAvatar(ctx, req.(*BytesValue))
+		return srv.(UserManagerServer).UpdateUserAvatar(ctx, req.(*UpdateAvatar))
 	}
 	return interceptor(ctx, in, info, handler)
 }

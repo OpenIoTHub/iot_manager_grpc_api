@@ -11,16 +11,26 @@ service UserManager {
 //    登录 获取Token
     rpc LoginWithUserLoginInfo (UserInfo) returns (UserLoginResponse) {}
 //    更新用户信息
-    rpc UpdateUserNanme (StringValue) returns (OperationResponse) {}
-    rpc UpdateUserEmail (StringValue) returns (OperationResponse) {}
-    rpc UpdateUserMobile (StringValue) returns (OperationResponse) {}
-    rpc UpdateUserPassword (StringValue) returns (OperationResponse) {}
-    rpc UpdateUserAvatar (BytesValue) returns (OperationResponse) {}
+    rpc UpdateUserNanme (UpdateInfo) returns (OperationResponse) {}
+    rpc UpdateUserEmail (UpdateInfo) returns (OperationResponse) {}
+    rpc UpdateUserMobile (UpdateInfo) returns (OperationResponse) {}
+    rpc UpdateUserPassword (UpdateInfo) returns (OperationResponse) {}
+    rpc UpdateUserAvatar (UpdateAvatar) returns (OperationResponse) {}
 }
 
 message UserInfo{
-    string UserName = 1;
+    string UserEmailMobile = 1;
     string Password = 2;
+}
+
+message UpdateInfo{
+    string UUID = 1;
+    bytes NewString = 2;
+}
+
+message UpdateAvatar{
+    string UUID = 1;
+    string NewBytes = 2;
 }
 
 message UserLoginResponse{

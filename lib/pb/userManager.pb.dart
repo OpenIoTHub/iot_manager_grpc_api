@@ -11,7 +11,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class UserInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('UserInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'UserName', protoName: 'UserName')
+    ..aOS(1, 'UserEmailMobile', protoName: 'UserEmailMobile')
     ..aOS(2, 'Password', protoName: 'Password')
     ..hasRequiredFields = false
   ;
@@ -32,13 +32,13 @@ class UserInfo extends $pb.GeneratedMessage {
   static UserInfo _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get userName => $_getSZ(0);
+  $core.String get userEmailMobile => $_getSZ(0);
   @$pb.TagNumber(1)
-  set userName($core.String v) { $_setString(0, v); }
+  set userEmailMobile($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasUserName() => $_has(0);
+  $core.bool hasUserEmailMobile() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUserName() => clearField(1);
+  void clearUserEmailMobile() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get password => $_getSZ(1);
@@ -48,6 +48,88 @@ class UserInfo extends $pb.GeneratedMessage {
   $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
   void clearPassword() => clearField(2);
+}
+
+class UpdateInfo extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('UpdateInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..aOS(1, 'UUID', protoName: 'UUID')
+    ..a<$core.List<$core.int>>(2, 'NewString', $pb.PbFieldType.OY, protoName: 'NewString')
+    ..hasRequiredFields = false
+  ;
+
+  UpdateInfo._() : super();
+  factory UpdateInfo() => create();
+  factory UpdateInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  UpdateInfo clone() => UpdateInfo()..mergeFromMessage(this);
+  UpdateInfo copyWith(void Function(UpdateInfo) updates) => super.copyWith((message) => updates(message as UpdateInfo));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateInfo create() => UpdateInfo._();
+  UpdateInfo createEmptyInstance() => create();
+  static $pb.PbList<UpdateInfo> createRepeated() => $pb.PbList<UpdateInfo>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateInfo>(create);
+  static UpdateInfo _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get uUID => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set uUID($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUUID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUUID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get newString => $_getN(1);
+  @$pb.TagNumber(2)
+  set newString($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasNewString() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearNewString() => clearField(2);
+}
+
+class UpdateAvatar extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('UpdateAvatar', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..aOS(1, 'UUID', protoName: 'UUID')
+    ..aOS(2, 'NewBytes', protoName: 'NewBytes')
+    ..hasRequiredFields = false
+  ;
+
+  UpdateAvatar._() : super();
+  factory UpdateAvatar() => create();
+  factory UpdateAvatar.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateAvatar.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  UpdateAvatar clone() => UpdateAvatar()..mergeFromMessage(this);
+  UpdateAvatar copyWith(void Function(UpdateAvatar) updates) => super.copyWith((message) => updates(message as UpdateAvatar));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateAvatar create() => UpdateAvatar._();
+  UpdateAvatar createEmptyInstance() => create();
+  static $pb.PbList<UpdateAvatar> createRepeated() => $pb.PbList<UpdateAvatar>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateAvatar getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateAvatar>(create);
+  static UpdateAvatar _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get uUID => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set uUID($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUUID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUUID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get newBytes => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set newBytes($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasNewBytes() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearNewBytes() => clearField(2);
 }
 
 class UserLoginResponse extends $pb.GeneratedMessage {
