@@ -25,12 +25,12 @@ message UserInfo{
 
 message UpdateInfo{
     string UUID = 1;
-    bytes NewString = 2;
+    string NewString = 2;
 }
 
 message UpdateAvatar{
     string UUID = 1;
-    string NewBytes = 2;
+    bytes NewBytes = 2;
 }
 
 message UserLoginResponse{

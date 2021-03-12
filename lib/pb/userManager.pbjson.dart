@@ -17,7 +17,7 @@ const UpdateInfo$json = const {
   '1': 'UpdateInfo',
   '2': const [
     const {'1': 'UUID', '3': 1, '4': 1, '5': 9, '10': 'UUID'},
-    const {'1': 'NewString', '3': 2, '4': 1, '5': 12, '10': 'NewString'},
+    const {'1': 'NewString', '3': 2, '4': 1, '5': 9, '10': 'NewString'},
   ],
 };
 
@@ -25,7 +25,7 @@ const UpdateAvatar$json = const {
   '1': 'UpdateAvatar',
   '2': const [
     const {'1': 'UUID', '3': 1, '4': 1, '5': 9, '10': 'UUID'},
-    const {'1': 'NewBytes', '3': 2, '4': 1, '5': 9, '10': 'NewBytes'},
+    const {'1': 'NewBytes', '3': 2, '4': 1, '5': 12, '10': 'NewBytes'},
   ],
 };
 

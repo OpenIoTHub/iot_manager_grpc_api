@@ -53,7 +53,7 @@ class UserInfo extends $pb.GeneratedMessage {
 class UpdateInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('UpdateInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
     ..aOS(1, 'UUID', protoName: 'UUID')
-    ..a<$core.List<$core.int>>(2, 'NewString', $pb.PbFieldType.OY, protoName: 'NewString')
+    ..aOS(2, 'NewString', protoName: 'NewString')
     ..hasRequiredFields = false
   ;
 
@@ -82,9 +82,9 @@ class UpdateInfo extends $pb.GeneratedMessage {
   void clearUUID() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.int> get newString => $_getN(1);
+  $core.String get newString => $_getSZ(1);
   @$pb.TagNumber(2)
-  set newString($core.List<$core.int> v) { $_setBytes(1, v); }
+  set newString($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasNewString() => $_has(1);
   @$pb.TagNumber(2)
@@ -94,7 +94,7 @@ class UpdateInfo extends $pb.GeneratedMessage {
 class UpdateAvatar extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('UpdateAvatar', package: const $pb.PackageName('pb'), createEmptyInstance: create)
     ..aOS(1, 'UUID', protoName: 'UUID')
-    ..aOS(2, 'NewBytes', protoName: 'NewBytes')
+    ..a<$core.List<$core.int>>(2, 'NewBytes', $pb.PbFieldType.OY, protoName: 'NewBytes')
     ..hasRequiredFields = false
   ;
 
@@ -123,9 +123,9 @@ class UpdateAvatar extends $pb.GeneratedMessage {
   void clearUUID() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get newBytes => $_getSZ(1);
+  $core.List<$core.int> get newBytes => $_getN(1);
   @$pb.TagNumber(2)
-  set newBytes($core.String v) { $_setString(1, v); }
+  set newBytes($core.List<$core.int> v) { $_setBytes(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasNewBytes() => $_has(1);
   @$pb.TagNumber(2)
