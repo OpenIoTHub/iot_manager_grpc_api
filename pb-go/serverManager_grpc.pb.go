@@ -21,7 +21,7 @@ type ServerManagerClient interface {
 	AddServer(ctx context.Context, in *ServerInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelServer(ctx context.Context, in *ServerInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateServer(ctx context.Context, in *ServerInfo, opts ...grpc.CallOption) (*OperationResponse, error)
-	QueryServer(ctx context.Context, in *ServerInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	QueryServer(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*ServerInfoList, error)
 	GetAllServer(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ServerInfoList, error)
 }
 
@@ -60,8 +60,8 @@ func (c *serverManagerClient) UpdateServer(ctx context.Context, in *ServerInfo, 
 	return out, nil
 }
 
-func (c *serverManagerClient) QueryServer(ctx context.Context, in *ServerInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
-	out := new(OperationResponse)
+func (c *serverManagerClient) QueryServer(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*ServerInfoList, error) {
+	out := new(ServerInfoList)
 	err := c.cc.Invoke(ctx, "/pb.ServerManager/QueryServer", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -86,7 +86,7 @@ type ServerManagerServer interface {
 	AddServer(context.Context, *ServerInfo) (*OperationResponse, error)
 	DelServer(context.Context, *ServerInfo) (*OperationResponse, error)
 	UpdateServer(context.Context, *ServerInfo) (*OperationResponse, error)
-	QueryServer(context.Context, *ServerInfo) (*OperationResponse, error)
+	QueryServer(context.Context, *StringValue) (*ServerInfoList, error)
 	GetAllServer(context.Context, *Empty) (*ServerInfoList, error)
 	mustEmbedUnimplementedServerManagerServer()
 }
@@ -104,7 +104,7 @@ func (UnimplementedServerManagerServer) DelServer(context.Context, *ServerInfo) 
 func (UnimplementedServerManagerServer) UpdateServer(context.Context, *ServerInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateServer not implemented")
 }
-func (UnimplementedServerManagerServer) QueryServer(context.Context, *ServerInfo) (*OperationResponse, error) {
+func (UnimplementedServerManagerServer) QueryServer(context.Context, *StringValue) (*ServerInfoList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryServer not implemented")
 }
 func (UnimplementedServerManagerServer) GetAllServer(context.Context, *Empty) (*ServerInfoList, error) {
@@ -178,7 +178,7 @@ func _ServerManager_UpdateServer_Handler(srv interface{}, ctx context.Context, d
 }
 
 func _ServerManager_QueryServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ServerInfo)
+	in := new(StringValue)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -190,7 +190,7 @@ func _ServerManager_QueryServer_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/pb.ServerManager/QueryServer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServerManagerServer).QueryServer(ctx, req.(*ServerInfo))
+		return srv.(ServerManagerServer).QueryServer(ctx, req.(*StringValue))
 	}
 	return interceptor(ctx, in, info, handler)
 }

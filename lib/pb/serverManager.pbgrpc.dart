@@ -34,11 +34,10 @@ class ServerManagerClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
   static final _$queryServer =
-      $grpc.ClientMethod<$3.ServerInfo, $1.OperationResponse>(
+      $grpc.ClientMethod<$1.StringValue, $3.ServerInfoList>(
           '/pb.ServerManager/QueryServer',
-          ($3.ServerInfo value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $1.OperationResponse.fromBuffer(value));
+          ($1.StringValue value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $3.ServerInfoList.fromBuffer(value));
   static final _$getAllServer = $grpc.ClientMethod<$1.Empty, $3.ServerInfoList>(
       '/pb.ServerManager/GetAllServer',
       ($1.Empty value) => value.writeToBuffer(),
@@ -69,7 +68,7 @@ class ServerManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$1.OperationResponse> queryServer($3.ServerInfo request,
+  $grpc.ResponseFuture<$3.ServerInfoList> queryServer($1.StringValue request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$queryServer, $async.Stream.fromIterable([request]),
@@ -111,13 +110,13 @@ abstract class ServerManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $3.ServerInfo.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.ServerInfo, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$1.StringValue, $3.ServerInfoList>(
         'QueryServer',
         queryServer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.ServerInfo.fromBuffer(value),
-        ($1.OperationResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value),
+        ($3.ServerInfoList value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $3.ServerInfoList>(
         'GetAllServer',
         getAllServer_Pre,
@@ -142,8 +141,8 @@ abstract class ServerManagerServiceBase extends $grpc.Service {
     return updateServer(call, await request);
   }
 
-  $async.Future<$1.OperationResponse> queryServer_Pre(
-      $grpc.ServiceCall call, $async.Future<$3.ServerInfo> request) async {
+  $async.Future<$3.ServerInfoList> queryServer_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.StringValue> request) async {
     return queryServer(call, await request);
   }
 
@@ -158,8 +157,8 @@ abstract class ServerManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $3.ServerInfo request);
   $async.Future<$1.OperationResponse> updateServer(
       $grpc.ServiceCall call, $3.ServerInfo request);
-  $async.Future<$1.OperationResponse> queryServer(
-      $grpc.ServiceCall call, $3.ServerInfo request);
+  $async.Future<$3.ServerInfoList> queryServer(
+      $grpc.ServiceCall call, $1.StringValue request);
   $async.Future<$3.ServerInfoList> getAllServer(
       $grpc.ServiceCall call, $1.Empty request);
 }

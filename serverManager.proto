@@ -10,7 +10,7 @@ service ServerManager {
     rpc AddServer (ServerInfo) returns (OperationResponse) {}
     rpc DelServer (ServerInfo) returns (OperationResponse) {}
     rpc UpdateServer (ServerInfo) returns (OperationResponse) {}
-    rpc QueryServer (ServerInfo) returns (OperationResponse) {}
+    rpc QueryServer (StringValue) returns (ServerInfoList) {}
     rpc GetAllServer (Empty) returns (ServerInfoList) {}
 }
 
