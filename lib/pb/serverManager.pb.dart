@@ -21,6 +21,7 @@ class ServerInfo extends $pb.GeneratedMessage {
     ..a<$core.int>(8, 'KcpApiPort', $pb.PbFieldType.O3, protoName: 'KcpApiPort')
     ..a<$core.int>(9, 'TlsPort', $pb.PbFieldType.O3, protoName: 'TlsPort')
     ..a<$core.int>(10, 'GrpcPort', $pb.PbFieldType.O3, protoName: 'GrpcPort')
+    ..aOS(11, 'Description', protoName: 'Description')
     ..hasRequiredFields = false
   ;
 
@@ -128,6 +129,15 @@ class ServerInfo extends $pb.GeneratedMessage {
   $core.bool hasGrpcPort() => $_has(9);
   @$pb.TagNumber(10)
   void clearGrpcPort() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.String get description => $_getSZ(10);
+  @$pb.TagNumber(11)
+  set description($core.String v) { $_setString(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasDescription() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearDescription() => clearField(11);
 }
 
 class ServerInfoList extends $pb.GeneratedMessage {

@@ -18,6 +18,7 @@ const ServerInfo$json = const {
     const {'1': 'KcpApiPort', '3': 8, '4': 1, '5': 5, '10': 'KcpApiPort'},
     const {'1': 'TlsPort', '3': 9, '4': 1, '5': 5, '10': 'TlsPort'},
     const {'1': 'GrpcPort', '3': 10, '4': 1, '5': 5, '10': 'GrpcPort'},
+    const {'1': 'Description', '3': 11, '4': 1, '5': 9, '10': 'Description'},
   ],
 };
 

@@ -13,12 +13,13 @@ class GatewayInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('GatewayInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
     ..aOS(1, 'Uuid', protoName: 'Uuid')
     ..aOS(2, 'Name', protoName: 'Name')
-    ..pPS(3, 'ServerUuid', protoName: 'ServerUuid')
-    ..aOS(4, 'SuperUserUuid', protoName: 'SuperUserUuid')
-    ..pPS(5, 'ReadUserUuids', protoName: 'ReadUserUuids')
-    ..pPS(6, 'ReadWriteUserUuids', protoName: 'ReadWriteUserUuids')
-    ..pPS(7, 'Hosts', protoName: 'Hosts')
-    ..aOB(8, 'Status', protoName: 'Status')
+    ..aOS(3, 'Description', protoName: 'Description')
+    ..pPS(4, 'ServerUuid', protoName: 'ServerUuid')
+    ..aOS(5, 'SuperUserUuid', protoName: 'SuperUserUuid')
+    ..pPS(6, 'ReadUserUuids', protoName: 'ReadUserUuids')
+    ..pPS(7, 'ReadWriteUserUuids', protoName: 'ReadWriteUserUuids')
+    ..pPS(8, 'Hosts', protoName: 'Hosts')
+    ..aOB(9, 'Status', protoName: 'Status')
     ..hasRequiredFields = false
   ;
 
@@ -56,33 +57,42 @@ class GatewayInfo extends $pb.GeneratedMessage {
   void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<$core.String> get serverUuid => $_getList(2);
+  $core.String get description => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set description($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasDescription() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDescription() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get superUserUuid => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set superUserUuid($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasSuperUserUuid() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearSuperUserUuid() => clearField(4);
+  $core.List<$core.String> get serverUuid => $_getList(3);
 
   @$pb.TagNumber(5)
-  $core.List<$core.String> get readUserUuids => $_getList(4);
+  $core.String get superUserUuid => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set superUserUuid($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSuperUserUuid() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSuperUserUuid() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.List<$core.String> get readWriteUserUuids => $_getList(5);
+  $core.List<$core.String> get readUserUuids => $_getList(5);
 
   @$pb.TagNumber(7)
-  $core.List<$core.String> get hosts => $_getList(6);
+  $core.List<$core.String> get readWriteUserUuids => $_getList(6);
 
   @$pb.TagNumber(8)
-  $core.bool get status => $_getBF(7);
-  @$pb.TagNumber(8)
-  set status($core.bool v) { $_setBool(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasStatus() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearStatus() => clearField(8);
+  $core.List<$core.String> get hosts => $_getList(7);
+
+  @$pb.TagNumber(9)
+  $core.bool get status => $_getBF(8);
+  @$pb.TagNumber(9)
+  set status($core.bool v) { $_setBool(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasStatus() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearStatus() => clearField(9);
 }
 
