@@ -23,6 +23,7 @@ class ServerInfo extends $pb.GeneratedMessage {
     ..a<$core.int>(10, 'TlsPort', $pb.PbFieldType.O3, protoName: 'TlsPort')
     ..a<$core.int>(11, 'GrpcPort', $pb.PbFieldType.O3, protoName: 'GrpcPort')
     ..aOS(12, 'Description', protoName: 'Description')
+    ..aOB(13, 'IsPublic', protoName: 'IsPublic')
     ..hasRequiredFields = false
   ;
 
@@ -148,6 +149,15 @@ class ServerInfo extends $pb.GeneratedMessage {
   $core.bool hasDescription() => $_has(11);
   @$pb.TagNumber(12)
   void clearDescription() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.bool get isPublic => $_getBF(12);
+  @$pb.TagNumber(13)
+  set isPublic($core.bool v) { $_setBool(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasIsPublic() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearIsPublic() => clearField(13);
 }
 
 class ServerInfoList extends $pb.GeneratedMessage {
