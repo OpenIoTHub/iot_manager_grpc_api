@@ -16,16 +16,17 @@ service ServerManager {
 
 message ServerInfo{
     string Uuid = 1;
-    string ServerHost = 2;
-    string LoginKey = 3;
-    string ConnectionType = 4;
-    int32 TcpPort = 5;
-    int32 KcpPort = 6;
-    int32 UdpApiPort = 7;
-    int32 KcpApiPort = 8;
-    int32 TlsPort = 9;
-    int32 GrpcPort = 10;
-    string Description = 11;
+    string Name = 2;
+    string ServerHost = 3;
+    string LoginKey = 4;
+    string ConnectionType = 5;
+    int32 TcpPort = 6;
+    int32 KcpPort = 7;
+    int32 UdpApiPort = 8;
+    int32 KcpApiPort = 9;
+    int32 TlsPort = 10;
+    int32 GrpcPort = 11;
+    string Description = 12;
 }
 
 message ServerInfoList{
