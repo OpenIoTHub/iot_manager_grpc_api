@@ -16,6 +16,13 @@ service UserManager {
     rpc UpdateUserMobile (UpdateInfo) returns (OperationResponse) {}
     rpc UpdateUserPassword (UpdateInfo) returns (OperationResponse) {}
     rpc UpdateUserAvatar (UpdateAvatar) returns (OperationResponse) {}
+//    用户配置
+//    一次性操作多个
+    rpc GetAllUserConfig (Empty) returns (UserConfig) {}
+    rpc SetAllUserConfig (UserConfig) returns (OperationResponse) {}
+//    StringValue一次性操作一个
+    rpc GetUserConfigByKey (StringValue) returns (StringValue) {}
+    rpc SetUserConfigByKey (StringValue) returns (OperationResponse) {}
 }
 
 message UserInfo{
@@ -37,4 +44,10 @@ message UserLoginResponse{
     int32 Code = 1;
     string Msg = 2;
     string Token = 3;
+    //    额外的配置
+    map<string,string> InfoMap = 4;
+}
+
+message UserConfig{
+    map<string,string> config = 1;
 }

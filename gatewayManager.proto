@@ -27,4 +27,6 @@ message GatewayInfo{
     repeated string Hosts = 8;
     //在线状态
     bool Status  = 9;
+    //    额外的配置
+    map<string,string> ConfigMap = 10;
 }

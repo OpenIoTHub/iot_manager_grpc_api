@@ -57,6 +57,27 @@ class UserManagerClient extends $grpc.Client {
           ($4.UpdateAvatar value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
+  static final _$getAllUserConfig = $grpc.ClientMethod<$1.Empty, $4.UserConfig>(
+      '/pb.UserManager/GetAllUserConfig',
+      ($1.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.UserConfig.fromBuffer(value));
+  static final _$setAllUserConfig =
+      $grpc.ClientMethod<$4.UserConfig, $1.OperationResponse>(
+          '/pb.UserManager/SetAllUserConfig',
+          ($4.UserConfig value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.OperationResponse.fromBuffer(value));
+  static final _$getUserConfigByKey =
+      $grpc.ClientMethod<$1.StringValue, $1.StringValue>(
+          '/pb.UserManager/GetUserConfigByKey',
+          ($1.StringValue value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value));
+  static final _$setUserConfigByKey =
+      $grpc.ClientMethod<$1.StringValue, $1.OperationResponse>(
+          '/pb.UserManager/SetUserConfigByKey',
+          ($1.StringValue value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.OperationResponse.fromBuffer(value));
 
   UserManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -123,6 +144,41 @@ class UserManagerClient extends $grpc.Client {
         options: options);
     return $grpc.ResponseFuture(call);
   }
+
+  $grpc.ResponseFuture<$4.UserConfig> getAllUserConfig($1.Empty request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getAllUserConfig, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$1.OperationResponse> setAllUserConfig(
+      $4.UserConfig request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$setAllUserConfig, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$1.StringValue> getUserConfigByKey(
+      $1.StringValue request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getUserConfigByKey, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$1.OperationResponse> setUserConfigByKey(
+      $1.StringValue request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$setUserConfigByKey, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
 }
 
 abstract class UserManagerServiceBase extends $grpc.Service {
@@ -178,6 +234,34 @@ abstract class UserManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.UpdateAvatar.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.Empty, $4.UserConfig>(
+        'GetAllUserConfig',
+        getAllUserConfig_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
+        ($4.UserConfig value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.UserConfig, $1.OperationResponse>(
+        'SetAllUserConfig',
+        setAllUserConfig_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.UserConfig.fromBuffer(value),
+        ($1.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.StringValue, $1.StringValue>(
+        'GetUserConfigByKey',
+        getUserConfigByKey_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value),
+        ($1.StringValue value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.StringValue, $1.OperationResponse>(
+        'SetUserConfigByKey',
+        setUserConfigByKey_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value),
+        ($1.OperationResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$1.OperationResponse> registerUserWithUserInfo_Pre(
@@ -215,6 +299,26 @@ abstract class UserManagerServiceBase extends $grpc.Service {
     return updateUserAvatar(call, await request);
   }
 
+  $async.Future<$4.UserConfig> getAllUserConfig_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
+    return getAllUserConfig(call, await request);
+  }
+
+  $async.Future<$1.OperationResponse> setAllUserConfig_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.UserConfig> request) async {
+    return setAllUserConfig(call, await request);
+  }
+
+  $async.Future<$1.StringValue> getUserConfigByKey_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.StringValue> request) async {
+    return getUserConfigByKey(call, await request);
+  }
+
+  $async.Future<$1.OperationResponse> setUserConfigByKey_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.StringValue> request) async {
+    return setUserConfigByKey(call, await request);
+  }
+
   $async.Future<$1.OperationResponse> registerUserWithUserInfo(
       $grpc.ServiceCall call, $4.UserInfo request);
   $async.Future<$4.UserLoginResponse> loginWithUserLoginInfo(
@@ -229,4 +333,12 @@ abstract class UserManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $4.UpdateInfo request);
   $async.Future<$1.OperationResponse> updateUserAvatar(
       $grpc.ServiceCall call, $4.UpdateAvatar request);
+  $async.Future<$4.UserConfig> getAllUserConfig(
+      $grpc.ServiceCall call, $1.Empty request);
+  $async.Future<$1.OperationResponse> setAllUserConfig(
+      $grpc.ServiceCall call, $4.UserConfig request);
+  $async.Future<$1.StringValue> getUserConfigByKey(
+      $grpc.ServiceCall call, $1.StringValue request);
+  $async.Future<$1.OperationResponse> setUserConfigByKey(
+      $grpc.ServiceCall call, $1.StringValue request);
 }

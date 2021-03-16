@@ -17,6 +17,7 @@ class MqttServerInfo extends $pb.GeneratedMessage {
     ..aOS(4, 'Username', protoName: 'Username')
     ..aOS(5, 'Password', protoName: 'Password')
     ..aOB(6, 'IsAnonymous', protoName: 'IsAnonymous')
+    ..m<$core.String, $core.String>(7, 'ConfigMap', protoName: 'ConfigMap', entryClassName: 'MqttServerInfo.ConfigMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
@@ -88,5 +89,8 @@ class MqttServerInfo extends $pb.GeneratedMessage {
   $core.bool hasIsAnonymous() => $_has(5);
   @$pb.TagNumber(6)
   void clearIsAnonymous() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.Map<$core.String, $core.String> get configMap => $_getMap(6);
 }
 

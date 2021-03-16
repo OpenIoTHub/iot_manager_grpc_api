@@ -137,6 +137,7 @@ class UserLoginResponse extends $pb.GeneratedMessage {
     ..a<$core.int>(1, 'Code', $pb.PbFieldType.O3, protoName: 'Code')
     ..aOS(2, 'Msg', protoName: 'Msg')
     ..aOS(3, 'Token', protoName: 'Token')
+    ..m<$core.String, $core.String>(4, 'InfoMap', protoName: 'InfoMap', entryClassName: 'UserLoginResponse.InfoMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
@@ -181,5 +182,33 @@ class UserLoginResponse extends $pb.GeneratedMessage {
   $core.bool hasToken() => $_has(2);
   @$pb.TagNumber(3)
   void clearToken() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.Map<$core.String, $core.String> get infoMap => $_getMap(3);
+}
+
+class UserConfig extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('UserConfig', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..m<$core.String, $core.String>(1, 'config', entryClassName: 'UserConfig.ConfigEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..hasRequiredFields = false
+  ;
+
+  UserConfig._() : super();
+  factory UserConfig() => create();
+  factory UserConfig.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserConfig.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  UserConfig clone() => UserConfig()..mergeFromMessage(this);
+  UserConfig copyWith(void Function(UserConfig) updates) => super.copyWith((message) => updates(message as UserConfig));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserConfig create() => UserConfig._();
+  UserConfig createEmptyInstance() => create();
+  static $pb.PbList<UserConfig> createRepeated() => $pb.PbList<UserConfig>();
+  @$core.pragma('dart2js:noInline')
+  static UserConfig getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserConfig>(create);
+  static UserConfig _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.Map<$core.String, $core.String> get config => $_getMap(0);
 }
 

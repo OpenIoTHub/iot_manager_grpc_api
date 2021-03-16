@@ -20,6 +20,7 @@ class GatewayInfo extends $pb.GeneratedMessage {
     ..pPS(7, 'ReadWriteUserUuids', protoName: 'ReadWriteUserUuids')
     ..pPS(8, 'Hosts', protoName: 'Hosts')
     ..aOB(9, 'Status', protoName: 'Status')
+    ..m<$core.String, $core.String>(10, 'ConfigMap', protoName: 'ConfigMap', entryClassName: 'GatewayInfo.ConfigMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
@@ -94,5 +95,8 @@ class GatewayInfo extends $pb.GeneratedMessage {
   $core.bool hasStatus() => $_has(8);
   @$pb.TagNumber(9)
   void clearStatus() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.Map<$core.String, $core.String> get configMap => $_getMap(9);
 }
 

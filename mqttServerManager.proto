@@ -27,4 +27,6 @@ message MqttServerInfo{
     string Password = 5;
     //    是否匿名
     bool IsAnonymous = 6;
+    //    额外的配置
+    map<string,string> ConfigMap = 7;
 }

@@ -27,6 +27,13 @@ type UserManagerClient interface {
 	UpdateUserMobile(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateUserPassword(ctx context.Context, in *UpdateInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateUserAvatar(ctx context.Context, in *UpdateAvatar, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    用户配置
+	//    一次性操作多个
+	GetAllUserConfig(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserConfig, error)
+	SetAllUserConfig(ctx context.Context, in *UserConfig, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    StringValue一次性操作一个
+	GetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
+	SetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
 type userManagerClient struct {
@@ -100,6 +107,42 @@ func (c *userManagerClient) UpdateUserAvatar(ctx context.Context, in *UpdateAvat
 	return out, nil
 }
 
+func (c *userManagerClient) GetAllUserConfig(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserConfig, error) {
+	out := new(UserConfig)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/GetAllUserConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userManagerClient) SetAllUserConfig(ctx context.Context, in *UserConfig, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/SetAllUserConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userManagerClient) GetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error) {
+	out := new(StringValue)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/GetUserConfigByKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userManagerClient) SetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/SetUserConfigByKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserManagerServer is the server API for UserManager service.
 // All implementations must embed UnimplementedUserManagerServer
 // for forward compatibility
@@ -114,6 +157,13 @@ type UserManagerServer interface {
 	UpdateUserMobile(context.Context, *UpdateInfo) (*OperationResponse, error)
 	UpdateUserPassword(context.Context, *UpdateInfo) (*OperationResponse, error)
 	UpdateUserAvatar(context.Context, *UpdateAvatar) (*OperationResponse, error)
+	//    用户配置
+	//    一次性操作多个
+	GetAllUserConfig(context.Context, *Empty) (*UserConfig, error)
+	SetAllUserConfig(context.Context, *UserConfig) (*OperationResponse, error)
+	//    StringValue一次性操作一个
+	GetUserConfigByKey(context.Context, *StringValue) (*StringValue, error)
+	SetUserConfigByKey(context.Context, *StringValue) (*OperationResponse, error)
 	mustEmbedUnimplementedUserManagerServer()
 }
 
@@ -141,6 +191,18 @@ func (UnimplementedUserManagerServer) UpdateUserPassword(context.Context, *Updat
 }
 func (UnimplementedUserManagerServer) UpdateUserAvatar(context.Context, *UpdateAvatar) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserAvatar not implemented")
+}
+func (UnimplementedUserManagerServer) GetAllUserConfig(context.Context, *Empty) (*UserConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllUserConfig not implemented")
+}
+func (UnimplementedUserManagerServer) SetAllUserConfig(context.Context, *UserConfig) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetAllUserConfig not implemented")
+}
+func (UnimplementedUserManagerServer) GetUserConfigByKey(context.Context, *StringValue) (*StringValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserConfigByKey not implemented")
+}
+func (UnimplementedUserManagerServer) SetUserConfigByKey(context.Context, *StringValue) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetUserConfigByKey not implemented")
 }
 func (UnimplementedUserManagerServer) mustEmbedUnimplementedUserManagerServer() {}
 
@@ -281,6 +343,78 @@ func _UserManager_UpdateUserAvatar_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserManager_GetAllUserConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagerServer).GetAllUserConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserManager/GetAllUserConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagerServer).GetAllUserConfig(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserManager_SetAllUserConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserConfig)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagerServer).SetAllUserConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserManager/SetAllUserConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagerServer).SetAllUserConfig(ctx, req.(*UserConfig))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserManager_GetUserConfigByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagerServer).GetUserConfigByKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserManager/GetUserConfigByKey",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagerServer).GetUserConfigByKey(ctx, req.(*StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserManager_SetUserConfigByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagerServer).SetUserConfigByKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserManager/SetUserConfigByKey",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagerServer).SetUserConfigByKey(ctx, req.(*StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UserManager_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.UserManager",
 	HandlerType: (*UserManagerServer)(nil),
@@ -312,6 +446,22 @@ var _UserManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserAvatar",
 			Handler:    _UserManager_UpdateUserAvatar_Handler,
+		},
+		{
+			MethodName: "GetAllUserConfig",
+			Handler:    _UserManager_GetAllUserConfig_Handler,
+		},
+		{
+			MethodName: "SetAllUserConfig",
+			Handler:    _UserManager_SetAllUserConfig_Handler,
+		},
+		{
+			MethodName: "GetUserConfigByKey",
+			Handler:    _UserManager_GetUserConfigByKey_Handler,
+		},
+		{
+			MethodName: "SetUserConfigByKey",
+			Handler:    _UserManager_SetUserConfigByKey_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
