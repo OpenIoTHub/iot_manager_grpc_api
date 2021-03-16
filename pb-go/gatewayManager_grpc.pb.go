@@ -22,7 +22,7 @@ type GatewayManagerClient interface {
 	DelGateway(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateGateway(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	//    rpc QueryGateway (GatewayInfo) returns (OperationResponse) {}
-	GetAllGateway(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*GatewayInfoList, error)
+	GetAllGateway(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfoList, error)
 }
 
 type gatewayManagerClient struct {
@@ -60,7 +60,7 @@ func (c *gatewayManagerClient) UpdateGateway(ctx context.Context, in *GatewayInf
 	return out, nil
 }
 
-func (c *gatewayManagerClient) GetAllGateway(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*GatewayInfoList, error) {
+func (c *gatewayManagerClient) GetAllGateway(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfoList, error) {
 	out := new(GatewayInfoList)
 	err := c.cc.Invoke(ctx, "/pb.GatewayManager/GetAllGateway", in, out, opts...)
 	if err != nil {
@@ -78,7 +78,7 @@ type GatewayManagerServer interface {
 	DelGateway(context.Context, *GatewayInfo) (*OperationResponse, error)
 	UpdateGateway(context.Context, *GatewayInfo) (*OperationResponse, error)
 	//    rpc QueryGateway (GatewayInfo) returns (OperationResponse) {}
-	GetAllGateway(context.Context, *GatewayInfo) (*GatewayInfoList, error)
+	GetAllGateway(context.Context, *Empty) (*GatewayInfoList, error)
 	mustEmbedUnimplementedGatewayManagerServer()
 }
 
@@ -95,7 +95,7 @@ func (UnimplementedGatewayManagerServer) DelGateway(context.Context, *GatewayInf
 func (UnimplementedGatewayManagerServer) UpdateGateway(context.Context, *GatewayInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateGateway not implemented")
 }
-func (UnimplementedGatewayManagerServer) GetAllGateway(context.Context, *GatewayInfo) (*GatewayInfoList, error) {
+func (UnimplementedGatewayManagerServer) GetAllGateway(context.Context, *Empty) (*GatewayInfoList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllGateway not implemented")
 }
 func (UnimplementedGatewayManagerServer) mustEmbedUnimplementedGatewayManagerServer() {}
@@ -166,7 +166,7 @@ func _GatewayManager_UpdateGateway_Handler(srv interface{}, ctx context.Context,
 }
 
 func _GatewayManager_GetAllGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GatewayInfo)
+	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -178,7 +178,7 @@ func _GatewayManager_GetAllGateway_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/pb.GatewayManager/GetAllGateway",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayManagerServer).GetAllGateway(ctx, req.(*GatewayInfo))
+		return srv.(GatewayManagerServer).GetAllGateway(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

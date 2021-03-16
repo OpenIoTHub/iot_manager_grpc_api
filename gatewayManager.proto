@@ -11,7 +11,7 @@ service GatewayManager {
     rpc DelGateway (GatewayInfo) returns (OperationResponse) {}
     rpc UpdateGateway (GatewayInfo) returns (OperationResponse) {}
 //    rpc QueryGateway (GatewayInfo) returns (OperationResponse) {}
-    rpc GetAllGateway (GatewayInfo) returns (GatewayInfoList) {}
+    rpc GetAllGateway (Empty) returns (GatewayInfoList) {}
 }
 
 message GatewayInfo{
