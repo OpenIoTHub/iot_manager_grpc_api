@@ -100,3 +100,28 @@ class GatewayInfo extends $pb.GeneratedMessage {
   $core.Map<$core.String, $core.String> get configMap => $_getMap(9);
 }
 
+class GatewayInfoList extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('GatewayInfoList', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..pc<GatewayInfo>(1, 'GatewayInfoList', $pb.PbFieldType.PM, protoName: 'GatewayInfoList', subBuilder: GatewayInfo.create)
+    ..hasRequiredFields = false
+  ;
+
+  GatewayInfoList._() : super();
+  factory GatewayInfoList() => create();
+  factory GatewayInfoList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GatewayInfoList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  GatewayInfoList clone() => GatewayInfoList()..mergeFromMessage(this);
+  GatewayInfoList copyWith(void Function(GatewayInfoList) updates) => super.copyWith((message) => updates(message as GatewayInfoList));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GatewayInfoList create() => GatewayInfoList._();
+  GatewayInfoList createEmptyInstance() => create();
+  static $pb.PbList<GatewayInfoList> createRepeated() => $pb.PbList<GatewayInfoList>();
+  @$core.pragma('dart2js:noInline')
+  static GatewayInfoList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GatewayInfoList>(create);
+  static GatewayInfoList _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<GatewayInfo> get gatewayInfoList => $_getList(0);
+}
+

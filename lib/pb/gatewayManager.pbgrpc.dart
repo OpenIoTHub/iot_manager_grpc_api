@@ -34,11 +34,11 @@ class GatewayManagerClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $1.OperationResponse.fromBuffer(value));
   static final _$getAllGateway =
-      $grpc.ClientMethod<$0.GatewayInfo, $1.OperationResponse>(
+      $grpc.ClientMethod<$0.GatewayInfo, $0.GatewayInfoList>(
           '/pb.GatewayManager/GetAllGateway',
           ($0.GatewayInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.OperationResponse.fromBuffer(value));
+              $0.GatewayInfoList.fromBuffer(value));
 
   GatewayManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -68,8 +68,7 @@ class GatewayManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$1.OperationResponse> getAllGateway(
-      $0.GatewayInfo request,
+  $grpc.ResponseFuture<$0.GatewayInfoList> getAllGateway($0.GatewayInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$getAllGateway, $async.Stream.fromIterable([request]),
@@ -103,13 +102,13 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.GatewayInfo.fromBuffer(value),
         ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.GatewayInfo, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$0.GatewayInfo, $0.GatewayInfoList>(
         'GetAllGateway',
         getAllGateway_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.GatewayInfo.fromBuffer(value),
-        ($1.OperationResponse value) => value.writeToBuffer()));
+        ($0.GatewayInfoList value) => value.writeToBuffer()));
   }
 
   $async.Future<$1.OperationResponse> addGateway_Pre(
@@ -127,7 +126,7 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
     return updateGateway(call, await request);
   }
 
-  $async.Future<$1.OperationResponse> getAllGateway_Pre(
+  $async.Future<$0.GatewayInfoList> getAllGateway_Pre(
       $grpc.ServiceCall call, $async.Future<$0.GatewayInfo> request) async {
     return getAllGateway(call, await request);
   }
@@ -138,6 +137,6 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.GatewayInfo request);
   $async.Future<$1.OperationResponse> updateGateway(
       $grpc.ServiceCall call, $0.GatewayInfo request);
-  $async.Future<$1.OperationResponse> getAllGateway(
+  $async.Future<$0.GatewayInfoList> getAllGateway(
       $grpc.ServiceCall call, $0.GatewayInfo request);
 }

@@ -11,7 +11,7 @@ service GatewayManager {
     rpc DelGateway (GatewayInfo) returns (OperationResponse) {}
     rpc UpdateGateway (GatewayInfo) returns (OperationResponse) {}
 //    rpc QueryGateway (GatewayInfo) returns (OperationResponse) {}
-    rpc GetAllGateway (GatewayInfo) returns (OperationResponse) {}
+    rpc GetAllGateway (GatewayInfo) returns (GatewayInfoList) {}
 }
 
 message GatewayInfo{
@@ -29,4 +29,8 @@ message GatewayInfo{
     bool Status  = 9;
     //    额外的配置
     map<string,string> ConfigMap = 10;
+}
+
+message GatewayInfoList{
+    repeated GatewayInfo GatewayInfoList = 1;
 }

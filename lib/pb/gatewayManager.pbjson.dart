@@ -31,3 +31,10 @@ const GatewayInfo_ConfigMapEntry$json = const {
   '7': const {'7': true},
 };
 
+const GatewayInfoList$json = const {
+  '1': 'GatewayInfoList',
+  '2': const [
+    const {'1': 'GatewayInfoList', '3': 1, '4': 3, '5': 11, '6': '.pb.GatewayInfo', '10': 'GatewayInfoList'},
+  ],
+};
+
