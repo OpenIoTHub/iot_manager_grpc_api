@@ -19,16 +19,10 @@ message GatewayInfo{
     string Name = 2;
     string Description = 3;
     repeated string ServerUuid = 4;
-    string SuperUserUuid = 5;
-    //读取权限的用户
-    repeated string ReadUserUuids = 6;
-    //增加删除操作的用户
-    repeated string ReadWriteUserUuids = 7;
-    repeated string Hosts = 8;
     //在线状态
-    bool Status  = 9;
+    bool Status  = 5;
     //    额外的配置
-    map<string,string> ConfigMap = 10;
+    map<string,string> ConfigMap = 6;
 }
 
 message GatewayInfoList{

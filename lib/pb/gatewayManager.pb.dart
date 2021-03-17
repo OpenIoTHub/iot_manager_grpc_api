@@ -15,12 +15,8 @@ class GatewayInfo extends $pb.GeneratedMessage {
     ..aOS(2, 'Name', protoName: 'Name')
     ..aOS(3, 'Description', protoName: 'Description')
     ..pPS(4, 'ServerUuid', protoName: 'ServerUuid')
-    ..aOS(5, 'SuperUserUuid', protoName: 'SuperUserUuid')
-    ..pPS(6, 'ReadUserUuids', protoName: 'ReadUserUuids')
-    ..pPS(7, 'ReadWriteUserUuids', protoName: 'ReadWriteUserUuids')
-    ..pPS(8, 'Hosts', protoName: 'Hosts')
-    ..aOB(9, 'Status', protoName: 'Status')
-    ..m<$core.String, $core.String>(10, 'ConfigMap', protoName: 'ConfigMap', entryClassName: 'GatewayInfo.ConfigMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..aOB(5, 'Status', protoName: 'Status')
+    ..m<$core.String, $core.String>(6, 'ConfigMap', protoName: 'ConfigMap', entryClassName: 'GatewayInfo.ConfigMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
@@ -70,34 +66,16 @@ class GatewayInfo extends $pb.GeneratedMessage {
   $core.List<$core.String> get serverUuid => $_getList(3);
 
   @$pb.TagNumber(5)
-  $core.String get superUserUuid => $_getSZ(4);
+  $core.bool get status => $_getBF(4);
   @$pb.TagNumber(5)
-  set superUserUuid($core.String v) { $_setString(4, v); }
+  set status($core.bool v) { $_setBool(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasSuperUserUuid() => $_has(4);
+  $core.bool hasStatus() => $_has(4);
   @$pb.TagNumber(5)
-  void clearSuperUserUuid() => clearField(5);
+  void clearStatus() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.List<$core.String> get readUserUuids => $_getList(5);
-
-  @$pb.TagNumber(7)
-  $core.List<$core.String> get readWriteUserUuids => $_getList(6);
-
-  @$pb.TagNumber(8)
-  $core.List<$core.String> get hosts => $_getList(7);
-
-  @$pb.TagNumber(9)
-  $core.bool get status => $_getBF(8);
-  @$pb.TagNumber(9)
-  set status($core.bool v) { $_setBool(8, v); }
-  @$pb.TagNumber(9)
-  $core.bool hasStatus() => $_has(8);
-  @$pb.TagNumber(9)
-  void clearStatus() => clearField(9);
-
-  @$pb.TagNumber(10)
-  $core.Map<$core.String, $core.String> get configMap => $_getMap(9);
+  $core.Map<$core.String, $core.String> get configMap => $_getMap(5);
 }
 
 class GatewayInfoList extends $pb.GeneratedMessage {
