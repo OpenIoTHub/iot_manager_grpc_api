@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "common.proto";
+option go_package = ".;pb";
+
+package pb;
+
+// 服务的定义
+service CnameManager {
+//    Cname
+    rpc GetCnameByKey (StringValue) returns (StringValue) {}
+    rpc SetCnameByKey (StringValue) returns (OperationResponse) {}
+    rpc DelCnameByKey (StringValue) returns (OperationResponse) {}
+}

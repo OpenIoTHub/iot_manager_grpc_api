@@ -10,57 +10,57 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'serverManager.pb.dart' as $3;
-import 'common.pb.dart' as $1;
+import 'serverManager.pb.dart' as $7;
+import 'common.pb.dart' as $0;
 export 'serverManager.pb.dart';
 
 class ServerManagerClient extends $grpc.Client {
   static final _$addServer =
-      $grpc.ClientMethod<$3.ServerInfo, $1.OperationResponse>(
+      $grpc.ClientMethod<$7.ServerInfo, $0.OperationResponse>(
           '/pb.ServerManager/AddServer',
-          ($3.ServerInfo value) => value.writeToBuffer(),
+          ($7.ServerInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.OperationResponse.fromBuffer(value));
+              $0.OperationResponse.fromBuffer(value));
   static final _$delServer =
-      $grpc.ClientMethod<$3.ServerInfo, $1.OperationResponse>(
+      $grpc.ClientMethod<$7.ServerInfo, $0.OperationResponse>(
           '/pb.ServerManager/DelServer',
-          ($3.ServerInfo value) => value.writeToBuffer(),
+          ($7.ServerInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.OperationResponse.fromBuffer(value));
+              $0.OperationResponse.fromBuffer(value));
   static final _$updateServer =
-      $grpc.ClientMethod<$3.ServerInfo, $1.OperationResponse>(
+      $grpc.ClientMethod<$7.ServerInfo, $0.OperationResponse>(
           '/pb.ServerManager/UpdateServer',
-          ($3.ServerInfo value) => value.writeToBuffer(),
+          ($7.ServerInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.OperationResponse.fromBuffer(value));
+              $0.OperationResponse.fromBuffer(value));
   static final _$queryServer =
-      $grpc.ClientMethod<$1.StringValue, $3.ServerInfoList>(
+      $grpc.ClientMethod<$0.StringValue, $7.ServerInfoList>(
           '/pb.ServerManager/QueryServer',
-          ($1.StringValue value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $3.ServerInfoList.fromBuffer(value));
-  static final _$getAllServer = $grpc.ClientMethod<$1.Empty, $3.ServerInfoList>(
+          ($0.StringValue value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $7.ServerInfoList.fromBuffer(value));
+  static final _$getAllServer = $grpc.ClientMethod<$0.Empty, $7.ServerInfoList>(
       '/pb.ServerManager/GetAllServer',
-      ($1.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.ServerInfoList.fromBuffer(value));
+      ($0.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $7.ServerInfoList.fromBuffer(value));
 
   ServerManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
 
-  $grpc.ResponseFuture<$1.OperationResponse> addServer($3.ServerInfo request,
+  $grpc.ResponseFuture<$0.OperationResponse> addServer($7.ServerInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(_$addServer, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$1.OperationResponse> delServer($3.ServerInfo request,
+  $grpc.ResponseFuture<$0.OperationResponse> delServer($7.ServerInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(_$delServer, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$1.OperationResponse> updateServer($3.ServerInfo request,
+  $grpc.ResponseFuture<$0.OperationResponse> updateServer($7.ServerInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$updateServer, $async.Stream.fromIterable([request]),
@@ -68,7 +68,7 @@ class ServerManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$3.ServerInfoList> queryServer($1.StringValue request,
+  $grpc.ResponseFuture<$7.ServerInfoList> queryServer($0.StringValue request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$queryServer, $async.Stream.fromIterable([request]),
@@ -76,7 +76,7 @@ class ServerManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$3.ServerInfoList> getAllServer($1.Empty request,
+  $grpc.ResponseFuture<$7.ServerInfoList> getAllServer($0.Empty request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$getAllServer, $async.Stream.fromIterable([request]),
@@ -89,76 +89,76 @@ abstract class ServerManagerServiceBase extends $grpc.Service {
   $core.String get $name => 'pb.ServerManager';
 
   ServerManagerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$3.ServerInfo, $1.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$7.ServerInfo, $0.OperationResponse>(
         'AddServer',
         addServer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.ServerInfo.fromBuffer(value),
-        ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.ServerInfo, $1.OperationResponse>(
+        ($core.List<$core.int> value) => $7.ServerInfo.fromBuffer(value),
+        ($0.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$7.ServerInfo, $0.OperationResponse>(
         'DelServer',
         delServer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.ServerInfo.fromBuffer(value),
-        ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.ServerInfo, $1.OperationResponse>(
+        ($core.List<$core.int> value) => $7.ServerInfo.fromBuffer(value),
+        ($0.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$7.ServerInfo, $0.OperationResponse>(
         'UpdateServer',
         updateServer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.ServerInfo.fromBuffer(value),
-        ($1.OperationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.StringValue, $3.ServerInfoList>(
+        ($core.List<$core.int> value) => $7.ServerInfo.fromBuffer(value),
+        ($0.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.StringValue, $7.ServerInfoList>(
         'QueryServer',
         queryServer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.StringValue.fromBuffer(value),
-        ($3.ServerInfoList value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.Empty, $3.ServerInfoList>(
+        ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value),
+        ($7.ServerInfoList value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $7.ServerInfoList>(
         'GetAllServer',
         getAllServer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
-        ($3.ServerInfoList value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($7.ServerInfoList value) => value.writeToBuffer()));
   }
 
-  $async.Future<$1.OperationResponse> addServer_Pre(
-      $grpc.ServiceCall call, $async.Future<$3.ServerInfo> request) async {
+  $async.Future<$0.OperationResponse> addServer_Pre(
+      $grpc.ServiceCall call, $async.Future<$7.ServerInfo> request) async {
     return addServer(call, await request);
   }
 
-  $async.Future<$1.OperationResponse> delServer_Pre(
-      $grpc.ServiceCall call, $async.Future<$3.ServerInfo> request) async {
+  $async.Future<$0.OperationResponse> delServer_Pre(
+      $grpc.ServiceCall call, $async.Future<$7.ServerInfo> request) async {
     return delServer(call, await request);
   }
 
-  $async.Future<$1.OperationResponse> updateServer_Pre(
-      $grpc.ServiceCall call, $async.Future<$3.ServerInfo> request) async {
+  $async.Future<$0.OperationResponse> updateServer_Pre(
+      $grpc.ServiceCall call, $async.Future<$7.ServerInfo> request) async {
     return updateServer(call, await request);
   }
 
-  $async.Future<$3.ServerInfoList> queryServer_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.StringValue> request) async {
+  $async.Future<$7.ServerInfoList> queryServer_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.StringValue> request) async {
     return queryServer(call, await request);
   }
 
-  $async.Future<$3.ServerInfoList> getAllServer_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
+  $async.Future<$7.ServerInfoList> getAllServer_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
     return getAllServer(call, await request);
   }
 
-  $async.Future<$1.OperationResponse> addServer(
-      $grpc.ServiceCall call, $3.ServerInfo request);
-  $async.Future<$1.OperationResponse> delServer(
-      $grpc.ServiceCall call, $3.ServerInfo request);
-  $async.Future<$1.OperationResponse> updateServer(
-      $grpc.ServiceCall call, $3.ServerInfo request);
-  $async.Future<$3.ServerInfoList> queryServer(
-      $grpc.ServiceCall call, $1.StringValue request);
-  $async.Future<$3.ServerInfoList> getAllServer(
-      $grpc.ServiceCall call, $1.Empty request);
+  $async.Future<$0.OperationResponse> addServer(
+      $grpc.ServiceCall call, $7.ServerInfo request);
+  $async.Future<$0.OperationResponse> delServer(
+      $grpc.ServiceCall call, $7.ServerInfo request);
+  $async.Future<$0.OperationResponse> updateServer(
+      $grpc.ServiceCall call, $7.ServerInfo request);
+  $async.Future<$7.ServerInfoList> queryServer(
+      $grpc.ServiceCall call, $0.StringValue request);
+  $async.Future<$7.ServerInfoList> getAllServer(
+      $grpc.ServiceCall call, $0.Empty request);
 }

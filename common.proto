@@ -18,3 +18,14 @@ message OperationResponse{
     int32 Code = 1;
     string Message = 2;
 }
+
+message UserInfo{
+    string Nanme = 1;
+    string Email = 2;
+    string Mobile = 3;
+    string Avatar = 4;
+}
+
+message UserInfoList{
+    repeated UserInfo UserInfoList = 1;
+}

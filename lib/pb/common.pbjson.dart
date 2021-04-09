@@ -31,3 +31,20 @@ const OperationResponse$json = const {
   ],
 };
 
+const UserInfo$json = const {
+  '1': 'UserInfo',
+  '2': const [
+    const {'1': 'Nanme', '3': 1, '4': 1, '5': 9, '10': 'Nanme'},
+    const {'1': 'Email', '3': 2, '4': 1, '5': 9, '10': 'Email'},
+    const {'1': 'Mobile', '3': 3, '4': 1, '5': 9, '10': 'Mobile'},
+    const {'1': 'Avatar', '3': 4, '4': 1, '5': 9, '10': 'Avatar'},
+  ],
+};
+
+const UserInfoList$json = const {
+  '1': 'UserInfoList',
+  '2': const [
+    const {'1': 'UserInfoList', '3': 1, '4': 3, '5': 11, '6': '.pb.UserInfo', '10': 'UserInfoList'},
+  ],
+};
+

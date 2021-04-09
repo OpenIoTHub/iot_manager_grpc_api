@@ -10,40 +10,22 @@ service UserManager {
     rpc RegisterUserWithUserInfo (LoginInfo) returns (OperationResponse) {}
 //    登录 获取Token
     rpc LoginWithUserLoginInfo (LoginInfo) returns (UserLoginResponse) {}
-    rpc GetUserInfo (LoginInfo) returns (UserInfo) {}
+    rpc GetUserInfo (Empty) returns (UserInfo) {}
 //    更新用户信息
-    rpc UpdateUserNanme (UpdateInfo) returns (OperationResponse) {}
-    rpc UpdateUserEmail (UpdateInfo) returns (OperationResponse) {}
-    rpc UpdateUserMobile (UpdateInfo) returns (OperationResponse) {}
-    rpc UpdateUserPassword (UpdateInfo) returns (OperationResponse) {}
+    rpc UpdateUserNanme (StringValue) returns (OperationResponse) {}
+    rpc UpdateUserEmail (StringValue) returns (OperationResponse) {}
+    rpc UpdateUserMobile (StringValue) returns (OperationResponse) {}
+    rpc UpdateUserPassword (StringValue) returns (OperationResponse) {}
     rpc UpdateUserAvatar (UpdateAvatar) returns (OperationResponse) {}
-//    用户配置
-//    Host
-    rpc GetAllHosts (Empty) returns (HostInfoList) {}
-    rpc AddOrUpdateHost (HostInfo) returns (OperationResponse) {}
-    rpc DelHost (HostInfo) returns (OperationResponse) {}
-//    Cname
-    rpc GetCnameByKey (StringValue) returns (StringValue) {}
-    rpc SetCnameByKey (StringValue) returns (OperationResponse) {}
-    rpc DelCnameByKey (StringValue) returns (OperationResponse) {}
-//    普通配置一次性操作多个
-    rpc GetAllUserConfig (Empty) returns (UserConfigMap) {}
-    rpc SetAllUserConfig (UserConfigMap) returns (OperationResponse) {}
-    rpc DelAllUserConfig (UserConfigMap) returns (OperationResponse) {}
-//    StringValue一次性操作一个
-    rpc GetUserConfigByKey (StringValue) returns (StringValue) {}
-    rpc SetUserConfigByKey (StringValue) returns (OperationResponse) {}
-    rpc DelUserConfigByKey (StringValue) returns (OperationResponse) {}
-//    管理员权限，管理用户
-    //获取所有用户
-    rpc GetAllUser (Empty) returns (UserInfoList) {}
-    //禁用一个用户(不可以禁用管理员)
-    rpc BanUser (UserInfo) returns (OperationResponse) {}
 }
 
 message LoginInfo{
     string UserEmailMobile = 1;
     string Password = 2;
+}
+
+message UpdateAvatar{
+    bytes NewBytes = 1;
 }
 
 message UserLoginResponse{
@@ -52,50 +34,4 @@ message UserLoginResponse{
     string Token = 3;
     //    UserInfo
     UserInfo UserInfo = 4;
-}
-
-message UserInfo{
-    string Nanme = 1;
-    string Email = 2;
-    string Mobile = 3;
-    bytes Avatar = 4;
-}
-
-message UserInfoList{
-    repeated UserInfo UserInfoList = 1;
-}
-
-message UpdateInfo{
-    string UUID = 1;
-    string NewString = 2;
-}
-
-message UpdateAvatar{
-    string UUID = 1;
-    bytes NewBytes = 2;
-}
-
-message UserConfigMap{
-    map<string,string> config = 1;
-}
-
-//手动添加的局域网主机
-message HostInfoList{
-    repeated HostInfo HostInfoList = 1;
-}
-
-message HostInfo{
-    string Name = 1;
-    string GatewayUUID = 2;
-    string Addr = 3;
-    repeated PortInfo TCPPort = 4;
-    repeated PortInfo UDPPort = 5;
-    repeated PortInfo FTPPort = 6;
-    //http的端口信息不存在iot-manager上，存在server-go上
-//    repeated PortInfo HTTPPort = 7;
-}
-
-message PortInfo{
-    string Name = 1;
-    uint32 Port = 4;
 }
