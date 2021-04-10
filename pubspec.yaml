@@ -1,9 +1,8 @@
 name: iot_manager_grpc_api
 description: OpenioTHub Dart gRPC.
 
-version: 1.0.0
+version: 0.0.1
 
-author: Farry <newfarry@126.com>
 homepage: https://github.com/OpenIotHUb
 
 environment:
