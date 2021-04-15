@@ -8,7 +8,7 @@
 const LoginInfo$json = const {
   '1': 'LoginInfo',
   '2': const [
-    const {'1': 'UserEmailMobile', '3': 1, '4': 1, '5': 9, '10': 'UserEmailMobile'},
+    const {'1': 'UserMobile', '3': 1, '4': 1, '5': 9, '10': 'UserMobile'},
     const {'1': 'Password', '3': 2, '4': 1, '5': 9, '10': 'Password'},
   ],
 };

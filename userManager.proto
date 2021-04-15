@@ -7,7 +7,7 @@ package pb;
 // 服务的定义
 service UserManager {
 //    注册用户
-    rpc RegisterUserWithUserInfo (LoginInfo) returns (OperationResponse) {}
+    rpc RegisterUserWithLoginInfo (LoginInfo) returns (OperationResponse) {}
 //    登录 获取Token
     rpc LoginWithUserLoginInfo (LoginInfo) returns (UserLoginResponse) {}
     rpc GetUserInfo (Empty) returns (UserInfo) {}
@@ -20,7 +20,7 @@ service UserManager {
 }
 
 message LoginInfo{
-    string UserEmailMobile = 1;
+    string UserMobile = 1;
     string Password = 2;
 }
 

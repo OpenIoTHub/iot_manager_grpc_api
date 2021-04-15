@@ -13,7 +13,7 @@ import 'common.pb.dart' as $0;
 
 class LoginInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('LoginInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'UserEmailMobile', protoName: 'UserEmailMobile')
+    ..aOS(1, 'UserMobile', protoName: 'UserMobile')
     ..aOS(2, 'Password', protoName: 'Password')
     ..hasRequiredFields = false
   ;
@@ -34,13 +34,13 @@ class LoginInfo extends $pb.GeneratedMessage {
   static LoginInfo _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get userEmailMobile => $_getSZ(0);
+  $core.String get userMobile => $_getSZ(0);
   @$pb.TagNumber(1)
-  set userEmailMobile($core.String v) { $_setString(0, v); }
+  set userMobile($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasUserEmailMobile() => $_has(0);
+  $core.bool hasUserMobile() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUserEmailMobile() => clearField(1);
+  void clearUserMobile() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get password => $_getSZ(1);

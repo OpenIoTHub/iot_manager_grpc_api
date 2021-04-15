@@ -15,9 +15,9 @@ import 'common.pb.dart' as $0;
 export 'userManager.pb.dart';
 
 class UserManagerClient extends $grpc.Client {
-  static final _$registerUserWithUserInfo =
+  static final _$registerUserWithLoginInfo =
       $grpc.ClientMethod<$8.LoginInfo, $0.OperationResponse>(
-          '/pb.UserManager/RegisterUserWithUserInfo',
+          '/pb.UserManager/RegisterUserWithLoginInfo',
           ($8.LoginInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
@@ -65,11 +65,11 @@ class UserManagerClient extends $grpc.Client {
   UserManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
 
-  $grpc.ResponseFuture<$0.OperationResponse> registerUserWithUserInfo(
+  $grpc.ResponseFuture<$0.OperationResponse> registerUserWithLoginInfo(
       $8.LoginInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
-        _$registerUserWithUserInfo, $async.Stream.fromIterable([request]),
+        _$registerUserWithLoginInfo, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -142,8 +142,8 @@ abstract class UserManagerServiceBase extends $grpc.Service {
 
   UserManagerServiceBase() {
     $addMethod($grpc.ServiceMethod<$8.LoginInfo, $0.OperationResponse>(
-        'RegisterUserWithUserInfo',
-        registerUserWithUserInfo_Pre,
+        'RegisterUserWithLoginInfo',
+        registerUserWithLoginInfo_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $8.LoginInfo.fromBuffer(value),
@@ -199,9 +199,9 @@ abstract class UserManagerServiceBase extends $grpc.Service {
         ($0.OperationResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.OperationResponse> registerUserWithUserInfo_Pre(
+  $async.Future<$0.OperationResponse> registerUserWithLoginInfo_Pre(
       $grpc.ServiceCall call, $async.Future<$8.LoginInfo> request) async {
-    return registerUserWithUserInfo(call, await request);
+    return registerUserWithLoginInfo(call, await request);
   }
 
   $async.Future<$8.UserLoginResponse> loginWithUserLoginInfo_Pre(
@@ -239,7 +239,7 @@ abstract class UserManagerServiceBase extends $grpc.Service {
     return updateUserAvatar(call, await request);
   }
 
-  $async.Future<$0.OperationResponse> registerUserWithUserInfo(
+  $async.Future<$0.OperationResponse> registerUserWithLoginInfo(
       $grpc.ServiceCall call, $8.LoginInfo request);
   $async.Future<$8.UserLoginResponse> loginWithUserLoginInfo(
       $grpc.ServiceCall call, $8.LoginInfo request);
