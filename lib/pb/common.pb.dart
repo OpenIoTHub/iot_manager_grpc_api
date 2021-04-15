@@ -95,7 +95,7 @@ class BytesValue extends $pb.GeneratedMessage {
 class OperationResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('OperationResponse', package: const $pb.PackageName('pb'), createEmptyInstance: create)
     ..a<$core.int>(1, 'Code', $pb.PbFieldType.O3, protoName: 'Code')
-    ..aOS(2, 'Message', protoName: 'Message')
+    ..aOS(2, 'Msg', protoName: 'Msg')
     ..hasRequiredFields = false
   ;
 
@@ -124,18 +124,18 @@ class OperationResponse extends $pb.GeneratedMessage {
   void clearCode() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get message => $_getSZ(1);
+  $core.String get msg => $_getSZ(1);
   @$pb.TagNumber(2)
-  set message($core.String v) { $_setString(1, v); }
+  set msg($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasMessage() => $_has(1);
+  $core.bool hasMsg() => $_has(1);
   @$pb.TagNumber(2)
-  void clearMessage() => clearField(2);
+  void clearMsg() => clearField(2);
 }
 
 class UserInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('UserInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'Nanme', protoName: 'Nanme')
+    ..aOS(1, 'Name', protoName: 'Name')
     ..aOS(2, 'Email', protoName: 'Email')
     ..aOS(3, 'Mobile', protoName: 'Mobile')
     ..aOS(4, 'Avatar', protoName: 'Avatar')
@@ -158,13 +158,13 @@ class UserInfo extends $pb.GeneratedMessage {
   static UserInfo _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get nanme => $_getSZ(0);
+  $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
-  set nanme($core.String v) { $_setString(0, v); }
+  set name($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasNanme() => $_has(0);
+  $core.bool hasName() => $_has(0);
   @$pb.TagNumber(1)
-  void clearNanme() => clearField(1);
+  void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get email => $_getSZ(1);
