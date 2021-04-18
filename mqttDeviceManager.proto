@@ -10,6 +10,8 @@ service MqttDeviceManager {
     rpc AddMqttDevice (MqttDeviceInfo) returns (OperationResponse) {}
     rpc DelMqttDevice (MqttDeviceInfo) returns (OperationResponse) {}
     rpc GetAllMqttDevice (Empty) returns (MqttDeviceInfoList) {}
+//    获取所有mqtt设备的型号
+    rpc GetAllMqttDeviceModels (Empty) returns (MqttDeviceModelList) {}
 }
 
 message MqttDeviceInfo{
@@ -21,4 +23,14 @@ message MqttDeviceInfo{
 
 message MqttDeviceInfoList{
     repeated MqttDeviceInfo MqttDeviceInfoList = 1;
+}
+
+message MqttDeviceModel{
+    string Name = 1;
+    string Description = 2;
+    string Model = 3;
+}
+
+message MqttDeviceModelList{
+    repeated MqttDeviceModel MqttDeviceModelsList = 1;
 }

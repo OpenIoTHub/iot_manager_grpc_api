@@ -21,6 +21,8 @@ type MqttDeviceManagerClient interface {
 	AddMqttDevice(ctx context.Context, in *MqttDeviceInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelMqttDevice(ctx context.Context, in *MqttDeviceInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	GetAllMqttDevice(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceInfoList, error)
+	//    获取所有mqtt设备的型号
+	GetAllMqttDeviceModels(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceModelList, error)
 }
 
 type mqttDeviceManagerClient struct {
@@ -58,6 +60,15 @@ func (c *mqttDeviceManagerClient) GetAllMqttDevice(ctx context.Context, in *Empt
 	return out, nil
 }
 
+func (c *mqttDeviceManagerClient) GetAllMqttDeviceModels(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceModelList, error) {
+	out := new(MqttDeviceModelList)
+	err := c.cc.Invoke(ctx, "/pb.MqttDeviceManager/GetAllMqttDeviceModels", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MqttDeviceManagerServer is the server API for MqttDeviceManager service.
 // All implementations must embed UnimplementedMqttDeviceManagerServer
 // for forward compatibility
@@ -66,6 +77,8 @@ type MqttDeviceManagerServer interface {
 	AddMqttDevice(context.Context, *MqttDeviceInfo) (*OperationResponse, error)
 	DelMqttDevice(context.Context, *MqttDeviceInfo) (*OperationResponse, error)
 	GetAllMqttDevice(context.Context, *Empty) (*MqttDeviceInfoList, error)
+	//    获取所有mqtt设备的型号
+	GetAllMqttDeviceModels(context.Context, *Empty) (*MqttDeviceModelList, error)
 	mustEmbedUnimplementedMqttDeviceManagerServer()
 }
 
@@ -81,6 +94,9 @@ func (UnimplementedMqttDeviceManagerServer) DelMqttDevice(context.Context, *Mqtt
 }
 func (UnimplementedMqttDeviceManagerServer) GetAllMqttDevice(context.Context, *Empty) (*MqttDeviceInfoList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllMqttDevice not implemented")
+}
+func (UnimplementedMqttDeviceManagerServer) GetAllMqttDeviceModels(context.Context, *Empty) (*MqttDeviceModelList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllMqttDeviceModels not implemented")
 }
 func (UnimplementedMqttDeviceManagerServer) mustEmbedUnimplementedMqttDeviceManagerServer() {}
 
@@ -149,6 +165,24 @@ func _MqttDeviceManager_GetAllMqttDevice_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MqttDeviceManager_GetAllMqttDeviceModels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MqttDeviceManagerServer).GetAllMqttDeviceModels(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.MqttDeviceManager/GetAllMqttDeviceModels",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MqttDeviceManagerServer).GetAllMqttDeviceModels(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _MqttDeviceManager_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.MqttDeviceManager",
 	HandlerType: (*MqttDeviceManagerServer)(nil),
@@ -164,6 +198,10 @@ var _MqttDeviceManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllMqttDevice",
 			Handler:    _MqttDeviceManager_GetAllMqttDevice_Handler,
+		},
+		{
+			MethodName: "GetAllMqttDeviceModels",
+			Handler:    _MqttDeviceManager_GetAllMqttDeviceModels_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

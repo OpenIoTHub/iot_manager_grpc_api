@@ -75,3 +75,79 @@ class MqttDeviceInfoList extends $pb.GeneratedMessage {
   $core.List<MqttDeviceInfo> get mqttDeviceInfoList => $_getList(0);
 }
 
+class MqttDeviceModel extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MqttDeviceModel', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..aOS(1, 'Name', protoName: 'Name')
+    ..aOS(2, 'Description', protoName: 'Description')
+    ..aOS(3, 'Model', protoName: 'Model')
+    ..hasRequiredFields = false
+  ;
+
+  MqttDeviceModel._() : super();
+  factory MqttDeviceModel() => create();
+  factory MqttDeviceModel.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MqttDeviceModel.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MqttDeviceModel clone() => MqttDeviceModel()..mergeFromMessage(this);
+  MqttDeviceModel copyWith(void Function(MqttDeviceModel) updates) => super.copyWith((message) => updates(message as MqttDeviceModel));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MqttDeviceModel create() => MqttDeviceModel._();
+  MqttDeviceModel createEmptyInstance() => create();
+  static $pb.PbList<MqttDeviceModel> createRepeated() => $pb.PbList<MqttDeviceModel>();
+  @$core.pragma('dart2js:noInline')
+  static MqttDeviceModel getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MqttDeviceModel>(create);
+  static MqttDeviceModel _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get description => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set description($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDescription() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDescription() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get model => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set model($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasModel() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearModel() => clearField(3);
+}
+
+class MqttDeviceModelList extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MqttDeviceModelList', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..pc<MqttDeviceModel>(1, 'MqttDeviceModelsList', $pb.PbFieldType.PM, protoName: 'MqttDeviceModelsList', subBuilder: MqttDeviceModel.create)
+    ..hasRequiredFields = false
+  ;
+
+  MqttDeviceModelList._() : super();
+  factory MqttDeviceModelList() => create();
+  factory MqttDeviceModelList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MqttDeviceModelList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MqttDeviceModelList clone() => MqttDeviceModelList()..mergeFromMessage(this);
+  MqttDeviceModelList copyWith(void Function(MqttDeviceModelList) updates) => super.copyWith((message) => updates(message as MqttDeviceModelList));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MqttDeviceModelList create() => MqttDeviceModelList._();
+  MqttDeviceModelList createEmptyInstance() => create();
+  static $pb.PbList<MqttDeviceModelList> createRepeated() => $pb.PbList<MqttDeviceModelList>();
+  @$core.pragma('dart2js:noInline')
+  static MqttDeviceModelList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MqttDeviceModelList>(create);
+  static MqttDeviceModelList _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<MqttDeviceModel> get mqttDeviceModelsList => $_getList(0);
+}
+
