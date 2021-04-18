@@ -1,8 +1,8 @@
-## [0.0.1]
+## [0.0.2+3]
 
-* initial release.
+* update.
 
-## [0.0.2]
+## [0.0.2+2]
 
 * update.
 
@@ -10,6 +10,10 @@
 
 * update.
 
-## [0.0.2+2]
+## [0.0.2]
 
 * update.
+
+## [0.0.1]
+
+* initial release.
