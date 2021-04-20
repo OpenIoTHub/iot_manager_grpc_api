@@ -21,6 +21,8 @@ type MqttDeviceManagerClient interface {
 	AddMqttDevice(ctx context.Context, in *MqttDeviceInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelMqttDevice(ctx context.Context, in *MqttDeviceInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	GetAllMqttDevice(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceInfoList, error)
+	//    设备生成mqtt登录信息
+	GenerateMqttUsernamePassword(ctx context.Context, in *MqttDeviceInfo, opts ...grpc.CallOption) (*MqttInfo, error)
 	//    获取所有mqtt设备的型号
 	GetAllMqttDeviceModels(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceModelList, error)
 }
@@ -60,6 +62,15 @@ func (c *mqttDeviceManagerClient) GetAllMqttDevice(ctx context.Context, in *Empt
 	return out, nil
 }
 
+func (c *mqttDeviceManagerClient) GenerateMqttUsernamePassword(ctx context.Context, in *MqttDeviceInfo, opts ...grpc.CallOption) (*MqttInfo, error) {
+	out := new(MqttInfo)
+	err := c.cc.Invoke(ctx, "/pb.MqttDeviceManager/GenerateMqttUsernamePassword", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mqttDeviceManagerClient) GetAllMqttDeviceModels(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceModelList, error) {
 	out := new(MqttDeviceModelList)
 	err := c.cc.Invoke(ctx, "/pb.MqttDeviceManager/GetAllMqttDeviceModels", in, out, opts...)
@@ -77,6 +88,8 @@ type MqttDeviceManagerServer interface {
 	AddMqttDevice(context.Context, *MqttDeviceInfo) (*OperationResponse, error)
 	DelMqttDevice(context.Context, *MqttDeviceInfo) (*OperationResponse, error)
 	GetAllMqttDevice(context.Context, *Empty) (*MqttDeviceInfoList, error)
+	//    设备生成mqtt登录信息
+	GenerateMqttUsernamePassword(context.Context, *MqttDeviceInfo) (*MqttInfo, error)
 	//    获取所有mqtt设备的型号
 	GetAllMqttDeviceModels(context.Context, *Empty) (*MqttDeviceModelList, error)
 	mustEmbedUnimplementedMqttDeviceManagerServer()
@@ -94,6 +107,9 @@ func (UnimplementedMqttDeviceManagerServer) DelMqttDevice(context.Context, *Mqtt
 }
 func (UnimplementedMqttDeviceManagerServer) GetAllMqttDevice(context.Context, *Empty) (*MqttDeviceInfoList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllMqttDevice not implemented")
+}
+func (UnimplementedMqttDeviceManagerServer) GenerateMqttUsernamePassword(context.Context, *MqttDeviceInfo) (*MqttInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateMqttUsernamePassword not implemented")
 }
 func (UnimplementedMqttDeviceManagerServer) GetAllMqttDeviceModels(context.Context, *Empty) (*MqttDeviceModelList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllMqttDeviceModels not implemented")
@@ -165,6 +181,24 @@ func _MqttDeviceManager_GetAllMqttDevice_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MqttDeviceManager_GenerateMqttUsernamePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MqttDeviceInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MqttDeviceManagerServer).GenerateMqttUsernamePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.MqttDeviceManager/GenerateMqttUsernamePassword",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MqttDeviceManagerServer).GenerateMqttUsernamePassword(ctx, req.(*MqttDeviceInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _MqttDeviceManager_GetAllMqttDeviceModels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
@@ -198,6 +232,10 @@ var _MqttDeviceManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllMqttDevice",
 			Handler:    _MqttDeviceManager_GetAllMqttDevice_Handler,
+		},
+		{
+			MethodName: "GenerateMqttUsernamePassword",
+			Handler:    _MqttDeviceManager_GenerateMqttUsernamePassword_Handler,
 		},
 		{
 			MethodName: "GetAllMqttDeviceModels",

@@ -151,3 +151,84 @@ class MqttDeviceModelList extends $pb.GeneratedMessage {
   $core.List<MqttDeviceModel> get mqttDeviceModelsList => $_getList(0);
 }
 
+class MqttInfo extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MqttInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..aOS(1, 'MqttServerHost', protoName: 'MqttServerHost')
+    ..aOS(2, 'MqttServerPort', protoName: 'MqttServerPort')
+    ..aOS(3, 'MqttClientUserName', protoName: 'MqttClientUserName')
+    ..aOS(4, 'MqttClientUserPassword', protoName: 'MqttClientUserPassword')
+    ..aOS(5, 'MqttClientId', protoName: 'MqttClientId')
+    ..aOB(6, 'SSLorTLS', protoName: 'SSLorTLS')
+    ..hasRequiredFields = false
+  ;
+
+  MqttInfo._() : super();
+  factory MqttInfo() => create();
+  factory MqttInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MqttInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MqttInfo clone() => MqttInfo()..mergeFromMessage(this);
+  MqttInfo copyWith(void Function(MqttInfo) updates) => super.copyWith((message) => updates(message as MqttInfo));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MqttInfo create() => MqttInfo._();
+  MqttInfo createEmptyInstance() => create();
+  static $pb.PbList<MqttInfo> createRepeated() => $pb.PbList<MqttInfo>();
+  @$core.pragma('dart2js:noInline')
+  static MqttInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MqttInfo>(create);
+  static MqttInfo _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get mqttServerHost => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set mqttServerHost($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMqttServerHost() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMqttServerHost() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get mqttServerPort => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set mqttServerPort($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMqttServerPort() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMqttServerPort() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get mqttClientUserName => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set mqttClientUserName($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasMqttClientUserName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMqttClientUserName() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get mqttClientUserPassword => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set mqttClientUserPassword($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasMqttClientUserPassword() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearMqttClientUserPassword() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get mqttClientId => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set mqttClientId($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasMqttClientId() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearMqttClientId() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.bool get sSLorTLS => $_getBF(5);
+  @$pb.TagNumber(6)
+  set sSLorTLS($core.bool v) { $_setBool(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasSSLorTLS() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearSSLorTLS() => clearField(6);
+}
+
