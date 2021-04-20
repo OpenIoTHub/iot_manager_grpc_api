@@ -10,6 +10,8 @@ service MqttDeviceManager {
     rpc AddMqttDevice (MqttDeviceInfo) returns (OperationResponse) {}
     rpc DelMqttDevice (MqttDeviceInfo) returns (OperationResponse) {}
     rpc GetAllMqttDevice (Empty) returns (MqttDeviceInfoList) {}
+//    设备生成mqtt登录信息
+    rpc GenerateMqttUsernamePassword (MqttDeviceInfo) returns (MqttInfo) {}
 //    获取所有mqtt设备的型号
     rpc GetAllMqttDeviceModels (Empty) returns (MqttDeviceModelList) {}
 }
@@ -33,4 +35,15 @@ message MqttDeviceModel{
 
 message MqttDeviceModelList{
     repeated MqttDeviceModel MqttDeviceModelsList = 1;
+}
+
+message MqttInfo{
+    //    String ip;
+    string MqttServerHost = 1;
+    //    int port;
+    string MqttServerPort = 2;
+    string MqttClientUserName = 3;
+    string MqttClientUserPassword = 4;
+    string MqttClientId = 5;
+    bool SSLorTLS = 6;
 }
