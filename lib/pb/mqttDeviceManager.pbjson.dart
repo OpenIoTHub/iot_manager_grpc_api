@@ -40,7 +40,7 @@ const MqttInfo$json = const {
   '1': 'MqttInfo',
   '2': const [
     const {'1': 'MqttServerHost', '3': 1, '4': 1, '5': 9, '10': 'MqttServerHost'},
-    const {'1': 'MqttServerPort', '3': 2, '4': 1, '5': 9, '10': 'MqttServerPort'},
+    const {'1': 'MqttServerPort', '3': 2, '4': 1, '5': 5, '10': 'MqttServerPort'},
     const {'1': 'MqttClientUserName', '3': 3, '4': 1, '5': 9, '10': 'MqttClientUserName'},
     const {'1': 'MqttClientUserPassword', '3': 4, '4': 1, '5': 9, '10': 'MqttClientUserPassword'},
     const {'1': 'MqttClientId', '3': 5, '4': 1, '5': 9, '10': 'MqttClientId'},

@@ -154,7 +154,7 @@ class MqttDeviceModelList extends $pb.GeneratedMessage {
 class MqttInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('MqttInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
     ..aOS(1, 'MqttServerHost', protoName: 'MqttServerHost')
-    ..aOS(2, 'MqttServerPort', protoName: 'MqttServerPort')
+    ..a<$core.int>(2, 'MqttServerPort', $pb.PbFieldType.O3, protoName: 'MqttServerPort')
     ..aOS(3, 'MqttClientUserName', protoName: 'MqttClientUserName')
     ..aOS(4, 'MqttClientUserPassword', protoName: 'MqttClientUserPassword')
     ..aOS(5, 'MqttClientId', protoName: 'MqttClientId')
@@ -187,9 +187,9 @@ class MqttInfo extends $pb.GeneratedMessage {
   void clearMqttServerHost() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get mqttServerPort => $_getSZ(1);
+  $core.int get mqttServerPort => $_getIZ(1);
   @$pb.TagNumber(2)
-  set mqttServerPort($core.String v) { $_setString(1, v); }
+  set mqttServerPort($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasMqttServerPort() => $_has(1);
   @$pb.TagNumber(2)

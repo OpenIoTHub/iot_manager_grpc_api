@@ -41,7 +41,7 @@ message MqttInfo{
     //    String ip;
     string MqttServerHost = 1;
     //    int port;
-    string MqttServerPort = 2;
+    int32 MqttServerPort = 2;
     string MqttClientUserName = 3;
     string MqttClientUserPassword = 4;
     string MqttClientId = 5;
