@@ -13,6 +13,7 @@ class MqttDeviceInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('MqttDeviceInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
     ..aOS(1, 'DeviceId', protoName: 'DeviceId')
     ..aOS(2, 'DeviceModel', protoName: 'DeviceModel')
+    ..aOM<MqttInfo>(3, 'MqttInfo', protoName: 'MqttInfo', subBuilder: MqttInfo.create)
     ..hasRequiredFields = false
   ;
 
@@ -48,6 +49,17 @@ class MqttDeviceInfo extends $pb.GeneratedMessage {
   $core.bool hasDeviceModel() => $_has(1);
   @$pb.TagNumber(2)
   void clearDeviceModel() => clearField(2);
+
+  @$pb.TagNumber(3)
+  MqttInfo get mqttInfo => $_getN(2);
+  @$pb.TagNumber(3)
+  set mqttInfo(MqttInfo v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasMqttInfo() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMqttInfo() => clearField(3);
+  @$pb.TagNumber(3)
+  MqttInfo ensureMqttInfo() => $_ensure(2);
 }
 
 class MqttDeviceInfoList extends $pb.GeneratedMessage {

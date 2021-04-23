@@ -21,6 +21,7 @@ message MqttDeviceInfo{
     string DeviceId = 1;
     //    int port;
     string DeviceModel = 2;
+    MqttInfo MqttInfo = 3;
 }
 
 message MqttDeviceInfoList{
