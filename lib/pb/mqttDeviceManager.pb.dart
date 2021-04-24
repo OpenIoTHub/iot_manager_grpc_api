@@ -244,3 +244,119 @@ class MqttInfo extends $pb.GeneratedMessage {
   void clearSSLorTLS() => clearField(6);
 }
 
+class MqttBrokerList extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MqttBrokerList', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..pc<MqttBroker>(1, 'MqttBrokerList', $pb.PbFieldType.PM, protoName: 'MqttBrokerList', subBuilder: MqttBroker.create)
+    ..hasRequiredFields = false
+  ;
+
+  MqttBrokerList._() : super();
+  factory MqttBrokerList() => create();
+  factory MqttBrokerList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MqttBrokerList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MqttBrokerList clone() => MqttBrokerList()..mergeFromMessage(this);
+  MqttBrokerList copyWith(void Function(MqttBrokerList) updates) => super.copyWith((message) => updates(message as MqttBrokerList));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MqttBrokerList create() => MqttBrokerList._();
+  MqttBrokerList createEmptyInstance() => create();
+  static $pb.PbList<MqttBrokerList> createRepeated() => $pb.PbList<MqttBrokerList>();
+  @$core.pragma('dart2js:noInline')
+  static MqttBrokerList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MqttBrokerList>(create);
+  static MqttBrokerList _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<MqttBroker> get mqttBrokerList => $_getList(0);
+}
+
+class MqttBroker extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MqttBroker', package: const $pb.PackageName('pb'), createEmptyInstance: create)
+    ..aOS(1, 'Name', protoName: 'Name')
+    ..aOS(2, 'Description', protoName: 'Description')
+    ..aOS(3, 'Country', protoName: 'Country')
+    ..aOS(4, 'Zone', protoName: 'Zone')
+    ..aOS(5, 'Host', protoName: 'Host')
+    ..a<$core.int>(6, 'Port', $pb.PbFieldType.O3, protoName: 'Port')
+    ..aOB(7, 'SSLorTLS', protoName: 'SSLorTLS')
+    ..hasRequiredFields = false
+  ;
+
+  MqttBroker._() : super();
+  factory MqttBroker() => create();
+  factory MqttBroker.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MqttBroker.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MqttBroker clone() => MqttBroker()..mergeFromMessage(this);
+  MqttBroker copyWith(void Function(MqttBroker) updates) => super.copyWith((message) => updates(message as MqttBroker));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MqttBroker create() => MqttBroker._();
+  MqttBroker createEmptyInstance() => create();
+  static $pb.PbList<MqttBroker> createRepeated() => $pb.PbList<MqttBroker>();
+  @$core.pragma('dart2js:noInline')
+  static MqttBroker getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MqttBroker>(create);
+  static MqttBroker _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get description => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set description($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDescription() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDescription() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get country => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set country($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCountry() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCountry() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get zone => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set zone($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasZone() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearZone() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get host => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set host($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasHost() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearHost() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.int get port => $_getIZ(5);
+  @$pb.TagNumber(6)
+  set port($core.int v) { $_setSignedInt32(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasPort() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearPort() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.bool get sSLorTLS => $_getBF(6);
+  @$pb.TagNumber(7)
+  set sSLorTLS($core.bool v) { $_setBool(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasSSLorTLS() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearSSLorTLS() => clearField(7);
+}
+

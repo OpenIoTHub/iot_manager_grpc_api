@@ -49,3 +49,23 @@ const MqttInfo$json = const {
   ],
 };
 
+const MqttBrokerList$json = const {
+  '1': 'MqttBrokerList',
+  '2': const [
+    const {'1': 'MqttBrokerList', '3': 1, '4': 3, '5': 11, '6': '.pb.MqttBroker', '10': 'MqttBrokerList'},
+  ],
+};
+
+const MqttBroker$json = const {
+  '1': 'MqttBroker',
+  '2': const [
+    const {'1': 'Name', '3': 1, '4': 1, '5': 9, '10': 'Name'},
+    const {'1': 'Description', '3': 2, '4': 1, '5': 9, '10': 'Description'},
+    const {'1': 'Country', '3': 3, '4': 1, '5': 9, '10': 'Country'},
+    const {'1': 'Zone', '3': 4, '4': 1, '5': 9, '10': 'Zone'},
+    const {'1': 'Host', '3': 5, '4': 1, '5': 9, '10': 'Host'},
+    const {'1': 'Port', '3': 6, '4': 1, '5': 5, '10': 'Port'},
+    const {'1': 'SSLorTLS', '3': 7, '4': 1, '5': 8, '10': 'SSLorTLS'},
+  ],
+};
+

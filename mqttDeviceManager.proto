@@ -14,6 +14,8 @@ service MqttDeviceManager {
     rpc GenerateMqttUsernamePassword (MqttDeviceInfo) returns (MqttInfo) {}
 //    获取所有mqtt设备的型号
     rpc GetAllMqttDeviceModels (Empty) returns (MqttDeviceModelList) {}
+//    获取所有的mqtt Broker
+    rpc GetAllMqttBrokers (Empty) returns (MqttBrokerList) {}
 }
 
 message MqttDeviceInfo{
@@ -47,4 +49,19 @@ message MqttInfo{
     string MqttClientUserPassword = 4;
     string MqttClientId = 5;
     bool SSLorTLS = 6;
+}
+
+message MqttBrokerList{
+    repeated MqttBroker MqttBrokerList = 1;
+}
+
+message MqttBroker{
+    string Name = 1;
+    string Description = 2;
+    string Country = 3;
+    string Zone = 4;
+    //
+    string Host = 5;
+    int32 Port = 6;
+    bool SSLorTLS = 7;
 }

@@ -44,6 +44,11 @@ class MqttDeviceManagerClient extends $grpc.Client {
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $5.MqttDeviceModelList.fromBuffer(value));
+  static final _$getAllMqttBrokers =
+      $grpc.ClientMethod<$0.Empty, $5.MqttBrokerList>(
+          '/pb.MqttDeviceManager/GetAllMqttBrokers',
+          ($0.Empty value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $5.MqttBrokerList.fromBuffer(value));
 
   MqttDeviceManagerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions options})
@@ -92,6 +97,14 @@ class MqttDeviceManagerClient extends $grpc.Client {
         options: options);
     return $grpc.ResponseFuture(call);
   }
+
+  $grpc.ResponseFuture<$5.MqttBrokerList> getAllMqttBrokers($0.Empty request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getAllMqttBrokers, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
 }
 
 abstract class MqttDeviceManagerServiceBase extends $grpc.Service {
@@ -133,6 +146,13 @@ abstract class MqttDeviceManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($5.MqttDeviceModelList value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $5.MqttBrokerList>(
+        'GetAllMqttBrokers',
+        getAllMqttBrokers_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($5.MqttBrokerList value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.OperationResponse> addMqttDevice_Pre(
@@ -160,6 +180,11 @@ abstract class MqttDeviceManagerServiceBase extends $grpc.Service {
     return getAllMqttDeviceModels(call, await request);
   }
 
+  $async.Future<$5.MqttBrokerList> getAllMqttBrokers_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getAllMqttBrokers(call, await request);
+  }
+
   $async.Future<$0.OperationResponse> addMqttDevice(
       $grpc.ServiceCall call, $5.MqttDeviceInfo request);
   $async.Future<$0.OperationResponse> delMqttDevice(
@@ -169,5 +194,7 @@ abstract class MqttDeviceManagerServiceBase extends $grpc.Service {
   $async.Future<$5.MqttInfo> generateMqttUsernamePassword(
       $grpc.ServiceCall call, $5.MqttDeviceInfo request);
   $async.Future<$5.MqttDeviceModelList> getAllMqttDeviceModels(
+      $grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$5.MqttBrokerList> getAllMqttBrokers(
       $grpc.ServiceCall call, $0.Empty request);
 }
