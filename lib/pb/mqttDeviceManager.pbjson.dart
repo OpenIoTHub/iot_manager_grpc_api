@@ -10,7 +10,8 @@ const MqttDeviceInfo$json = const {
   '2': const [
     const {'1': 'DeviceId', '3': 1, '4': 1, '5': 9, '10': 'DeviceId'},
     const {'1': 'DeviceModel', '3': 2, '4': 1, '5': 9, '10': 'DeviceModel'},
-    const {'1': 'MqttInfo', '3': 3, '4': 1, '5': 11, '6': '.pb.MqttInfo', '10': 'MqttInfo'},
+    const {'1': 'DeviceDefaultName', '3': 3, '4': 1, '5': 9, '10': 'DeviceDefaultName'},
+    const {'1': 'MqttInfo', '3': 4, '4': 1, '5': 11, '6': '.pb.MqttInfo', '10': 'MqttInfo'},
   ],
 };
 

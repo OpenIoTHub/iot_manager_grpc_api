@@ -23,7 +23,8 @@ message MqttDeviceInfo{
     string DeviceId = 1;
     //    int port;
     string DeviceModel = 2;
-    MqttInfo MqttInfo = 3;
+    string DeviceDefaultName = 3;
+    MqttInfo MqttInfo = 4;
 }
 
 message MqttDeviceInfoList{

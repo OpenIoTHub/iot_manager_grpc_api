@@ -13,7 +13,8 @@ class MqttDeviceInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('MqttDeviceInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
     ..aOS(1, 'DeviceId', protoName: 'DeviceId')
     ..aOS(2, 'DeviceModel', protoName: 'DeviceModel')
-    ..aOM<MqttInfo>(3, 'MqttInfo', protoName: 'MqttInfo', subBuilder: MqttInfo.create)
+    ..aOS(3, 'DeviceDefaultName', protoName: 'DeviceDefaultName')
+    ..aOM<MqttInfo>(4, 'MqttInfo', protoName: 'MqttInfo', subBuilder: MqttInfo.create)
     ..hasRequiredFields = false
   ;
 
@@ -51,15 +52,24 @@ class MqttDeviceInfo extends $pb.GeneratedMessage {
   void clearDeviceModel() => clearField(2);
 
   @$pb.TagNumber(3)
-  MqttInfo get mqttInfo => $_getN(2);
+  $core.String get deviceDefaultName => $_getSZ(2);
   @$pb.TagNumber(3)
-  set mqttInfo(MqttInfo v) { setField(3, v); }
+  set deviceDefaultName($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasMqttInfo() => $_has(2);
+  $core.bool hasDeviceDefaultName() => $_has(2);
   @$pb.TagNumber(3)
-  void clearMqttInfo() => clearField(3);
-  @$pb.TagNumber(3)
-  MqttInfo ensureMqttInfo() => $_ensure(2);
+  void clearDeviceDefaultName() => clearField(3);
+
+  @$pb.TagNumber(4)
+  MqttInfo get mqttInfo => $_getN(3);
+  @$pb.TagNumber(4)
+  set mqttInfo(MqttInfo v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasMqttInfo() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearMqttInfo() => clearField(4);
+  @$pb.TagNumber(4)
+  MqttInfo ensureMqttInfo() => $_ensure(3);
 }
 
 class MqttDeviceInfoList extends $pb.GeneratedMessage {
