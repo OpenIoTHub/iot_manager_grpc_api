@@ -26,6 +26,15 @@ message UserInfo{
     string Avatar = 4;
 }
 
+message WechatUserInfo{
+    string access_token = 1;
+    int32  expires_in = 2;
+    string refresh_token = 3;
+    string openid = 4;
+    string scope = 5;
+    string unionid = 6;
+}
+
 message UserInfoList{
     repeated UserInfo UserInfoList = 1;
 }

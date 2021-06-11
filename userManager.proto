@@ -10,7 +10,14 @@ service UserManager {
     rpc RegisterUserWithLoginInfo (LoginInfo) returns (OperationResponse) {}
 //    登录 获取Token
     rpc LoginWithUserLoginInfo (LoginInfo) returns (UserLoginResponse) {}
+//    使用微信登录账号获取jwt
+    rpc LoginWithWechatCode (StringValue) returns (UserLoginResponse) {}
+//    账号绑定微信
+    rpc BindWithWechatCode (StringValue) returns (UserLoginResponse) {}
+//    获取用户信息
     rpc GetUserInfo (Empty) returns (UserInfo) {}
+//    获取用户的微信信息
+    rpc GetUserWechatInfoByCode (StringValue) returns (WechatUserInfo) {}
 //    更新用户信息
     rpc UpdateUserNanme (StringValue) returns (OperationResponse) {}
     rpc UpdateUserEmail (StringValue) returns (OperationResponse) {}
