@@ -34,11 +34,11 @@ class UserManagerClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $8.UserLoginResponse.fromBuffer(value));
   static final _$bindWithWechatCode =
-      $grpc.ClientMethod<$0.StringValue, $8.UserLoginResponse>(
+      $grpc.ClientMethod<$0.StringValue, $0.OperationResponse>(
           '/pb.UserManager/BindWithWechatCode',
           ($0.StringValue value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $8.UserLoginResponse.fromBuffer(value));
+              $0.OperationResponse.fromBuffer(value));
   static final _$getUserInfo = $grpc.ClientMethod<$0.Empty, $0.UserInfo>(
       '/pb.UserManager/GetUserInfo',
       ($0.Empty value) => value.writeToBuffer(),
@@ -109,7 +109,7 @@ class UserManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$8.UserLoginResponse> bindWithWechatCode(
+  $grpc.ResponseFuture<$0.OperationResponse> bindWithWechatCode(
       $0.StringValue request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
@@ -206,13 +206,13 @@ abstract class UserManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value),
         ($8.UserLoginResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.StringValue, $8.UserLoginResponse>(
+    $addMethod($grpc.ServiceMethod<$0.StringValue, $0.OperationResponse>(
         'BindWithWechatCode',
         bindWithWechatCode_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value),
-        ($8.UserLoginResponse value) => value.writeToBuffer()));
+        ($0.OperationResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Empty, $0.UserInfo>(
         'GetUserInfo',
         getUserInfo_Pre,
@@ -279,7 +279,7 @@ abstract class UserManagerServiceBase extends $grpc.Service {
     return loginWithWechatCode(call, await request);
   }
 
-  $async.Future<$8.UserLoginResponse> bindWithWechatCode_Pre(
+  $async.Future<$0.OperationResponse> bindWithWechatCode_Pre(
       $grpc.ServiceCall call, $async.Future<$0.StringValue> request) async {
     return bindWithWechatCode(call, await request);
   }
@@ -325,7 +325,7 @@ abstract class UserManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $8.LoginInfo request);
   $async.Future<$8.UserLoginResponse> loginWithWechatCode(
       $grpc.ServiceCall call, $0.StringValue request);
-  $async.Future<$8.UserLoginResponse> bindWithWechatCode(
+  $async.Future<$0.OperationResponse> bindWithWechatCode(
       $grpc.ServiceCall call, $0.StringValue request);
   $async.Future<$0.UserInfo> getUserInfo(
       $grpc.ServiceCall call, $0.Empty request);

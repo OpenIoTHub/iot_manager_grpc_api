@@ -24,7 +24,7 @@ type UserManagerClient interface {
 	//    使用微信登录账号获取jwt
 	LoginWithWechatCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*UserLoginResponse, error)
 	//    账号绑定微信
-	BindWithWechatCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*UserLoginResponse, error)
+	BindWithWechatCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 	//    获取用户信息
 	GetUserInfo(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserInfo, error)
 	//    获取用户的微信信息
@@ -72,8 +72,8 @@ func (c *userManagerClient) LoginWithWechatCode(ctx context.Context, in *StringV
 	return out, nil
 }
 
-func (c *userManagerClient) BindWithWechatCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*UserLoginResponse, error) {
-	out := new(UserLoginResponse)
+func (c *userManagerClient) BindWithWechatCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.UserManager/BindWithWechatCode", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -155,7 +155,7 @@ type UserManagerServer interface {
 	//    使用微信登录账号获取jwt
 	LoginWithWechatCode(context.Context, *StringValue) (*UserLoginResponse, error)
 	//    账号绑定微信
-	BindWithWechatCode(context.Context, *StringValue) (*UserLoginResponse, error)
+	BindWithWechatCode(context.Context, *StringValue) (*OperationResponse, error)
 	//    获取用户信息
 	GetUserInfo(context.Context, *Empty) (*UserInfo, error)
 	//    获取用户的微信信息
@@ -182,7 +182,7 @@ func (UnimplementedUserManagerServer) LoginWithUserLoginInfo(context.Context, *L
 func (UnimplementedUserManagerServer) LoginWithWechatCode(context.Context, *StringValue) (*UserLoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginWithWechatCode not implemented")
 }
-func (UnimplementedUserManagerServer) BindWithWechatCode(context.Context, *StringValue) (*UserLoginResponse, error) {
+func (UnimplementedUserManagerServer) BindWithWechatCode(context.Context, *StringValue) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BindWithWechatCode not implemented")
 }
 func (UnimplementedUserManagerServer) GetUserInfo(context.Context, *Empty) (*UserInfo, error) {

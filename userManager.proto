@@ -13,7 +13,7 @@ service UserManager {
 //    使用微信登录账号获取jwt
     rpc LoginWithWechatCode (StringValue) returns (UserLoginResponse) {}
 //    账号绑定微信
-    rpc BindWithWechatCode (StringValue) returns (UserLoginResponse) {}
+    rpc BindWithWechatCode (StringValue) returns (OperationResponse) {}
 //    获取用户信息
     rpc GetUserInfo (Empty) returns (UserInfo) {}
 //    获取用户的微信信息
