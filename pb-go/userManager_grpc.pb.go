@@ -25,6 +25,8 @@ type UserManagerClient interface {
 	LoginWithWechatCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*UserLoginResponse, error)
 	//    账号绑定微信
 	BindWithWechatCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    账号解绑微信
+	UnbindWechat(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*OperationResponse, error)
 	//    获取用户信息
 	GetUserInfo(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserInfo, error)
 	//    获取用户的微信信息
@@ -75,6 +77,15 @@ func (c *userManagerClient) LoginWithWechatCode(ctx context.Context, in *StringV
 func (c *userManagerClient) BindWithWechatCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.UserManager/BindWithWechatCode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userManagerClient) UnbindWechat(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/UnbindWechat", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -156,6 +167,8 @@ type UserManagerServer interface {
 	LoginWithWechatCode(context.Context, *StringValue) (*UserLoginResponse, error)
 	//    账号绑定微信
 	BindWithWechatCode(context.Context, *StringValue) (*OperationResponse, error)
+	//    账号解绑微信
+	UnbindWechat(context.Context, *Empty) (*OperationResponse, error)
 	//    获取用户信息
 	GetUserInfo(context.Context, *Empty) (*UserInfo, error)
 	//    获取用户的微信信息
@@ -184,6 +197,9 @@ func (UnimplementedUserManagerServer) LoginWithWechatCode(context.Context, *Stri
 }
 func (UnimplementedUserManagerServer) BindWithWechatCode(context.Context, *StringValue) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BindWithWechatCode not implemented")
+}
+func (UnimplementedUserManagerServer) UnbindWechat(context.Context, *Empty) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnbindWechat not implemented")
 }
 func (UnimplementedUserManagerServer) GetUserInfo(context.Context, *Empty) (*UserInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserInfo not implemented")
@@ -287,6 +303,24 @@ func _UserManager_BindWithWechatCode_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserManagerServer).BindWithWechatCode(ctx, req.(*StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserManager_UnbindWechat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagerServer).UnbindWechat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserManager/UnbindWechat",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagerServer).UnbindWechat(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -436,6 +470,10 @@ var _UserManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BindWithWechatCode",
 			Handler:    _UserManager_BindWithWechatCode_Handler,
+		},
+		{
+			MethodName: "UnbindWechat",
+			Handler:    _UserManager_UnbindWechat_Handler,
 		},
 		{
 			MethodName: "GetUserInfo",
