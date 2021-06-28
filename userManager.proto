@@ -21,7 +21,7 @@ service UserManager {
 //    获取用户的微信信息
     rpc GetUserWechatInfoByCode (StringValue) returns (WechatUserInfo) {}
 //    更新用户信息
-    rpc UpdateUserNanme (StringValue) returns (OperationResponse) {}
+    rpc UpdateUserName (StringValue) returns (OperationResponse) {}
     rpc UpdateUserEmail (StringValue) returns (OperationResponse) {}
     rpc UpdateUserMobile (StringValue) returns (OperationResponse) {}
     rpc UpdateUserPassword (StringValue) returns (OperationResponse) {}

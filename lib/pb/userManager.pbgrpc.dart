@@ -54,9 +54,9 @@ class UserManagerClient extends $grpc.Client {
           '/pb.UserManager/GetUserWechatInfoByCode',
           ($0.StringValue value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.WechatUserInfo.fromBuffer(value));
-  static final _$updateUserNanme =
+  static final _$updateUserName =
       $grpc.ClientMethod<$0.StringValue, $0.OperationResponse>(
-          '/pb.UserManager/UpdateUserNanme',
+          '/pb.UserManager/UpdateUserName',
           ($0.StringValue value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
@@ -149,11 +149,11 @@ class UserManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$0.OperationResponse> updateUserNanme(
+  $grpc.ResponseFuture<$0.OperationResponse> updateUserName(
       $0.StringValue request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
-        _$updateUserNanme, $async.Stream.fromIterable([request]),
+        _$updateUserName, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -249,8 +249,8 @@ abstract class UserManagerServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value),
         ($0.WechatUserInfo value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.StringValue, $0.OperationResponse>(
-        'UpdateUserNanme',
-        updateUserNanme_Pre,
+        'UpdateUserName',
+        updateUserName_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value),
@@ -320,9 +320,9 @@ abstract class UserManagerServiceBase extends $grpc.Service {
     return getUserWechatInfoByCode(call, await request);
   }
 
-  $async.Future<$0.OperationResponse> updateUserNanme_Pre(
+  $async.Future<$0.OperationResponse> updateUserName_Pre(
       $grpc.ServiceCall call, $async.Future<$0.StringValue> request) async {
-    return updateUserNanme(call, await request);
+    return updateUserName(call, await request);
   }
 
   $async.Future<$0.OperationResponse> updateUserEmail_Pre(
@@ -359,7 +359,7 @@ abstract class UserManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.Empty request);
   $async.Future<$0.WechatUserInfo> getUserWechatInfoByCode(
       $grpc.ServiceCall call, $0.StringValue request);
-  $async.Future<$0.OperationResponse> updateUserNanme(
+  $async.Future<$0.OperationResponse> updateUserName(
       $grpc.ServiceCall call, $0.StringValue request);
   $async.Future<$0.OperationResponse> updateUserEmail(
       $grpc.ServiceCall call, $0.StringValue request);

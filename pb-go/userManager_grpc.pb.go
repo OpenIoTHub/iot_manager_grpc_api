@@ -32,7 +32,7 @@ type UserManagerClient interface {
 	//    获取用户的微信信息
 	GetUserWechatInfoByCode(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*WechatUserInfo, error)
 	//    更新用户信息
-	UpdateUserNanme(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
+	UpdateUserName(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateUserEmail(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateUserMobile(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateUserPassword(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
@@ -110,9 +110,9 @@ func (c *userManagerClient) GetUserWechatInfoByCode(ctx context.Context, in *Str
 	return out, nil
 }
 
-func (c *userManagerClient) UpdateUserNanme(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *userManagerClient) UpdateUserName(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
-	err := c.cc.Invoke(ctx, "/pb.UserManager/UpdateUserNanme", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/UpdateUserName", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -174,7 +174,7 @@ type UserManagerServer interface {
 	//    获取用户的微信信息
 	GetUserWechatInfoByCode(context.Context, *StringValue) (*WechatUserInfo, error)
 	//    更新用户信息
-	UpdateUserNanme(context.Context, *StringValue) (*OperationResponse, error)
+	UpdateUserName(context.Context, *StringValue) (*OperationResponse, error)
 	UpdateUserEmail(context.Context, *StringValue) (*OperationResponse, error)
 	UpdateUserMobile(context.Context, *StringValue) (*OperationResponse, error)
 	UpdateUserPassword(context.Context, *StringValue) (*OperationResponse, error)
@@ -207,8 +207,8 @@ func (UnimplementedUserManagerServer) GetUserInfo(context.Context, *Empty) (*Use
 func (UnimplementedUserManagerServer) GetUserWechatInfoByCode(context.Context, *StringValue) (*WechatUserInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserWechatInfoByCode not implemented")
 }
-func (UnimplementedUserManagerServer) UpdateUserNanme(context.Context, *StringValue) (*OperationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserNanme not implemented")
+func (UnimplementedUserManagerServer) UpdateUserName(context.Context, *StringValue) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserName not implemented")
 }
 func (UnimplementedUserManagerServer) UpdateUserEmail(context.Context, *StringValue) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserEmail not implemented")
@@ -361,20 +361,20 @@ func _UserManager_GetUserWechatInfoByCode_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserManager_UpdateUserNanme_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserManager_UpdateUserName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StringValue)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserManagerServer).UpdateUserNanme(ctx, in)
+		return srv.(UserManagerServer).UpdateUserName(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.UserManager/UpdateUserNanme",
+		FullMethod: "/pb.UserManager/UpdateUserName",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserManagerServer).UpdateUserNanme(ctx, req.(*StringValue))
+		return srv.(UserManagerServer).UpdateUserName(ctx, req.(*StringValue))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -484,8 +484,8 @@ var _UserManager_serviceDesc = grpc.ServiceDesc{
 			Handler:    _UserManager_GetUserWechatInfoByCode_Handler,
 		},
 		{
-			MethodName: "UpdateUserNanme",
-			Handler:    _UserManager_UpdateUserNanme_Handler,
+			MethodName: "UpdateUserName",
+			Handler:    _UserManager_UpdateUserName_Handler,
 		},
 		{
 			MethodName: "UpdateUserEmail",
