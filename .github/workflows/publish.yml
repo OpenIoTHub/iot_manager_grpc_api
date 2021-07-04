@@ -23,4 +23,6 @@ jobs:
           credential: ${{ secrets.CREDENTIAL_JSON }}
           flutter_package: false
           skip_test: true
-          dry_run: false
+          dry_run: true
+
+      - run: flutter packages pub publish -f --server=https://pub.dartlang.org

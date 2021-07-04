@@ -11,12 +11,13 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class GatewayInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('GatewayInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'Uuid', protoName: 'Uuid')
-    ..aOS(2, 'Name', protoName: 'Name')
-    ..aOS(3, 'Description', protoName: 'Description')
-    ..pPS(4, 'ServerUuid', protoName: 'ServerUuid')
+    ..aOS(1, 'GatewayUuid', protoName: 'GatewayUuid')
+    ..aOS(2, 'ServerUuid', protoName: 'ServerUuid')
+    ..aOS(3, 'Name', protoName: 'Name')
+    ..aOS(4, 'Description', protoName: 'Description')
     ..aOB(5, 'Status', protoName: 'Status')
-    ..m<$core.String, $core.String>(6, 'ConfigMap', protoName: 'ConfigMap', entryClassName: 'GatewayInfo.ConfigMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..aOS(6, 'GatewayJwt', protoName: 'GatewayJwt')
+    ..aOS(7, 'OpenIoTHubJwt', protoName: 'OpenIoTHubJwt')
     ..hasRequiredFields = false
   ;
 
@@ -36,34 +37,40 @@ class GatewayInfo extends $pb.GeneratedMessage {
   static GatewayInfo _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get uuid => $_getSZ(0);
+  $core.String get gatewayUuid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set uuid($core.String v) { $_setString(0, v); }
+  set gatewayUuid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasUuid() => $_has(0);
+  $core.bool hasGatewayUuid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUuid() => clearField(1);
+  void clearGatewayUuid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get name => $_getSZ(1);
+  $core.String get serverUuid => $_getSZ(1);
   @$pb.TagNumber(2)
-  set name($core.String v) { $_setString(1, v); }
+  set serverUuid($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasName() => $_has(1);
+  $core.bool hasServerUuid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearName() => clearField(2);
+  void clearServerUuid() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get description => $_getSZ(2);
+  $core.String get name => $_getSZ(2);
   @$pb.TagNumber(3)
-  set description($core.String v) { $_setString(2, v); }
+  set name($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasDescription() => $_has(2);
+  $core.bool hasName() => $_has(2);
   @$pb.TagNumber(3)
-  void clearDescription() => clearField(3);
+  void clearName() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.List<$core.String> get serverUuid => $_getList(3);
+  $core.String get description => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set description($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasDescription() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearDescription() => clearField(4);
 
   @$pb.TagNumber(5)
   $core.bool get status => $_getBF(4);
@@ -75,7 +82,22 @@ class GatewayInfo extends $pb.GeneratedMessage {
   void clearStatus() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.Map<$core.String, $core.String> get configMap => $_getMap(5);
+  $core.String get gatewayJwt => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set gatewayJwt($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasGatewayJwt() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearGatewayJwt() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get openIoTHubJwt => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set openIoTHubJwt($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasOpenIoTHubJwt() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearOpenIoTHubJwt() => clearField(7);
 }
 
 class GatewayInfoList extends $pb.GeneratedMessage {

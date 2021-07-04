@@ -10,19 +10,20 @@ service GatewayManager {
     rpc AddGateway (GatewayInfo) returns (OperationResponse) {}
     rpc DelGateway (GatewayInfo) returns (OperationResponse) {}
     rpc UpdateGateway (GatewayInfo) returns (OperationResponse) {}
-//    rpc QueryGateway (GatewayInfo) returns (OperationResponse) {}
+    rpc QueryGateway (GatewayInfo) returns (GatewayInfo) {}
     rpc GetAllGateway (Empty) returns (GatewayInfoList) {}
+    rpc GenerateOneGatewayWithDefaultServer (Empty) returns (GatewayInfo) {}
 }
 
 message GatewayInfo{
-    string Uuid = 1;
-    string Name = 2;
-    string Description = 3;
-    repeated string ServerUuid = 4;
+    string GatewayUuid = 1;
+    string ServerUuid = 2;
+    string Name = 3;
+    string Description = 4;
     //在线状态
     bool Status  = 5;
-    //    额外的配置
-    map<string,string> ConfigMap = 6;
+    string GatewayJwt = 6;
+    string OpenIoTHubJwt = 7;
 }
 
 message GatewayInfoList{
