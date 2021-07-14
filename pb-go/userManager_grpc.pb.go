@@ -37,6 +37,9 @@ type UserManagerClient interface {
 	UpdateUserMobile(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateUserPassword(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateUserAvatar(ctx context.Context, in *UpdateAvatar, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    业务相关操作
+	//    获取所有配置(网关、设备、配置等)用于APP的初始化
+	GetAllConfig(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*StringValue, error)
 }
 
 type userManagerClient struct {
@@ -155,6 +158,15 @@ func (c *userManagerClient) UpdateUserAvatar(ctx context.Context, in *UpdateAvat
 	return out, nil
 }
 
+func (c *userManagerClient) GetAllConfig(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*StringValue, error) {
+	out := new(StringValue)
+	err := c.cc.Invoke(ctx, "/pb.UserManager/GetAllConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserManagerServer is the server API for UserManager service.
 // All implementations must embed UnimplementedUserManagerServer
 // for forward compatibility
@@ -179,6 +191,9 @@ type UserManagerServer interface {
 	UpdateUserMobile(context.Context, *StringValue) (*OperationResponse, error)
 	UpdateUserPassword(context.Context, *StringValue) (*OperationResponse, error)
 	UpdateUserAvatar(context.Context, *UpdateAvatar) (*OperationResponse, error)
+	//    业务相关操作
+	//    获取所有配置(网关、设备、配置等)用于APP的初始化
+	GetAllConfig(context.Context, *Empty) (*StringValue, error)
 	mustEmbedUnimplementedUserManagerServer()
 }
 
@@ -221,6 +236,9 @@ func (UnimplementedUserManagerServer) UpdateUserPassword(context.Context, *Strin
 }
 func (UnimplementedUserManagerServer) UpdateUserAvatar(context.Context, *UpdateAvatar) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserAvatar not implemented")
+}
+func (UnimplementedUserManagerServer) GetAllConfig(context.Context, *Empty) (*StringValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllConfig not implemented")
 }
 func (UnimplementedUserManagerServer) mustEmbedUnimplementedUserManagerServer() {}
 
@@ -451,6 +469,24 @@ func _UserManager_UpdateUserAvatar_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserManager_GetAllConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagerServer).GetAllConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserManager/GetAllConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagerServer).GetAllConfig(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UserManager_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.UserManager",
 	HandlerType: (*UserManagerServer)(nil),
@@ -502,6 +538,10 @@ var _UserManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserAvatar",
 			Handler:    _UserManager_UpdateUserAvatar_Handler,
+		},
+		{
+			MethodName: "GetAllConfig",
+			Handler:    _UserManager_GetAllConfig_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

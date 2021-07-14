@@ -84,6 +84,10 @@ class UserManagerClient extends $grpc.Client {
           ($8.UpdateAvatar value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
+  static final _$getAllConfig = $grpc.ClientMethod<$0.Empty, $0.StringValue>(
+      '/pb.UserManager/GetAllConfig',
+      ($0.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value));
 
   UserManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -193,6 +197,14 @@ class UserManagerClient extends $grpc.Client {
         options: options);
     return $grpc.ResponseFuture(call);
   }
+
+  $grpc.ResponseFuture<$0.StringValue> getAllConfig($0.Empty request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getAllConfig, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
 }
 
 abstract class UserManagerServiceBase extends $grpc.Service {
@@ -283,6 +295,13 @@ abstract class UserManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $8.UpdateAvatar.fromBuffer(value),
         ($0.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $0.StringValue>(
+        'GetAllConfig',
+        getAllConfig_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($0.StringValue value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.OperationResponse> registerUserWithLoginInfo_Pre(
@@ -345,6 +364,11 @@ abstract class UserManagerServiceBase extends $grpc.Service {
     return updateUserAvatar(call, await request);
   }
 
+  $async.Future<$0.StringValue> getAllConfig_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getAllConfig(call, await request);
+  }
+
   $async.Future<$0.OperationResponse> registerUserWithLoginInfo(
       $grpc.ServiceCall call, $8.LoginInfo request);
   $async.Future<$8.UserLoginResponse> loginWithUserLoginInfo(
@@ -369,4 +393,6 @@ abstract class UserManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.StringValue request);
   $async.Future<$0.OperationResponse> updateUserAvatar(
       $grpc.ServiceCall call, $8.UpdateAvatar request);
+  $async.Future<$0.StringValue> getAllConfig(
+      $grpc.ServiceCall call, $0.Empty request);
 }

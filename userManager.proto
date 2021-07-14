@@ -26,6 +26,9 @@ service UserManager {
     rpc UpdateUserMobile (StringValue) returns (OperationResponse) {}
     rpc UpdateUserPassword (StringValue) returns (OperationResponse) {}
     rpc UpdateUserAvatar (UpdateAvatar) returns (OperationResponse) {}
+//    业务相关操作
+//    获取所有配置(网关、设备、配置等)用于APP的初始化
+    rpc GetAllConfig (Empty) returns (StringValue) {}
 }
 
 message LoginInfo{
