@@ -11,6 +11,7 @@ import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
 import 'common.pb.dart' as $0;
+import 'cnameManager.pb.dart' as $1;
 export 'cnameManager.pb.dart';
 
 class CnameManagerClient extends $grpc.Client {
@@ -19,10 +20,20 @@ class CnameManagerClient extends $grpc.Client {
           '/pb.CnameManager/GetCnameByKey',
           ($0.StringValue value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value));
+  static final _$getAllCname = $grpc.ClientMethod<$0.Empty, $1.CnameMap>(
+      '/pb.CnameManager/GetAllCname',
+      ($0.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.CnameMap.fromBuffer(value));
   static final _$setCnameByKey =
-      $grpc.ClientMethod<$0.StringValue, $0.OperationResponse>(
+      $grpc.ClientMethod<$1.CnameMap, $0.OperationResponse>(
           '/pb.CnameManager/SetCnameByKey',
-          ($0.StringValue value) => value.writeToBuffer(),
+          ($1.CnameMap value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.OperationResponse.fromBuffer(value));
+  static final _$delAllCname =
+      $grpc.ClientMethod<$1.CnameMap, $0.OperationResponse>(
+          '/pb.CnameManager/DelAllCname',
+          ($1.CnameMap value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
   static final _$delCnameByKey =
@@ -43,11 +54,26 @@ class CnameManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$0.OperationResponse> setCnameByKey(
-      $0.StringValue request,
+  $grpc.ResponseFuture<$1.CnameMap> getAllCname($0.Empty request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getAllCname, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.OperationResponse> setCnameByKey($1.CnameMap request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$setCnameByKey, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.OperationResponse> delAllCname($1.CnameMap request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$delAllCname, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -73,12 +99,26 @@ abstract class CnameManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value),
         ($0.StringValue value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.StringValue, $0.OperationResponse>(
+    $addMethod($grpc.ServiceMethod<$0.Empty, $1.CnameMap>(
+        'GetAllCname',
+        getAllCname_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($1.CnameMap value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.CnameMap, $0.OperationResponse>(
         'SetCnameByKey',
         setCnameByKey_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value),
+        ($core.List<$core.int> value) => $1.CnameMap.fromBuffer(value),
+        ($0.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.CnameMap, $0.OperationResponse>(
+        'DelAllCname',
+        delAllCname_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.CnameMap.fromBuffer(value),
         ($0.OperationResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.StringValue, $0.OperationResponse>(
         'DelCnameByKey',
@@ -94,9 +134,19 @@ abstract class CnameManagerServiceBase extends $grpc.Service {
     return getCnameByKey(call, await request);
   }
 
+  $async.Future<$1.CnameMap> getAllCname_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getAllCname(call, await request);
+  }
+
   $async.Future<$0.OperationResponse> setCnameByKey_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.StringValue> request) async {
+      $grpc.ServiceCall call, $async.Future<$1.CnameMap> request) async {
     return setCnameByKey(call, await request);
+  }
+
+  $async.Future<$0.OperationResponse> delAllCname_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.CnameMap> request) async {
+    return delAllCname(call, await request);
   }
 
   $async.Future<$0.OperationResponse> delCnameByKey_Pre(
@@ -106,8 +156,12 @@ abstract class CnameManagerServiceBase extends $grpc.Service {
 
   $async.Future<$0.StringValue> getCnameByKey(
       $grpc.ServiceCall call, $0.StringValue request);
+  $async.Future<$1.CnameMap> getAllCname(
+      $grpc.ServiceCall call, $0.Empty request);
   $async.Future<$0.OperationResponse> setCnameByKey(
-      $grpc.ServiceCall call, $0.StringValue request);
+      $grpc.ServiceCall call, $1.CnameMap request);
+  $async.Future<$0.OperationResponse> delAllCname(
+      $grpc.ServiceCall call, $1.CnameMap request);
   $async.Future<$0.OperationResponse> delCnameByKey(
       $grpc.ServiceCall call, $0.StringValue request);
 }

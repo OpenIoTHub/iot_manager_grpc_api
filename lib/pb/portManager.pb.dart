@@ -40,10 +40,13 @@ class PortInfo extends $pb.GeneratedMessage {
     ..aOS(1, 'UUID', protoName: 'UUID')
     ..aOS(2, 'Name', protoName: 'Name')
     ..aOS(3, 'Description', protoName: 'Description')
-    ..a<$core.int>(4, 'Port', $pb.PbFieldType.O3, protoName: 'Port')
-    ..aOS(5, 'NetworkProtocol', protoName: 'NetworkProtocol')
-    ..aOS(6, 'ApplicationProtocol', protoName: 'ApplicationProtocol')
-    ..aInt64(7, 'HostUUID', protoName: 'HostUUID')
+    ..aOS(4, 'Domain', protoName: 'Domain')
+    ..a<$core.int>(5, 'Port', $pb.PbFieldType.O3, protoName: 'Port')
+    ..a<$core.int>(6, 'LocalPort', $pb.PbFieldType.O3, protoName: 'LocalPort')
+    ..aOB(7, 'BindAllAddr', protoName: 'BindAllAddr')
+    ..aOS(8, 'NetworkProtocol', protoName: 'NetworkProtocol')
+    ..aOS(9, 'ApplicationProtocol', protoName: 'ApplicationProtocol')
+    ..aInt64(10, 'HostUUID', protoName: 'HostUUID')
     ..hasRequiredFields = false
   ;
 
@@ -90,39 +93,66 @@ class PortInfo extends $pb.GeneratedMessage {
   void clearDescription() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.int get port => $_getIZ(3);
+  $core.String get domain => $_getSZ(3);
   @$pb.TagNumber(4)
-  set port($core.int v) { $_setSignedInt32(3, v); }
+  set domain($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasPort() => $_has(3);
+  $core.bool hasDomain() => $_has(3);
   @$pb.TagNumber(4)
-  void clearPort() => clearField(4);
+  void clearDomain() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get networkProtocol => $_getSZ(4);
+  $core.int get port => $_getIZ(4);
   @$pb.TagNumber(5)
-  set networkProtocol($core.String v) { $_setString(4, v); }
+  set port($core.int v) { $_setSignedInt32(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasNetworkProtocol() => $_has(4);
+  $core.bool hasPort() => $_has(4);
   @$pb.TagNumber(5)
-  void clearNetworkProtocol() => clearField(5);
+  void clearPort() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get applicationProtocol => $_getSZ(5);
+  $core.int get localPort => $_getIZ(5);
   @$pb.TagNumber(6)
-  set applicationProtocol($core.String v) { $_setString(5, v); }
+  set localPort($core.int v) { $_setSignedInt32(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasApplicationProtocol() => $_has(5);
+  $core.bool hasLocalPort() => $_has(5);
   @$pb.TagNumber(6)
-  void clearApplicationProtocol() => clearField(6);
+  void clearLocalPort() => clearField(6);
 
   @$pb.TagNumber(7)
-  $fixnum.Int64 get hostUUID => $_getI64(6);
+  $core.bool get bindAllAddr => $_getBF(6);
   @$pb.TagNumber(7)
-  set hostUUID($fixnum.Int64 v) { $_setInt64(6, v); }
+  set bindAllAddr($core.bool v) { $_setBool(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasHostUUID() => $_has(6);
+  $core.bool hasBindAllAddr() => $_has(6);
   @$pb.TagNumber(7)
-  void clearHostUUID() => clearField(7);
+  void clearBindAllAddr() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get networkProtocol => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set networkProtocol($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasNetworkProtocol() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearNetworkProtocol() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get applicationProtocol => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set applicationProtocol($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasApplicationProtocol() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearApplicationProtocol() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $fixnum.Int64 get hostUUID => $_getI64(9);
+  @$pb.TagNumber(10)
+  set hostUUID($fixnum.Int64 v) { $_setInt64(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasHostUUID() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearHostUUID() => clearField(10);
 }
 

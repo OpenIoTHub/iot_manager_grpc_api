@@ -21,8 +21,11 @@ message PortInfo{
     string UUID = 1;
     string Name = 2;
     string Description = 3;
-    int32 Port = 4;
-    string NetworkProtocol = 5;
-    string ApplicationProtocol = 6;
-    int64 HostUUID = 7;
+    string Domain = 4;
+    int32 Port = 5;
+    int32 LocalPort = 6;
+    bool BindAllAddr = 7;
+    string NetworkProtocol = 8;
+    string ApplicationProtocol = 9;
+    int64 HostUUID = 10;
 }

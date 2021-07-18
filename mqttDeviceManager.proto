@@ -12,8 +12,6 @@ service MqttDeviceManager {
     rpc GetAllMqttDevice (Empty) returns (MqttDeviceInfoList) {}
 //    设备生成mqtt登录信息
     rpc GenerateMqttUsernamePassword (MqttDeviceInfo) returns (MqttInfo) {}
-//    获取所有mqtt设备的型号
-    rpc GetAllMqttDeviceModels (Empty) returns (MqttDeviceModelList) {}
 //    获取所有的mqtt Broker
     rpc GetAllMqttBrokers (Empty) returns (MqttBrokerList) {}
 }

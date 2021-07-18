@@ -23,8 +23,6 @@ type MqttDeviceManagerClient interface {
 	GetAllMqttDevice(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceInfoList, error)
 	//    设备生成mqtt登录信息
 	GenerateMqttUsernamePassword(ctx context.Context, in *MqttDeviceInfo, opts ...grpc.CallOption) (*MqttInfo, error)
-	//    获取所有mqtt设备的型号
-	GetAllMqttDeviceModels(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceModelList, error)
 	//    获取所有的mqtt Broker
 	GetAllMqttBrokers(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttBrokerList, error)
 }
@@ -73,15 +71,6 @@ func (c *mqttDeviceManagerClient) GenerateMqttUsernamePassword(ctx context.Conte
 	return out, nil
 }
 
-func (c *mqttDeviceManagerClient) GetAllMqttDeviceModels(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttDeviceModelList, error) {
-	out := new(MqttDeviceModelList)
-	err := c.cc.Invoke(ctx, "/pb.MqttDeviceManager/GetAllMqttDeviceModels", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mqttDeviceManagerClient) GetAllMqttBrokers(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*MqttBrokerList, error) {
 	out := new(MqttBrokerList)
 	err := c.cc.Invoke(ctx, "/pb.MqttDeviceManager/GetAllMqttBrokers", in, out, opts...)
@@ -101,8 +90,6 @@ type MqttDeviceManagerServer interface {
 	GetAllMqttDevice(context.Context, *Empty) (*MqttDeviceInfoList, error)
 	//    设备生成mqtt登录信息
 	GenerateMqttUsernamePassword(context.Context, *MqttDeviceInfo) (*MqttInfo, error)
-	//    获取所有mqtt设备的型号
-	GetAllMqttDeviceModels(context.Context, *Empty) (*MqttDeviceModelList, error)
 	//    获取所有的mqtt Broker
 	GetAllMqttBrokers(context.Context, *Empty) (*MqttBrokerList, error)
 	mustEmbedUnimplementedMqttDeviceManagerServer()
@@ -123,9 +110,6 @@ func (UnimplementedMqttDeviceManagerServer) GetAllMqttDevice(context.Context, *E
 }
 func (UnimplementedMqttDeviceManagerServer) GenerateMqttUsernamePassword(context.Context, *MqttDeviceInfo) (*MqttInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateMqttUsernamePassword not implemented")
-}
-func (UnimplementedMqttDeviceManagerServer) GetAllMqttDeviceModels(context.Context, *Empty) (*MqttDeviceModelList, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllMqttDeviceModels not implemented")
 }
 func (UnimplementedMqttDeviceManagerServer) GetAllMqttBrokers(context.Context, *Empty) (*MqttBrokerList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllMqttBrokers not implemented")
@@ -215,24 +199,6 @@ func _MqttDeviceManager_GenerateMqttUsernamePassword_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MqttDeviceManager_GetAllMqttDeviceModels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MqttDeviceManagerServer).GetAllMqttDeviceModels(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/pb.MqttDeviceManager/GetAllMqttDeviceModels",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MqttDeviceManagerServer).GetAllMqttDeviceModels(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _MqttDeviceManager_GetAllMqttBrokers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
@@ -270,10 +236,6 @@ var _MqttDeviceManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GenerateMqttUsernamePassword",
 			Handler:    _MqttDeviceManager_GenerateMqttUsernamePassword_Handler,
-		},
-		{
-			MethodName: "GetAllMqttDeviceModels",
-			Handler:    _MqttDeviceManager_GetAllMqttDeviceModels_Handler,
 		},
 		{
 			MethodName: "GetAllMqttBrokers",

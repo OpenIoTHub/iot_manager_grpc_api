@@ -19,7 +19,9 @@ const _ = grpc.SupportPackageIsVersion7
 type CnameManagerClient interface {
 	//    Cname
 	GetCnameByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
-	SetCnameByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
+	GetAllCname(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CnameMap, error)
+	SetCnameByKey(ctx context.Context, in *CnameMap, opts ...grpc.CallOption) (*OperationResponse, error)
+	DelAllCname(ctx context.Context, in *CnameMap, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelCnameByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
@@ -40,9 +42,27 @@ func (c *cnameManagerClient) GetCnameByKey(ctx context.Context, in *StringValue,
 	return out, nil
 }
 
-func (c *cnameManagerClient) SetCnameByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *cnameManagerClient) GetAllCname(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CnameMap, error) {
+	out := new(CnameMap)
+	err := c.cc.Invoke(ctx, "/pb.CnameManager/GetAllCname", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cnameManagerClient) SetCnameByKey(ctx context.Context, in *CnameMap, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.CnameManager/SetCnameByKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cnameManagerClient) DelAllCname(ctx context.Context, in *CnameMap, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.CnameManager/DelAllCname", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +84,9 @@ func (c *cnameManagerClient) DelCnameByKey(ctx context.Context, in *StringValue,
 type CnameManagerServer interface {
 	//    Cname
 	GetCnameByKey(context.Context, *StringValue) (*StringValue, error)
-	SetCnameByKey(context.Context, *StringValue) (*OperationResponse, error)
+	GetAllCname(context.Context, *Empty) (*CnameMap, error)
+	SetCnameByKey(context.Context, *CnameMap) (*OperationResponse, error)
+	DelAllCname(context.Context, *CnameMap) (*OperationResponse, error)
 	DelCnameByKey(context.Context, *StringValue) (*OperationResponse, error)
 	mustEmbedUnimplementedCnameManagerServer()
 }
@@ -76,8 +98,14 @@ type UnimplementedCnameManagerServer struct {
 func (UnimplementedCnameManagerServer) GetCnameByKey(context.Context, *StringValue) (*StringValue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCnameByKey not implemented")
 }
-func (UnimplementedCnameManagerServer) SetCnameByKey(context.Context, *StringValue) (*OperationResponse, error) {
+func (UnimplementedCnameManagerServer) GetAllCname(context.Context, *Empty) (*CnameMap, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllCname not implemented")
+}
+func (UnimplementedCnameManagerServer) SetCnameByKey(context.Context, *CnameMap) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetCnameByKey not implemented")
+}
+func (UnimplementedCnameManagerServer) DelAllCname(context.Context, *CnameMap) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DelAllCname not implemented")
 }
 func (UnimplementedCnameManagerServer) DelCnameByKey(context.Context, *StringValue) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DelCnameByKey not implemented")
@@ -113,8 +141,26 @@ func _CnameManager_GetCnameByKey_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CnameManager_GetAllCname_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CnameManagerServer).GetAllCname(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.CnameManager/GetAllCname",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CnameManagerServer).GetAllCname(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CnameManager_SetCnameByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StringValue)
+	in := new(CnameMap)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -126,7 +172,25 @@ func _CnameManager_SetCnameByKey_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/pb.CnameManager/SetCnameByKey",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CnameManagerServer).SetCnameByKey(ctx, req.(*StringValue))
+		return srv.(CnameManagerServer).SetCnameByKey(ctx, req.(*CnameMap))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CnameManager_DelAllCname_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CnameMap)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CnameManagerServer).DelAllCname(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.CnameManager/DelAllCname",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CnameManagerServer).DelAllCname(ctx, req.(*CnameMap))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -158,8 +222,16 @@ var _CnameManager_serviceDesc = grpc.ServiceDesc{
 			Handler:    _CnameManager_GetCnameByKey_Handler,
 		},
 		{
+			MethodName: "GetAllCname",
+			Handler:    _CnameManager_GetAllCname_Handler,
+		},
+		{
 			MethodName: "SetCnameByKey",
 			Handler:    _CnameManager_SetCnameByKey_Handler,
+		},
+		{
+			MethodName: "DelAllCname",
+			Handler:    _CnameManager_DelAllCname_Handler,
 		},
 		{
 			MethodName: "DelCnameByKey",

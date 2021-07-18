@@ -8,12 +8,12 @@ package pb;
 service ConfigManager {
 //    用户配置
 //    普通配置一次性操作多个
-    rpc GetAllUserConfig (Empty) returns (UserConfigMap) {}
-    rpc SetAllUserConfig (UserConfigMap) returns (OperationResponse) {}
-    rpc DelAllUserConfig (UserConfigMap) returns (OperationResponse) {}
-//    StringValue一次性操作一个
     rpc GetUserConfigByKey (StringValue) returns (StringValue) {}
-    rpc SetUserConfigByKey (StringValue) returns (OperationResponse) {}
+    rpc GetAllUserConfig (Empty) returns (UserConfigMap) {}
+
+    rpc SetAllUserConfig (UserConfigMap) returns (OperationResponse) {}
+
+    rpc DelAllUserConfig (UserConfigMap) returns (OperationResponse) {}
     rpc DelUserConfigByKey (StringValue) returns (OperationResponse) {}
 }
 

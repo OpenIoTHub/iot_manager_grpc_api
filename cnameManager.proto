@@ -8,6 +8,14 @@ package pb;
 service CnameManager {
 //    Cname
     rpc GetCnameByKey (StringValue) returns (StringValue) {}
-    rpc SetCnameByKey (StringValue) returns (OperationResponse) {}
+    rpc GetAllCname (Empty) returns (CnameMap) {}
+
+    rpc SetCnameByKey (CnameMap) returns (OperationResponse) {}
+
+    rpc DelAllCname (CnameMap) returns (OperationResponse) {}
     rpc DelCnameByKey (StringValue) returns (OperationResponse) {}
+}
+
+message CnameMap{
+    map<string,string> config = 1;
 }

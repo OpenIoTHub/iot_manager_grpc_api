@@ -19,12 +19,10 @@ const _ = grpc.SupportPackageIsVersion7
 type ConfigManagerClient interface {
 	//    用户配置
 	//    普通配置一次性操作多个
+	GetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
 	GetAllUserConfig(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserConfigMap, error)
 	SetAllUserConfig(ctx context.Context, in *UserConfigMap, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelAllUserConfig(ctx context.Context, in *UserConfigMap, opts ...grpc.CallOption) (*OperationResponse, error)
-	//    StringValue一次性操作一个
-	GetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
-	SetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
@@ -34,6 +32,15 @@ type configManagerClient struct {
 
 func NewConfigManagerClient(cc grpc.ClientConnInterface) ConfigManagerClient {
 	return &configManagerClient{cc}
+}
+
+func (c *configManagerClient) GetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error) {
+	out := new(StringValue)
+	err := c.cc.Invoke(ctx, "/pb.ConfigManager/GetUserConfigByKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *configManagerClient) GetAllUserConfig(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserConfigMap, error) {
@@ -63,24 +70,6 @@ func (c *configManagerClient) DelAllUserConfig(ctx context.Context, in *UserConf
 	return out, nil
 }
 
-func (c *configManagerClient) GetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error) {
-	out := new(StringValue)
-	err := c.cc.Invoke(ctx, "/pb.ConfigManager/GetUserConfigByKey", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *configManagerClient) SetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
-	out := new(OperationResponse)
-	err := c.cc.Invoke(ctx, "/pb.ConfigManager/SetUserConfigByKey", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *configManagerClient) DelUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
 	err := c.cc.Invoke(ctx, "/pb.ConfigManager/DelUserConfigByKey", in, out, opts...)
@@ -96,12 +85,10 @@ func (c *configManagerClient) DelUserConfigByKey(ctx context.Context, in *String
 type ConfigManagerServer interface {
 	//    用户配置
 	//    普通配置一次性操作多个
+	GetUserConfigByKey(context.Context, *StringValue) (*StringValue, error)
 	GetAllUserConfig(context.Context, *Empty) (*UserConfigMap, error)
 	SetAllUserConfig(context.Context, *UserConfigMap) (*OperationResponse, error)
 	DelAllUserConfig(context.Context, *UserConfigMap) (*OperationResponse, error)
-	//    StringValue一次性操作一个
-	GetUserConfigByKey(context.Context, *StringValue) (*StringValue, error)
-	SetUserConfigByKey(context.Context, *StringValue) (*OperationResponse, error)
 	DelUserConfigByKey(context.Context, *StringValue) (*OperationResponse, error)
 	mustEmbedUnimplementedConfigManagerServer()
 }
@@ -110,6 +97,9 @@ type ConfigManagerServer interface {
 type UnimplementedConfigManagerServer struct {
 }
 
+func (UnimplementedConfigManagerServer) GetUserConfigByKey(context.Context, *StringValue) (*StringValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserConfigByKey not implemented")
+}
 func (UnimplementedConfigManagerServer) GetAllUserConfig(context.Context, *Empty) (*UserConfigMap, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllUserConfig not implemented")
 }
@@ -118,12 +108,6 @@ func (UnimplementedConfigManagerServer) SetAllUserConfig(context.Context, *UserC
 }
 func (UnimplementedConfigManagerServer) DelAllUserConfig(context.Context, *UserConfigMap) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DelAllUserConfig not implemented")
-}
-func (UnimplementedConfigManagerServer) GetUserConfigByKey(context.Context, *StringValue) (*StringValue, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserConfigByKey not implemented")
-}
-func (UnimplementedConfigManagerServer) SetUserConfigByKey(context.Context, *StringValue) (*OperationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetUserConfigByKey not implemented")
 }
 func (UnimplementedConfigManagerServer) DelUserConfigByKey(context.Context, *StringValue) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DelUserConfigByKey not implemented")
@@ -139,6 +123,24 @@ type UnsafeConfigManagerServer interface {
 
 func RegisterConfigManagerServer(s grpc.ServiceRegistrar, srv ConfigManagerServer) {
 	s.RegisterService(&_ConfigManager_serviceDesc, srv)
+}
+
+func _ConfigManager_GetUserConfigByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigManagerServer).GetUserConfigByKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.ConfigManager/GetUserConfigByKey",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigManagerServer).GetUserConfigByKey(ctx, req.(*StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ConfigManager_GetAllUserConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -195,42 +197,6 @@ func _ConfigManager_DelAllUserConfig_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ConfigManager_GetUserConfigByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ConfigManagerServer).GetUserConfigByKey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/pb.ConfigManager/GetUserConfigByKey",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConfigManagerServer).GetUserConfigByKey(ctx, req.(*StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ConfigManager_SetUserConfigByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StringValue)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ConfigManagerServer).SetUserConfigByKey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/pb.ConfigManager/SetUserConfigByKey",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConfigManagerServer).SetUserConfigByKey(ctx, req.(*StringValue))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _ConfigManager_DelUserConfigByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StringValue)
 	if err := dec(in); err != nil {
@@ -254,6 +220,10 @@ var _ConfigManager_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*ConfigManagerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "GetUserConfigByKey",
+			Handler:    _ConfigManager_GetUserConfigByKey_Handler,
+		},
+		{
 			MethodName: "GetAllUserConfig",
 			Handler:    _ConfigManager_GetAllUserConfig_Handler,
 		},
@@ -264,14 +234,6 @@ var _ConfigManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DelAllUserConfig",
 			Handler:    _ConfigManager_DelAllUserConfig_Handler,
-		},
-		{
-			MethodName: "GetUserConfigByKey",
-			Handler:    _ConfigManager_GetUserConfigByKey_Handler,
-		},
-		{
-			MethodName: "SetUserConfigByKey",
-			Handler:    _ConfigManager_SetUserConfigByKey_Handler,
 		},
 		{
 			MethodName: "DelUserConfigByKey",
