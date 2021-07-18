@@ -22,22 +22,6 @@ const MqttDeviceInfoList$json = const {
   ],
 };
 
-const MqttDeviceModel$json = const {
-  '1': 'MqttDeviceModel',
-  '2': const [
-    const {'1': 'Name', '3': 1, '4': 1, '5': 9, '10': 'Name'},
-    const {'1': 'Description', '3': 2, '4': 1, '5': 9, '10': 'Description'},
-    const {'1': 'Model', '3': 3, '4': 1, '5': 9, '10': 'Model'},
-  ],
-};
-
-const MqttDeviceModelList$json = const {
-  '1': 'MqttDeviceModelList',
-  '2': const [
-    const {'1': 'MqttDeviceModelsList', '3': 1, '4': 3, '5': 11, '6': '.pb.MqttDeviceModel', '10': 'MqttDeviceModelsList'},
-  ],
-};
-
 const MqttInfo$json = const {
   '1': 'MqttInfo',
   '2': const [

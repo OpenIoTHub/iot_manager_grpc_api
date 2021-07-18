@@ -17,10 +17,13 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CnameManagerClient interface {
-	//    Cname
+	//    用户别名
+	//    普通配置一次性操作多个
 	GetCnameByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
 	GetAllCname(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CnameMap, error)
+	//    创建或者更新
 	SetCnameByKey(ctx context.Context, in *CnameMap, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    删除
 	DelAllCname(ctx context.Context, in *CnameMap, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelCnameByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 }
@@ -82,10 +85,13 @@ func (c *cnameManagerClient) DelCnameByKey(ctx context.Context, in *StringValue,
 // All implementations must embed UnimplementedCnameManagerServer
 // for forward compatibility
 type CnameManagerServer interface {
-	//    Cname
+	//    用户别名
+	//    普通配置一次性操作多个
 	GetCnameByKey(context.Context, *StringValue) (*StringValue, error)
 	GetAllCname(context.Context, *Empty) (*CnameMap, error)
+	//    创建或者更新
 	SetCnameByKey(context.Context, *CnameMap) (*OperationResponse, error)
+	//    删除
 	DelAllCname(context.Context, *CnameMap) (*OperationResponse, error)
 	DelCnameByKey(context.Context, *StringValue) (*OperationResponse, error)
 	mustEmbedUnimplementedCnameManagerServer()

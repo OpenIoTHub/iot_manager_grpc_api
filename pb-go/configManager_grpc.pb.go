@@ -21,7 +21,9 @@ type ConfigManagerClient interface {
 	//    普通配置一次性操作多个
 	GetUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
 	GetAllUserConfig(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserConfigMap, error)
-	SetAllUserConfig(ctx context.Context, in *UserConfigMap, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    创建或者更新
+	SetUserConfigByKey(ctx context.Context, in *UserConfigMap, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    删除
 	DelAllUserConfig(ctx context.Context, in *UserConfigMap, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelUserConfigByKey(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*OperationResponse, error)
 }
@@ -52,9 +54,9 @@ func (c *configManagerClient) GetAllUserConfig(ctx context.Context, in *Empty, o
 	return out, nil
 }
 
-func (c *configManagerClient) SetAllUserConfig(ctx context.Context, in *UserConfigMap, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *configManagerClient) SetUserConfigByKey(ctx context.Context, in *UserConfigMap, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
-	err := c.cc.Invoke(ctx, "/pb.ConfigManager/SetAllUserConfig", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.ConfigManager/SetUserConfigByKey", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,7 +89,9 @@ type ConfigManagerServer interface {
 	//    普通配置一次性操作多个
 	GetUserConfigByKey(context.Context, *StringValue) (*StringValue, error)
 	GetAllUserConfig(context.Context, *Empty) (*UserConfigMap, error)
-	SetAllUserConfig(context.Context, *UserConfigMap) (*OperationResponse, error)
+	//    创建或者更新
+	SetUserConfigByKey(context.Context, *UserConfigMap) (*OperationResponse, error)
+	//    删除
 	DelAllUserConfig(context.Context, *UserConfigMap) (*OperationResponse, error)
 	DelUserConfigByKey(context.Context, *StringValue) (*OperationResponse, error)
 	mustEmbedUnimplementedConfigManagerServer()
@@ -103,8 +107,8 @@ func (UnimplementedConfigManagerServer) GetUserConfigByKey(context.Context, *Str
 func (UnimplementedConfigManagerServer) GetAllUserConfig(context.Context, *Empty) (*UserConfigMap, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllUserConfig not implemented")
 }
-func (UnimplementedConfigManagerServer) SetAllUserConfig(context.Context, *UserConfigMap) (*OperationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetAllUserConfig not implemented")
+func (UnimplementedConfigManagerServer) SetUserConfigByKey(context.Context, *UserConfigMap) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetUserConfigByKey not implemented")
 }
 func (UnimplementedConfigManagerServer) DelAllUserConfig(context.Context, *UserConfigMap) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DelAllUserConfig not implemented")
@@ -161,20 +165,20 @@ func _ConfigManager_GetAllUserConfig_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ConfigManager_SetAllUserConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ConfigManager_SetUserConfigByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UserConfigMap)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ConfigManagerServer).SetAllUserConfig(ctx, in)
+		return srv.(ConfigManagerServer).SetUserConfigByKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.ConfigManager/SetAllUserConfig",
+		FullMethod: "/pb.ConfigManager/SetUserConfigByKey",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConfigManagerServer).SetAllUserConfig(ctx, req.(*UserConfigMap))
+		return srv.(ConfigManagerServer).SetUserConfigByKey(ctx, req.(*UserConfigMap))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -228,8 +232,8 @@ var _ConfigManager_serviceDesc = grpc.ServiceDesc{
 			Handler:    _ConfigManager_GetAllUserConfig_Handler,
 		},
 		{
-			MethodName: "SetAllUserConfig",
-			Handler:    _ConfigManager_SetAllUserConfig_Handler,
+			MethodName: "SetUserConfigByKey",
+			Handler:    _ConfigManager_SetUserConfigByKey_Handler,
 		},
 		{
 			MethodName: "DelAllUserConfig",

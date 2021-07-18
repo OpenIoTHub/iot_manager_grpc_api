@@ -29,16 +29,6 @@ message MqttDeviceInfoList{
     repeated MqttDeviceInfo MqttDeviceInfoList = 1;
 }
 
-message MqttDeviceModel{
-    string Name = 1;
-    string Description = 2;
-    string Model = 3;
-}
-
-message MqttDeviceModelList{
-    repeated MqttDeviceModel MqttDeviceModelsList = 1;
-}
-
 message MqttInfo{
     //    String ip;
     string MqttServerHost = 1;

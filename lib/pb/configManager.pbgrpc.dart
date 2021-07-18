@@ -25,9 +25,9 @@ class ConfigManagerClient extends $grpc.Client {
           '/pb.ConfigManager/GetAllUserConfig',
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.UserConfigMap.fromBuffer(value));
-  static final _$setAllUserConfig =
+  static final _$setUserConfigByKey =
       $grpc.ClientMethod<$2.UserConfigMap, $0.OperationResponse>(
-          '/pb.ConfigManager/SetAllUserConfig',
+          '/pb.ConfigManager/SetUserConfigByKey',
           ($2.UserConfigMap value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
@@ -64,11 +64,11 @@ class ConfigManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$0.OperationResponse> setAllUserConfig(
+  $grpc.ResponseFuture<$0.OperationResponse> setUserConfigByKey(
       $2.UserConfigMap request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
-        _$setAllUserConfig, $async.Stream.fromIterable([request]),
+        _$setUserConfigByKey, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -111,8 +111,8 @@ abstract class ConfigManagerServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($2.UserConfigMap value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.UserConfigMap, $0.OperationResponse>(
-        'SetAllUserConfig',
-        setAllUserConfig_Pre,
+        'SetUserConfigByKey',
+        setUserConfigByKey_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $2.UserConfigMap.fromBuffer(value),
@@ -143,9 +143,9 @@ abstract class ConfigManagerServiceBase extends $grpc.Service {
     return getAllUserConfig(call, await request);
   }
 
-  $async.Future<$0.OperationResponse> setAllUserConfig_Pre(
+  $async.Future<$0.OperationResponse> setUserConfigByKey_Pre(
       $grpc.ServiceCall call, $async.Future<$2.UserConfigMap> request) async {
-    return setAllUserConfig(call, await request);
+    return setUserConfigByKey(call, await request);
   }
 
   $async.Future<$0.OperationResponse> delAllUserConfig_Pre(
@@ -162,7 +162,7 @@ abstract class ConfigManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.StringValue request);
   $async.Future<$2.UserConfigMap> getAllUserConfig(
       $grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$0.OperationResponse> setAllUserConfig(
+  $async.Future<$0.OperationResponse> setUserConfigByKey(
       $grpc.ServiceCall call, $2.UserConfigMap request);
   $async.Future<$0.OperationResponse> delAllUserConfig(
       $grpc.ServiceCall call, $2.UserConfigMap request);
