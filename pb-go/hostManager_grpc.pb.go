@@ -19,7 +19,8 @@ const _ = grpc.SupportPackageIsVersion7
 type HostManagerClient interface {
 	//    Host
 	GetAllHosts(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*HostInfoList, error)
-	AddOrUpdateHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	AddHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	UpdateHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
@@ -40,9 +41,18 @@ func (c *hostManagerClient) GetAllHosts(ctx context.Context, in *Empty, opts ...
 	return out, nil
 }
 
-func (c *hostManagerClient) AddOrUpdateHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *hostManagerClient) AddHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
-	err := c.cc.Invoke(ctx, "/pb.HostManager/AddOrUpdateHost", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.HostManager/AddHost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hostManagerClient) UpdateHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.HostManager/UpdateHost", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +74,8 @@ func (c *hostManagerClient) DelHost(ctx context.Context, in *HostInfo, opts ...g
 type HostManagerServer interface {
 	//    Host
 	GetAllHosts(context.Context, *Empty) (*HostInfoList, error)
-	AddOrUpdateHost(context.Context, *HostInfo) (*OperationResponse, error)
+	AddHost(context.Context, *HostInfo) (*OperationResponse, error)
+	UpdateHost(context.Context, *HostInfo) (*OperationResponse, error)
 	DelHost(context.Context, *HostInfo) (*OperationResponse, error)
 	mustEmbedUnimplementedHostManagerServer()
 }
@@ -76,8 +87,11 @@ type UnimplementedHostManagerServer struct {
 func (UnimplementedHostManagerServer) GetAllHosts(context.Context, *Empty) (*HostInfoList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllHosts not implemented")
 }
-func (UnimplementedHostManagerServer) AddOrUpdateHost(context.Context, *HostInfo) (*OperationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddOrUpdateHost not implemented")
+func (UnimplementedHostManagerServer) AddHost(context.Context, *HostInfo) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddHost not implemented")
+}
+func (UnimplementedHostManagerServer) UpdateHost(context.Context, *HostInfo) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateHost not implemented")
 }
 func (UnimplementedHostManagerServer) DelHost(context.Context, *HostInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DelHost not implemented")
@@ -113,20 +127,38 @@ func _HostManager_GetAllHosts_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _HostManager_AddOrUpdateHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _HostManager_AddHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HostInfo)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HostManagerServer).AddOrUpdateHost(ctx, in)
+		return srv.(HostManagerServer).AddHost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.HostManager/AddOrUpdateHost",
+		FullMethod: "/pb.HostManager/AddHost",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostManagerServer).AddOrUpdateHost(ctx, req.(*HostInfo))
+		return srv.(HostManagerServer).AddHost(ctx, req.(*HostInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostManager_UpdateHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HostInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostManagerServer).UpdateHost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.HostManager/UpdateHost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostManagerServer).UpdateHost(ctx, req.(*HostInfo))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -158,8 +190,12 @@ var _HostManager_serviceDesc = grpc.ServiceDesc{
 			Handler:    _HostManager_GetAllHosts_Handler,
 		},
 		{
-			MethodName: "AddOrUpdateHost",
-			Handler:    _HostManager_AddOrUpdateHost_Handler,
+			MethodName: "AddHost",
+			Handler:    _HostManager_AddHost_Handler,
+		},
+		{
+			MethodName: "UpdateHost",
+			Handler:    _HostManager_UpdateHost_Handler,
 		},
 		{
 			MethodName: "DelHost",

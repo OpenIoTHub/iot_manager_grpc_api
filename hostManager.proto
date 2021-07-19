@@ -8,7 +8,8 @@ package pb;
 service HostManager {
 //    Host
     rpc GetAllHosts (Empty) returns (HostInfoList) {}
-    rpc AddOrUpdateHost (HostInfo) returns (OperationResponse) {}
+    rpc AddHost (HostInfo) returns (OperationResponse) {}
+    rpc UpdateHost (HostInfo) returns (OperationResponse) {}
     rpc DelHost (HostInfo) returns (OperationResponse) {}
 }
 

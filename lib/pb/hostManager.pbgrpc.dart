@@ -19,9 +19,15 @@ class HostManagerClient extends $grpc.Client {
       '/pb.HostManager/GetAllHosts',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.HostInfoList.fromBuffer(value));
-  static final _$addOrUpdateHost =
+  static final _$addHost =
       $grpc.ClientMethod<$4.HostInfo, $0.OperationResponse>(
-          '/pb.HostManager/AddOrUpdateHost',
+          '/pb.HostManager/AddHost',
+          ($4.HostInfo value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.OperationResponse.fromBuffer(value));
+  static final _$updateHost =
+      $grpc.ClientMethod<$4.HostInfo, $0.OperationResponse>(
+          '/pb.HostManager/UpdateHost',
           ($4.HostInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
@@ -43,11 +49,17 @@ class HostManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$0.OperationResponse> addOrUpdateHost(
-      $4.HostInfo request,
+  $grpc.ResponseFuture<$0.OperationResponse> addHost($4.HostInfo request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$addHost, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.OperationResponse> updateHost($4.HostInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
-        _$addOrUpdateHost, $async.Stream.fromIterable([request]),
+        _$updateHost, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -72,8 +84,15 @@ abstract class HostManagerServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($4.HostInfoList value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.HostInfo, $0.OperationResponse>(
-        'AddOrUpdateHost',
-        addOrUpdateHost_Pre,
+        'AddHost',
+        addHost_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.HostInfo.fromBuffer(value),
+        ($0.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.HostInfo, $0.OperationResponse>(
+        'UpdateHost',
+        updateHost_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $4.HostInfo.fromBuffer(value),
@@ -92,9 +111,14 @@ abstract class HostManagerServiceBase extends $grpc.Service {
     return getAllHosts(call, await request);
   }
 
-  $async.Future<$0.OperationResponse> addOrUpdateHost_Pre(
+  $async.Future<$0.OperationResponse> addHost_Pre(
       $grpc.ServiceCall call, $async.Future<$4.HostInfo> request) async {
-    return addOrUpdateHost(call, await request);
+    return addHost(call, await request);
+  }
+
+  $async.Future<$0.OperationResponse> updateHost_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.HostInfo> request) async {
+    return updateHost(call, await request);
   }
 
   $async.Future<$0.OperationResponse> delHost_Pre(
@@ -104,7 +128,9 @@ abstract class HostManagerServiceBase extends $grpc.Service {
 
   $async.Future<$4.HostInfoList> getAllHosts(
       $grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$0.OperationResponse> addOrUpdateHost(
+  $async.Future<$0.OperationResponse> addHost(
+      $grpc.ServiceCall call, $4.HostInfo request);
+  $async.Future<$0.OperationResponse> updateHost(
       $grpc.ServiceCall call, $4.HostInfo request);
   $async.Future<$0.OperationResponse> delHost(
       $grpc.ServiceCall call, $4.HostInfo request);
