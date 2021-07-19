@@ -24,4 +24,5 @@ message HostInfo{
     string Description = 3;
     string HostAddr = 4;
     string GatewayUUID = 5;
+    string Mac = 6;
 }

@@ -41,6 +41,7 @@ class HostInfo extends $pb.GeneratedMessage {
     ..aOS(3, 'Description', protoName: 'Description')
     ..aOS(4, 'HostAddr', protoName: 'HostAddr')
     ..aOS(5, 'GatewayUUID', protoName: 'GatewayUUID')
+    ..aOS(6, 'Mac', protoName: 'Mac')
     ..hasRequiredFields = false
   ;
 
@@ -103,5 +104,14 @@ class HostInfo extends $pb.GeneratedMessage {
   $core.bool hasGatewayUUID() => $_has(4);
   @$pb.TagNumber(5)
   void clearGatewayUUID() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get mac => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set mac($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasMac() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearMac() => clearField(6);
 }
 

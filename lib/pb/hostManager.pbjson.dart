@@ -20,6 +20,7 @@ const HostInfo$json = const {
     const {'1': 'Description', '3': 3, '4': 1, '5': 9, '10': 'Description'},
     const {'1': 'HostAddr', '3': 4, '4': 1, '5': 9, '10': 'HostAddr'},
     const {'1': 'GatewayUUID', '3': 5, '4': 1, '5': 9, '10': 'GatewayUUID'},
+    const {'1': 'Mac', '3': 6, '4': 1, '5': 9, '10': 'Mac'},
   ],
 };
 
