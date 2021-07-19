@@ -19,9 +19,15 @@ class PortManagerClient extends $grpc.Client {
       '/pb.PortManager/GetAllPorts',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $6.PortInfoList.fromBuffer(value));
-  static final _$addOrUpdatePort =
+  static final _$addPort =
       $grpc.ClientMethod<$6.PortInfo, $0.OperationResponse>(
-          '/pb.PortManager/AddOrUpdatePort',
+          '/pb.PortManager/AddPort',
+          ($6.PortInfo value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.OperationResponse.fromBuffer(value));
+  static final _$updatePort =
+      $grpc.ClientMethod<$6.PortInfo, $0.OperationResponse>(
+          '/pb.PortManager/UpdatePort',
           ($6.PortInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
@@ -43,11 +49,17 @@ class PortManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$0.OperationResponse> addOrUpdatePort(
-      $6.PortInfo request,
+  $grpc.ResponseFuture<$0.OperationResponse> addPort($6.PortInfo request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$addPort, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.OperationResponse> updatePort($6.PortInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
-        _$addOrUpdatePort, $async.Stream.fromIterable([request]),
+        _$updatePort, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -72,8 +84,15 @@ abstract class PortManagerServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($6.PortInfoList value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$6.PortInfo, $0.OperationResponse>(
-        'AddOrUpdatePort',
-        addOrUpdatePort_Pre,
+        'AddPort',
+        addPort_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $6.PortInfo.fromBuffer(value),
+        ($0.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.PortInfo, $0.OperationResponse>(
+        'UpdatePort',
+        updatePort_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $6.PortInfo.fromBuffer(value),
@@ -92,9 +111,14 @@ abstract class PortManagerServiceBase extends $grpc.Service {
     return getAllPorts(call, await request);
   }
 
-  $async.Future<$0.OperationResponse> addOrUpdatePort_Pre(
+  $async.Future<$0.OperationResponse> addPort_Pre(
       $grpc.ServiceCall call, $async.Future<$6.PortInfo> request) async {
-    return addOrUpdatePort(call, await request);
+    return addPort(call, await request);
+  }
+
+  $async.Future<$0.OperationResponse> updatePort_Pre(
+      $grpc.ServiceCall call, $async.Future<$6.PortInfo> request) async {
+    return updatePort(call, await request);
   }
 
   $async.Future<$0.OperationResponse> delPort_Pre(
@@ -104,7 +128,9 @@ abstract class PortManagerServiceBase extends $grpc.Service {
 
   $async.Future<$6.PortInfoList> getAllPorts(
       $grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$0.OperationResponse> addOrUpdatePort(
+  $async.Future<$0.OperationResponse> addPort(
+      $grpc.ServiceCall call, $6.PortInfo request);
+  $async.Future<$0.OperationResponse> updatePort(
       $grpc.ServiceCall call, $6.PortInfo request);
   $async.Future<$0.OperationResponse> delPort(
       $grpc.ServiceCall call, $6.PortInfo request);

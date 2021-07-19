@@ -19,7 +19,8 @@ const _ = grpc.SupportPackageIsVersion7
 type PortManagerClient interface {
 	//    Port
 	GetAllPorts(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*PortInfoList, error)
-	AddOrUpdatePort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	AddPort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	UpdatePort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelPort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
@@ -40,9 +41,18 @@ func (c *portManagerClient) GetAllPorts(ctx context.Context, in *Empty, opts ...
 	return out, nil
 }
 
-func (c *portManagerClient) AddOrUpdatePort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
+func (c *portManagerClient) AddPort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
 	out := new(OperationResponse)
-	err := c.cc.Invoke(ctx, "/pb.PortManager/AddOrUpdatePort", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.PortManager/AddPort", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *portManagerClient) UpdatePort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.PortManager/UpdatePort", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +74,8 @@ func (c *portManagerClient) DelPort(ctx context.Context, in *PortInfo, opts ...g
 type PortManagerServer interface {
 	//    Port
 	GetAllPorts(context.Context, *Empty) (*PortInfoList, error)
-	AddOrUpdatePort(context.Context, *PortInfo) (*OperationResponse, error)
+	AddPort(context.Context, *PortInfo) (*OperationResponse, error)
+	UpdatePort(context.Context, *PortInfo) (*OperationResponse, error)
 	DelPort(context.Context, *PortInfo) (*OperationResponse, error)
 	mustEmbedUnimplementedPortManagerServer()
 }
@@ -76,8 +87,11 @@ type UnimplementedPortManagerServer struct {
 func (UnimplementedPortManagerServer) GetAllPorts(context.Context, *Empty) (*PortInfoList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllPorts not implemented")
 }
-func (UnimplementedPortManagerServer) AddOrUpdatePort(context.Context, *PortInfo) (*OperationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddOrUpdatePort not implemented")
+func (UnimplementedPortManagerServer) AddPort(context.Context, *PortInfo) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddPort not implemented")
+}
+func (UnimplementedPortManagerServer) UpdatePort(context.Context, *PortInfo) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePort not implemented")
 }
 func (UnimplementedPortManagerServer) DelPort(context.Context, *PortInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DelPort not implemented")
@@ -113,20 +127,38 @@ func _PortManager_GetAllPorts_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PortManager_AddOrUpdatePort_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _PortManager_AddPort_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PortInfo)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PortManagerServer).AddOrUpdatePort(ctx, in)
+		return srv.(PortManagerServer).AddPort(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.PortManager/AddOrUpdatePort",
+		FullMethod: "/pb.PortManager/AddPort",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PortManagerServer).AddOrUpdatePort(ctx, req.(*PortInfo))
+		return srv.(PortManagerServer).AddPort(ctx, req.(*PortInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PortManager_UpdatePort_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PortInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PortManagerServer).UpdatePort(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.PortManager/UpdatePort",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PortManagerServer).UpdatePort(ctx, req.(*PortInfo))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -158,8 +190,12 @@ var _PortManager_serviceDesc = grpc.ServiceDesc{
 			Handler:    _PortManager_GetAllPorts_Handler,
 		},
 		{
-			MethodName: "AddOrUpdatePort",
-			Handler:    _PortManager_AddOrUpdatePort_Handler,
+			MethodName: "AddPort",
+			Handler:    _PortManager_AddPort_Handler,
+		},
+		{
+			MethodName: "UpdatePort",
+			Handler:    _PortManager_UpdatePort_Handler,
 		},
 		{
 			MethodName: "DelPort",

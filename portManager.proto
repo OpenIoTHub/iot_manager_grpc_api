@@ -8,7 +8,8 @@ package pb;
 service PortManager {
 //    Port
     rpc GetAllPorts (Empty) returns (PortInfoList) {}
-    rpc AddOrUpdatePort (PortInfo) returns (OperationResponse) {}
+    rpc AddPort (PortInfo) returns (OperationResponse) {}
+    rpc UpdatePort (PortInfo) returns (OperationResponse) {}
     rpc DelPort (PortInfo) returns (OperationResponse) {}
 }
 
