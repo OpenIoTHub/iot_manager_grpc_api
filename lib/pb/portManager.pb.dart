@@ -7,7 +7,6 @@
 
 import 'dart:core' as $core;
 
-import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class PortInfoList extends $pb.GeneratedMessage {
@@ -46,7 +45,7 @@ class PortInfo extends $pb.GeneratedMessage {
     ..aOB(7, 'BindAllAddr', protoName: 'BindAllAddr')
     ..aOS(8, 'NetworkProtocol', protoName: 'NetworkProtocol')
     ..aOS(9, 'ApplicationProtocol', protoName: 'ApplicationProtocol')
-    ..aInt64(10, 'HostUUID', protoName: 'HostUUID')
+    ..aOS(10, 'HostUUID', protoName: 'HostUUID')
     ..hasRequiredFields = false
   ;
 
@@ -147,9 +146,9 @@ class PortInfo extends $pb.GeneratedMessage {
   void clearApplicationProtocol() => clearField(9);
 
   @$pb.TagNumber(10)
-  $fixnum.Int64 get hostUUID => $_getI64(9);
+  $core.String get hostUUID => $_getSZ(9);
   @$pb.TagNumber(10)
-  set hostUUID($fixnum.Int64 v) { $_setInt64(9, v); }
+  set hostUUID($core.String v) { $_setString(9, v); }
   @$pb.TagNumber(10)
   $core.bool hasHostUUID() => $_has(9);
   @$pb.TagNumber(10)

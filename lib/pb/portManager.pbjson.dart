@@ -24,7 +24,7 @@ const PortInfo$json = const {
     const {'1': 'BindAllAddr', '3': 7, '4': 1, '5': 8, '10': 'BindAllAddr'},
     const {'1': 'NetworkProtocol', '3': 8, '4': 1, '5': 9, '10': 'NetworkProtocol'},
     const {'1': 'ApplicationProtocol', '3': 9, '4': 1, '5': 9, '10': 'ApplicationProtocol'},
-    const {'1': 'HostUUID', '3': 10, '4': 1, '5': 3, '10': 'HostUUID'},
+    const {'1': 'HostUUID', '3': 10, '4': 1, '5': 9, '10': 'HostUUID'},
   ],
 };
 

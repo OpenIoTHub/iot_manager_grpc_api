@@ -28,5 +28,5 @@ message PortInfo{
     bool BindAllAddr = 7;
     string NetworkProtocol = 8;
     string ApplicationProtocol = 9;
-    int64 HostUUID = 10;
+    string HostUUID = 10;
 }
