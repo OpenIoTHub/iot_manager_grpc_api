@@ -23,6 +23,7 @@ class ServerInfo extends $pb.GeneratedMessage {
     ..a<$core.int>(10, 'GrpcPort', $pb.PbFieldType.O3, protoName: 'GrpcPort')
     ..aOS(11, 'Description', protoName: 'Description')
     ..aOB(12, 'IsPublic', protoName: 'IsPublic')
+    ..aOB(13, 'IsSharedServer', protoName: 'IsSharedServer')
     ..hasRequiredFields = false
   ;
 
@@ -148,6 +149,15 @@ class ServerInfo extends $pb.GeneratedMessage {
   $core.bool hasIsPublic() => $_has(11);
   @$pb.TagNumber(12)
   void clearIsPublic() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.bool get isSharedServer => $_getBF(12);
+  @$pb.TagNumber(13)
+  set isSharedServer($core.bool v) { $_setBool(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasIsSharedServer() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearIsSharedServer() => clearField(13);
 }
 
 class ServerInfoList extends $pb.GeneratedMessage {

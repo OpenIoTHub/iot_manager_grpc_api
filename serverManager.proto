@@ -27,6 +27,8 @@ message ServerInfo{
     int32 GrpcPort = 10;
     string Description = 11;
     bool IsPublic = 12;
+
+    bool IsSharedServer = 13;
 }
 
 message ServerInfoList{

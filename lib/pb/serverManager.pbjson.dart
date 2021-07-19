@@ -20,6 +20,7 @@ const ServerInfo$json = const {
     const {'1': 'GrpcPort', '3': 10, '4': 1, '5': 5, '10': 'GrpcPort'},
     const {'1': 'Description', '3': 11, '4': 1, '5': 9, '10': 'Description'},
     const {'1': 'IsPublic', '3': 12, '4': 1, '5': 8, '10': 'IsPublic'},
+    const {'1': 'IsSharedServer', '3': 13, '4': 1, '5': 8, '10': 'IsSharedServer'},
   ],
 };
 
