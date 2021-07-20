@@ -135,10 +135,11 @@ class OperationResponse extends $pb.GeneratedMessage {
 
 class UserInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('UserInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'Name', protoName: 'Name')
-    ..aOS(2, 'Email', protoName: 'Email')
-    ..aOS(3, 'Mobile', protoName: 'Mobile')
-    ..aOS(4, 'Avatar', protoName: 'Avatar')
+    ..aOS(1, 'Uuid', protoName: 'Uuid')
+    ..aOS(2, 'Name', protoName: 'Name')
+    ..aOS(3, 'Email', protoName: 'Email')
+    ..aOS(4, 'Mobile', protoName: 'Mobile')
+    ..aOS(5, 'Avatar', protoName: 'Avatar')
     ..hasRequiredFields = false
   ;
 
@@ -158,40 +159,49 @@ class UserInfo extends $pb.GeneratedMessage {
   static UserInfo _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get name => $_getSZ(0);
+  $core.String get uuid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set name($core.String v) { $_setString(0, v); }
+  set uuid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasName() => $_has(0);
+  $core.bool hasUuid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearName() => clearField(1);
+  void clearUuid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get email => $_getSZ(1);
+  $core.String get name => $_getSZ(1);
   @$pb.TagNumber(2)
-  set email($core.String v) { $_setString(1, v); }
+  set name($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasEmail() => $_has(1);
+  $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEmail() => clearField(2);
+  void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get mobile => $_getSZ(2);
+  $core.String get email => $_getSZ(2);
   @$pb.TagNumber(3)
-  set mobile($core.String v) { $_setString(2, v); }
+  set email($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasMobile() => $_has(2);
+  $core.bool hasEmail() => $_has(2);
   @$pb.TagNumber(3)
-  void clearMobile() => clearField(3);
+  void clearEmail() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get avatar => $_getSZ(3);
+  $core.String get mobile => $_getSZ(3);
   @$pb.TagNumber(4)
-  set avatar($core.String v) { $_setString(3, v); }
+  set mobile($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasAvatar() => $_has(3);
+  $core.bool hasMobile() => $_has(3);
   @$pb.TagNumber(4)
-  void clearAvatar() => clearField(4);
+  void clearMobile() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get avatar => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set avatar($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasAvatar() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearAvatar() => clearField(5);
 }
 
 class WechatUserInfo extends $pb.GeneratedMessage {

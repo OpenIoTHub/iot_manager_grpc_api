@@ -20,10 +20,11 @@ message OperationResponse{
 }
 
 message UserInfo{
-    string Name = 1;
-    string Email = 2;
-    string Mobile = 3;
-    string Avatar = 4;
+    string Uuid = 1;
+    string Name = 2;
+    string Email = 3;
+    string Mobile = 4;
+    string Avatar = 5;
 }
 
 message WechatUserInfo{
