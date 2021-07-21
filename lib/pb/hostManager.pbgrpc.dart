@@ -37,6 +37,12 @@ class HostManagerClient extends $grpc.Client {
           ($4.HostInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
+  static final _$setDeviceMac =
+      $grpc.ClientMethod<$4.HostInfo, $0.OperationResponse>(
+          '/pb.HostManager/SetDeviceMac',
+          ($4.HostInfo value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.OperationResponse.fromBuffer(value));
 
   HostManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -67,6 +73,14 @@ class HostManagerClient extends $grpc.Client {
   $grpc.ResponseFuture<$0.OperationResponse> delHost($4.HostInfo request,
       {$grpc.CallOptions options}) {
     final call = $createCall(_$delHost, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.OperationResponse> setDeviceMac($4.HostInfo request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$setDeviceMac, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -104,6 +118,13 @@ abstract class HostManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.HostInfo.fromBuffer(value),
         ($0.OperationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.HostInfo, $0.OperationResponse>(
+        'SetDeviceMac',
+        setDeviceMac_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.HostInfo.fromBuffer(value),
+        ($0.OperationResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.HostInfoList> getAllHosts_Pre(
@@ -126,6 +147,11 @@ abstract class HostManagerServiceBase extends $grpc.Service {
     return delHost(call, await request);
   }
 
+  $async.Future<$0.OperationResponse> setDeviceMac_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.HostInfo> request) async {
+    return setDeviceMac(call, await request);
+  }
+
   $async.Future<$4.HostInfoList> getAllHosts(
       $grpc.ServiceCall call, $0.Empty request);
   $async.Future<$0.OperationResponse> addHost(
@@ -133,5 +159,7 @@ abstract class HostManagerServiceBase extends $grpc.Service {
   $async.Future<$0.OperationResponse> updateHost(
       $grpc.ServiceCall call, $4.HostInfo request);
   $async.Future<$0.OperationResponse> delHost(
+      $grpc.ServiceCall call, $4.HostInfo request);
+  $async.Future<$0.OperationResponse> setDeviceMac(
       $grpc.ServiceCall call, $4.HostInfo request);
 }

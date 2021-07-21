@@ -22,6 +22,8 @@ type HostManagerClient interface {
 	AddHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelHost(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    设置主机的MAC物理地址(用于WoL远程唤醒)
+	SetDeviceMac(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 }
 
 type hostManagerClient struct {
@@ -68,6 +70,15 @@ func (c *hostManagerClient) DelHost(ctx context.Context, in *HostInfo, opts ...g
 	return out, nil
 }
 
+func (c *hostManagerClient) SetDeviceMac(ctx context.Context, in *HostInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.HostManager/SetDeviceMac", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // HostManagerServer is the server API for HostManager service.
 // All implementations must embed UnimplementedHostManagerServer
 // for forward compatibility
@@ -77,6 +88,8 @@ type HostManagerServer interface {
 	AddHost(context.Context, *HostInfo) (*OperationResponse, error)
 	UpdateHost(context.Context, *HostInfo) (*OperationResponse, error)
 	DelHost(context.Context, *HostInfo) (*OperationResponse, error)
+	//    设置主机的MAC物理地址(用于WoL远程唤醒)
+	SetDeviceMac(context.Context, *HostInfo) (*OperationResponse, error)
 	mustEmbedUnimplementedHostManagerServer()
 }
 
@@ -95,6 +108,9 @@ func (UnimplementedHostManagerServer) UpdateHost(context.Context, *HostInfo) (*O
 }
 func (UnimplementedHostManagerServer) DelHost(context.Context, *HostInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DelHost not implemented")
+}
+func (UnimplementedHostManagerServer) SetDeviceMac(context.Context, *HostInfo) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetDeviceMac not implemented")
 }
 func (UnimplementedHostManagerServer) mustEmbedUnimplementedHostManagerServer() {}
 
@@ -181,6 +197,24 @@ func _HostManager_DelHost_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HostManager_SetDeviceMac_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HostInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostManagerServer).SetDeviceMac(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.HostManager/SetDeviceMac",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostManagerServer).SetDeviceMac(ctx, req.(*HostInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _HostManager_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.HostManager",
 	HandlerType: (*HostManagerServer)(nil),
@@ -200,6 +234,10 @@ var _HostManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DelHost",
 			Handler:    _HostManager_DelHost_Handler,
+		},
+		{
+			MethodName: "SetDeviceMac",
+			Handler:    _HostManager_SetDeviceMac_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -11,6 +11,9 @@ service HostManager {
     rpc AddHost (HostInfo) returns (OperationResponse) {}
     rpc UpdateHost (HostInfo) returns (OperationResponse) {}
     rpc DelHost (HostInfo) returns (OperationResponse) {}
+
+//    设置主机的MAC物理地址(用于WoL远程唤醒)
+    rpc SetDeviceMac (HostInfo) returns (OperationResponse) {}
 }
 
 //手动添加的局域网主机
