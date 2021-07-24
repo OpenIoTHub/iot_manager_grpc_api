@@ -24,6 +24,7 @@ type GatewayManagerClient interface {
 	QueryGateway(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*GatewayInfo, error)
 	GetAllGateway(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfoList, error)
 	GenerateOneGatewayWithDefaultServer(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfo, error)
+	GetGatewayJwtByGatewayUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
 }
 
 type gatewayManagerClient struct {
@@ -88,6 +89,15 @@ func (c *gatewayManagerClient) GenerateOneGatewayWithDefaultServer(ctx context.C
 	return out, nil
 }
 
+func (c *gatewayManagerClient) GetGatewayJwtByGatewayUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error) {
+	out := new(StringValue)
+	err := c.cc.Invoke(ctx, "/pb.GatewayManager/GetGatewayJwtByGatewayUuid", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GatewayManagerServer is the server API for GatewayManager service.
 // All implementations must embed UnimplementedGatewayManagerServer
 // for forward compatibility
@@ -99,6 +109,7 @@ type GatewayManagerServer interface {
 	QueryGateway(context.Context, *GatewayInfo) (*GatewayInfo, error)
 	GetAllGateway(context.Context, *Empty) (*GatewayInfoList, error)
 	GenerateOneGatewayWithDefaultServer(context.Context, *Empty) (*GatewayInfo, error)
+	GetGatewayJwtByGatewayUuid(context.Context, *StringValue) (*StringValue, error)
 	mustEmbedUnimplementedGatewayManagerServer()
 }
 
@@ -123,6 +134,9 @@ func (UnimplementedGatewayManagerServer) GetAllGateway(context.Context, *Empty) 
 }
 func (UnimplementedGatewayManagerServer) GenerateOneGatewayWithDefaultServer(context.Context, *Empty) (*GatewayInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateOneGatewayWithDefaultServer not implemented")
+}
+func (UnimplementedGatewayManagerServer) GetGatewayJwtByGatewayUuid(context.Context, *StringValue) (*StringValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGatewayJwtByGatewayUuid not implemented")
 }
 func (UnimplementedGatewayManagerServer) mustEmbedUnimplementedGatewayManagerServer() {}
 
@@ -245,6 +259,24 @@ func _GatewayManager_GenerateOneGatewayWithDefaultServer_Handler(srv interface{}
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GatewayManager_GetGatewayJwtByGatewayUuid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GatewayManagerServer).GetGatewayJwtByGatewayUuid(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.GatewayManager/GetGatewayJwtByGatewayUuid",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GatewayManagerServer).GetGatewayJwtByGatewayUuid(ctx, req.(*StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _GatewayManager_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.GatewayManager",
 	HandlerType: (*GatewayManagerServer)(nil),
@@ -272,6 +304,10 @@ var _GatewayManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GenerateOneGatewayWithDefaultServer",
 			Handler:    _GatewayManager_GenerateOneGatewayWithDefaultServer_Handler,
+		},
+		{
+			MethodName: "GetGatewayJwtByGatewayUuid",
+			Handler:    _GatewayManager_GetGatewayJwtByGatewayUuid_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

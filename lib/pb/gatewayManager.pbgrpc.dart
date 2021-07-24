@@ -49,6 +49,11 @@ class GatewayManagerClient extends $grpc.Client {
           '/pb.GatewayManager/GenerateOneGatewayWithDefaultServer',
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $3.GatewayInfo.fromBuffer(value));
+  static final _$getGatewayJwtByGatewayUuid =
+      $grpc.ClientMethod<$0.StringValue, $0.StringValue>(
+          '/pb.GatewayManager/GetGatewayJwtByGatewayUuid',
+          ($0.StringValue value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value));
 
   GatewayManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -102,6 +107,15 @@ class GatewayManagerClient extends $grpc.Client {
         options: options);
     return $grpc.ResponseFuture(call);
   }
+
+  $grpc.ResponseFuture<$0.StringValue> getGatewayJwtByGatewayUuid(
+      $0.StringValue request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getGatewayJwtByGatewayUuid, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
 }
 
 abstract class GatewayManagerServiceBase extends $grpc.Service {
@@ -150,6 +164,13 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($3.GatewayInfo value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.StringValue, $0.StringValue>(
+        'GetGatewayJwtByGatewayUuid',
+        getGatewayJwtByGatewayUuid_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value),
+        ($0.StringValue value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.OperationResponse> addGateway_Pre(
@@ -182,6 +203,11 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
     return generateOneGatewayWithDefaultServer(call, await request);
   }
 
+  $async.Future<$0.StringValue> getGatewayJwtByGatewayUuid_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.StringValue> request) async {
+    return getGatewayJwtByGatewayUuid(call, await request);
+  }
+
   $async.Future<$0.OperationResponse> addGateway(
       $grpc.ServiceCall call, $3.GatewayInfo request);
   $async.Future<$0.OperationResponse> delGateway(
@@ -194,4 +220,6 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.Empty request);
   $async.Future<$3.GatewayInfo> generateOneGatewayWithDefaultServer(
       $grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$0.StringValue> getGatewayJwtByGatewayUuid(
+      $grpc.ServiceCall call, $0.StringValue request);
 }
