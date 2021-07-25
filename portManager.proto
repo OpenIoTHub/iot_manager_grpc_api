@@ -11,6 +11,10 @@ service PortManager {
     rpc AddPort (PortInfo) returns (OperationResponse) {}
     rpc UpdatePort (PortInfo) returns (OperationResponse) {}
     rpc DelPort (PortInfo) returns (OperationResponse) {}
+
+//    server-go服务器查询本服务器所有端口配置的接口
+    rpc GetAllPortsByServerUuid (StringValue) returns (PortInfoList) {}
+    rpc GetAllHttpPortsByServerUuid (StringValue) returns (PortInfoList) {}
 }
 
 //手动添加的局域网主机

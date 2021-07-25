@@ -22,6 +22,9 @@ type PortManagerClient interface {
 	AddPort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdatePort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	DelPort(ctx context.Context, in *PortInfo, opts ...grpc.CallOption) (*OperationResponse, error)
+	//    server-go服务器查询本服务器所有端口配置的接口
+	GetAllPortsByServerUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*PortInfoList, error)
+	GetAllHttpPortsByServerUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*PortInfoList, error)
 }
 
 type portManagerClient struct {
@@ -68,6 +71,24 @@ func (c *portManagerClient) DelPort(ctx context.Context, in *PortInfo, opts ...g
 	return out, nil
 }
 
+func (c *portManagerClient) GetAllPortsByServerUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*PortInfoList, error) {
+	out := new(PortInfoList)
+	err := c.cc.Invoke(ctx, "/pb.PortManager/GetAllPortsByServerUuid", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *portManagerClient) GetAllHttpPortsByServerUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*PortInfoList, error) {
+	out := new(PortInfoList)
+	err := c.cc.Invoke(ctx, "/pb.PortManager/GetAllHttpPortsByServerUuid", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PortManagerServer is the server API for PortManager service.
 // All implementations must embed UnimplementedPortManagerServer
 // for forward compatibility
@@ -77,6 +98,9 @@ type PortManagerServer interface {
 	AddPort(context.Context, *PortInfo) (*OperationResponse, error)
 	UpdatePort(context.Context, *PortInfo) (*OperationResponse, error)
 	DelPort(context.Context, *PortInfo) (*OperationResponse, error)
+	//    server-go服务器查询本服务器所有端口配置的接口
+	GetAllPortsByServerUuid(context.Context, *StringValue) (*PortInfoList, error)
+	GetAllHttpPortsByServerUuid(context.Context, *StringValue) (*PortInfoList, error)
 	mustEmbedUnimplementedPortManagerServer()
 }
 
@@ -95,6 +119,12 @@ func (UnimplementedPortManagerServer) UpdatePort(context.Context, *PortInfo) (*O
 }
 func (UnimplementedPortManagerServer) DelPort(context.Context, *PortInfo) (*OperationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DelPort not implemented")
+}
+func (UnimplementedPortManagerServer) GetAllPortsByServerUuid(context.Context, *StringValue) (*PortInfoList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllPortsByServerUuid not implemented")
+}
+func (UnimplementedPortManagerServer) GetAllHttpPortsByServerUuid(context.Context, *StringValue) (*PortInfoList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllHttpPortsByServerUuid not implemented")
 }
 func (UnimplementedPortManagerServer) mustEmbedUnimplementedPortManagerServer() {}
 
@@ -181,6 +211,42 @@ func _PortManager_DelPort_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PortManager_GetAllPortsByServerUuid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PortManagerServer).GetAllPortsByServerUuid(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.PortManager/GetAllPortsByServerUuid",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PortManagerServer).GetAllPortsByServerUuid(ctx, req.(*StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PortManager_GetAllHttpPortsByServerUuid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PortManagerServer).GetAllHttpPortsByServerUuid(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.PortManager/GetAllHttpPortsByServerUuid",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PortManagerServer).GetAllHttpPortsByServerUuid(ctx, req.(*StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _PortManager_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.PortManager",
 	HandlerType: (*PortManagerServer)(nil),
@@ -200,6 +266,14 @@ var _PortManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DelPort",
 			Handler:    _PortManager_DelPort_Handler,
+		},
+		{
+			MethodName: "GetAllPortsByServerUuid",
+			Handler:    _PortManager_GetAllPortsByServerUuid_Handler,
+		},
+		{
+			MethodName: "GetAllHttpPortsByServerUuid",
+			Handler:    _PortManager_GetAllHttpPortsByServerUuid_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
