@@ -52,4 +52,5 @@ message HttpInfo{
     int32 RemotePort = 8;
     string NetworkProtocol = 9;
     string ApplicationProtocol = 10;
+    string GatewayUuid = 11;
 }

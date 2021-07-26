@@ -50,6 +50,7 @@ const HttpInfo$json = const {
     const {'1': 'RemotePort', '3': 8, '4': 1, '5': 5, '10': 'RemotePort'},
     const {'1': 'NetworkProtocol', '3': 9, '4': 1, '5': 9, '10': 'NetworkProtocol'},
     const {'1': 'ApplicationProtocol', '3': 10, '4': 1, '5': 9, '10': 'ApplicationProtocol'},
+    const {'1': 'GatewayUuid', '3': 11, '4': 1, '5': 9, '10': 'GatewayUuid'},
   ],
 };
 

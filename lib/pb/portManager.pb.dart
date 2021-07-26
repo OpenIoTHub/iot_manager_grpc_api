@@ -212,6 +212,7 @@ class HttpInfo extends $pb.GeneratedMessage {
     ..a<$core.int>(8, 'RemotePort', $pb.PbFieldType.O3, protoName: 'RemotePort')
     ..aOS(9, 'NetworkProtocol', protoName: 'NetworkProtocol')
     ..aOS(10, 'ApplicationProtocol', protoName: 'ApplicationProtocol')
+    ..aOS(11, 'GatewayUuid', protoName: 'GatewayUuid')
     ..hasRequiredFields = false
   ;
 
@@ -319,5 +320,14 @@ class HttpInfo extends $pb.GeneratedMessage {
   $core.bool hasApplicationProtocol() => $_has(9);
   @$pb.TagNumber(10)
   void clearApplicationProtocol() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.String get gatewayUuid => $_getSZ(10);
+  @$pb.TagNumber(11)
+  set gatewayUuid($core.String v) { $_setString(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasGatewayUuid() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearGatewayUuid() => clearField(11);
 }
 
