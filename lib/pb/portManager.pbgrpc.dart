@@ -37,16 +37,16 @@ class PortManagerClient extends $grpc.Client {
           ($6.PortInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
-  static final _$getAllPortsByServerUuid =
+  static final _$getAllPortInfoListByServerUuid =
       $grpc.ClientMethod<$0.Empty, $6.PortInfoList>(
-          '/pb.PortManager/GetAllPortsByServerUuid',
+          '/pb.PortManager/GetAllPortInfoListByServerUuid',
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $6.PortInfoList.fromBuffer(value));
-  static final _$getAllHttpPortsByServerUuid =
-      $grpc.ClientMethod<$0.Empty, $6.PortInfoList>(
-          '/pb.PortManager/GetAllHttpPortsByServerUuid',
+  static final _$getAllHttpInfoListByServerUuid =
+      $grpc.ClientMethod<$0.Empty, $6.HttpInfoList>(
+          '/pb.PortManager/GetAllHttpInfoListByServerUuid',
           ($0.Empty value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $6.PortInfoList.fromBuffer(value));
+          ($core.List<$core.int> value) => $6.HttpInfoList.fromBuffer(value));
 
   PortManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -81,20 +81,20 @@ class PortManagerClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$6.PortInfoList> getAllPortsByServerUuid(
+  $grpc.ResponseFuture<$6.PortInfoList> getAllPortInfoListByServerUuid(
       $0.Empty request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
-        _$getAllPortsByServerUuid, $async.Stream.fromIterable([request]),
+        _$getAllPortInfoListByServerUuid, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$6.PortInfoList> getAllHttpPortsByServerUuid(
+  $grpc.ResponseFuture<$6.HttpInfoList> getAllHttpInfoListByServerUuid(
       $0.Empty request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
-        _$getAllHttpPortsByServerUuid, $async.Stream.fromIterable([request]),
+        _$getAllHttpInfoListByServerUuid, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -133,19 +133,19 @@ abstract class PortManagerServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $6.PortInfo.fromBuffer(value),
         ($0.OperationResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Empty, $6.PortInfoList>(
-        'GetAllPortsByServerUuid',
-        getAllPortsByServerUuid_Pre,
+        'GetAllPortInfoListByServerUuid',
+        getAllPortInfoListByServerUuid_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($6.PortInfoList value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.Empty, $6.PortInfoList>(
-        'GetAllHttpPortsByServerUuid',
-        getAllHttpPortsByServerUuid_Pre,
+    $addMethod($grpc.ServiceMethod<$0.Empty, $6.HttpInfoList>(
+        'GetAllHttpInfoListByServerUuid',
+        getAllHttpInfoListByServerUuid_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
-        ($6.PortInfoList value) => value.writeToBuffer()));
+        ($6.HttpInfoList value) => value.writeToBuffer()));
   }
 
   $async.Future<$6.PortInfoList> getAllPorts_Pre(
@@ -168,14 +168,14 @@ abstract class PortManagerServiceBase extends $grpc.Service {
     return delPort(call, await request);
   }
 
-  $async.Future<$6.PortInfoList> getAllPortsByServerUuid_Pre(
+  $async.Future<$6.PortInfoList> getAllPortInfoListByServerUuid_Pre(
       $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
-    return getAllPortsByServerUuid(call, await request);
+    return getAllPortInfoListByServerUuid(call, await request);
   }
 
-  $async.Future<$6.PortInfoList> getAllHttpPortsByServerUuid_Pre(
+  $async.Future<$6.HttpInfoList> getAllHttpInfoListByServerUuid_Pre(
       $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
-    return getAllHttpPortsByServerUuid(call, await request);
+    return getAllHttpInfoListByServerUuid(call, await request);
   }
 
   $async.Future<$6.PortInfoList> getAllPorts(
@@ -186,8 +186,8 @@ abstract class PortManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $6.PortInfo request);
   $async.Future<$0.OperationResponse> delPort(
       $grpc.ServiceCall call, $6.PortInfo request);
-  $async.Future<$6.PortInfoList> getAllPortsByServerUuid(
+  $async.Future<$6.PortInfoList> getAllPortInfoListByServerUuid(
       $grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$6.PortInfoList> getAllHttpPortsByServerUuid(
+  $async.Future<$6.HttpInfoList> getAllHttpInfoListByServerUuid(
       $grpc.ServiceCall call, $0.Empty request);
 }
