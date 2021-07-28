@@ -24,6 +24,7 @@ type GatewayManagerClient interface {
 	QueryGateway(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*GatewayInfo, error)
 	GetAllGateway(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfoList, error)
 	GenerateOneGatewayWithDefaultServer(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfo, error)
+	GenerateOneGatewayWithServerUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*GatewayInfo, error)
 	GetGatewayJwtByGatewayUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
 }
 
@@ -89,6 +90,15 @@ func (c *gatewayManagerClient) GenerateOneGatewayWithDefaultServer(ctx context.C
 	return out, nil
 }
 
+func (c *gatewayManagerClient) GenerateOneGatewayWithServerUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*GatewayInfo, error) {
+	out := new(GatewayInfo)
+	err := c.cc.Invoke(ctx, "/pb.GatewayManager/GenerateOneGatewayWithServerUuid", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *gatewayManagerClient) GetGatewayJwtByGatewayUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error) {
 	out := new(StringValue)
 	err := c.cc.Invoke(ctx, "/pb.GatewayManager/GetGatewayJwtByGatewayUuid", in, out, opts...)
@@ -109,6 +119,7 @@ type GatewayManagerServer interface {
 	QueryGateway(context.Context, *GatewayInfo) (*GatewayInfo, error)
 	GetAllGateway(context.Context, *Empty) (*GatewayInfoList, error)
 	GenerateOneGatewayWithDefaultServer(context.Context, *Empty) (*GatewayInfo, error)
+	GenerateOneGatewayWithServerUuid(context.Context, *StringValue) (*GatewayInfo, error)
 	GetGatewayJwtByGatewayUuid(context.Context, *StringValue) (*StringValue, error)
 	mustEmbedUnimplementedGatewayManagerServer()
 }
@@ -134,6 +145,9 @@ func (UnimplementedGatewayManagerServer) GetAllGateway(context.Context, *Empty) 
 }
 func (UnimplementedGatewayManagerServer) GenerateOneGatewayWithDefaultServer(context.Context, *Empty) (*GatewayInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateOneGatewayWithDefaultServer not implemented")
+}
+func (UnimplementedGatewayManagerServer) GenerateOneGatewayWithServerUuid(context.Context, *StringValue) (*GatewayInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateOneGatewayWithServerUuid not implemented")
 }
 func (UnimplementedGatewayManagerServer) GetGatewayJwtByGatewayUuid(context.Context, *StringValue) (*StringValue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGatewayJwtByGatewayUuid not implemented")
@@ -259,6 +273,24 @@ func _GatewayManager_GenerateOneGatewayWithDefaultServer_Handler(srv interface{}
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GatewayManager_GenerateOneGatewayWithServerUuid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StringValue)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GatewayManagerServer).GenerateOneGatewayWithServerUuid(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.GatewayManager/GenerateOneGatewayWithServerUuid",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GatewayManagerServer).GenerateOneGatewayWithServerUuid(ctx, req.(*StringValue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _GatewayManager_GetGatewayJwtByGatewayUuid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StringValue)
 	if err := dec(in); err != nil {
@@ -304,6 +336,10 @@ var _GatewayManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GenerateOneGatewayWithDefaultServer",
 			Handler:    _GatewayManager_GenerateOneGatewayWithDefaultServer_Handler,
+		},
+		{
+			MethodName: "GenerateOneGatewayWithServerUuid",
+			Handler:    _GatewayManager_GenerateOneGatewayWithServerUuid_Handler,
 		},
 		{
 			MethodName: "GetGatewayJwtByGatewayUuid",

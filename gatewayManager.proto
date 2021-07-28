@@ -12,7 +12,9 @@ service GatewayManager {
     rpc UpdateGateway (GatewayInfo) returns (OperationResponse) {}
     rpc QueryGateway (GatewayInfo) returns (GatewayInfo) {}
     rpc GetAllGateway (Empty) returns (GatewayInfoList) {}
+
     rpc GenerateOneGatewayWithDefaultServer (Empty) returns (GatewayInfo) {}
+    rpc GenerateOneGatewayWithServerUuid (StringValue) returns (GatewayInfo) {}
 
     rpc GetGatewayJwtByGatewayUuid (StringValue) returns (StringValue) {}
 }
