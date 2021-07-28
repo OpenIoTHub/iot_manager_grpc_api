@@ -22,7 +22,12 @@ type ServerManagerClient interface {
 	DelServer(ctx context.Context, in *ServerInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	UpdateServer(ctx context.Context, in *ServerInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	QueryServer(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*ServerInfoList, error)
+	//    获取所有我可以使用的服务器(公共服务器、自己添加的服务器、别人分享给我的服务器)
 	GetAllServer(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ServerInfoList, error)
+	//    获取自己作为管理员的所有服务器
+	GetAllMyServers(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ServerInfoList, error)
+	//    获取别人分享给自己的所有服务器
+	GetAllMySharedServers(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ServerInfoList, error)
 }
 
 type serverManagerClient struct {
@@ -78,6 +83,24 @@ func (c *serverManagerClient) GetAllServer(ctx context.Context, in *Empty, opts 
 	return out, nil
 }
 
+func (c *serverManagerClient) GetAllMyServers(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ServerInfoList, error) {
+	out := new(ServerInfoList)
+	err := c.cc.Invoke(ctx, "/pb.ServerManager/GetAllMyServers", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *serverManagerClient) GetAllMySharedServers(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ServerInfoList, error) {
+	out := new(ServerInfoList)
+	err := c.cc.Invoke(ctx, "/pb.ServerManager/GetAllMySharedServers", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServerManagerServer is the server API for ServerManager service.
 // All implementations must embed UnimplementedServerManagerServer
 // for forward compatibility
@@ -87,7 +110,12 @@ type ServerManagerServer interface {
 	DelServer(context.Context, *ServerInfo) (*OperationResponse, error)
 	UpdateServer(context.Context, *ServerInfo) (*OperationResponse, error)
 	QueryServer(context.Context, *StringValue) (*ServerInfoList, error)
+	//    获取所有我可以使用的服务器(公共服务器、自己添加的服务器、别人分享给我的服务器)
 	GetAllServer(context.Context, *Empty) (*ServerInfoList, error)
+	//    获取自己作为管理员的所有服务器
+	GetAllMyServers(context.Context, *Empty) (*ServerInfoList, error)
+	//    获取别人分享给自己的所有服务器
+	GetAllMySharedServers(context.Context, *Empty) (*ServerInfoList, error)
 	mustEmbedUnimplementedServerManagerServer()
 }
 
@@ -109,6 +137,12 @@ func (UnimplementedServerManagerServer) QueryServer(context.Context, *StringValu
 }
 func (UnimplementedServerManagerServer) GetAllServer(context.Context, *Empty) (*ServerInfoList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllServer not implemented")
+}
+func (UnimplementedServerManagerServer) GetAllMyServers(context.Context, *Empty) (*ServerInfoList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllMyServers not implemented")
+}
+func (UnimplementedServerManagerServer) GetAllMySharedServers(context.Context, *Empty) (*ServerInfoList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllMySharedServers not implemented")
 }
 func (UnimplementedServerManagerServer) mustEmbedUnimplementedServerManagerServer() {}
 
@@ -213,6 +247,42 @@ func _ServerManager_GetAllServer_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ServerManager_GetAllMyServers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServerManagerServer).GetAllMyServers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.ServerManager/GetAllMyServers",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServerManagerServer).GetAllMyServers(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ServerManager_GetAllMySharedServers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServerManagerServer).GetAllMySharedServers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.ServerManager/GetAllMySharedServers",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServerManagerServer).GetAllMySharedServers(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _ServerManager_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.ServerManager",
 	HandlerType: (*ServerManagerServer)(nil),
@@ -236,6 +306,14 @@ var _ServerManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllServer",
 			Handler:    _ServerManager_GetAllServer_Handler,
+		},
+		{
+			MethodName: "GetAllMyServers",
+			Handler:    _ServerManager_GetAllMyServers_Handler,
+		},
+		{
+			MethodName: "GetAllMySharedServers",
+			Handler:    _ServerManager_GetAllMySharedServers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

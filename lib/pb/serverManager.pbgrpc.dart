@@ -42,6 +42,16 @@ class ServerManagerClient extends $grpc.Client {
       '/pb.ServerManager/GetAllServer',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $7.ServerInfoList.fromBuffer(value));
+  static final _$getAllMyServers =
+      $grpc.ClientMethod<$0.Empty, $7.ServerInfoList>(
+          '/pb.ServerManager/GetAllMyServers',
+          ($0.Empty value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $7.ServerInfoList.fromBuffer(value));
+  static final _$getAllMySharedServers =
+      $grpc.ClientMethod<$0.Empty, $7.ServerInfoList>(
+          '/pb.ServerManager/GetAllMySharedServers',
+          ($0.Empty value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $7.ServerInfoList.fromBuffer(value));
 
   ServerManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -80,6 +90,23 @@ class ServerManagerClient extends $grpc.Client {
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$getAllServer, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$7.ServerInfoList> getAllMyServers($0.Empty request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getAllMyServers, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$7.ServerInfoList> getAllMySharedServers(
+      $0.Empty request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getAllMySharedServers, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -124,6 +151,20 @@ abstract class ServerManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($7.ServerInfoList value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $7.ServerInfoList>(
+        'GetAllMyServers',
+        getAllMyServers_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($7.ServerInfoList value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $7.ServerInfoList>(
+        'GetAllMySharedServers',
+        getAllMySharedServers_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($7.ServerInfoList value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.OperationResponse> addServer_Pre(
@@ -151,6 +192,16 @@ abstract class ServerManagerServiceBase extends $grpc.Service {
     return getAllServer(call, await request);
   }
 
+  $async.Future<$7.ServerInfoList> getAllMyServers_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getAllMyServers(call, await request);
+  }
+
+  $async.Future<$7.ServerInfoList> getAllMySharedServers_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getAllMySharedServers(call, await request);
+  }
+
   $async.Future<$0.OperationResponse> addServer(
       $grpc.ServiceCall call, $7.ServerInfo request);
   $async.Future<$0.OperationResponse> delServer(
@@ -160,5 +211,9 @@ abstract class ServerManagerServiceBase extends $grpc.Service {
   $async.Future<$7.ServerInfoList> queryServer(
       $grpc.ServiceCall call, $0.StringValue request);
   $async.Future<$7.ServerInfoList> getAllServer(
+      $grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$7.ServerInfoList> getAllMyServers(
+      $grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$7.ServerInfoList> getAllMySharedServers(
       $grpc.ServiceCall call, $0.Empty request);
 }
