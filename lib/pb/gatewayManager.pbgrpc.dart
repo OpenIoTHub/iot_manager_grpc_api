@@ -44,6 +44,12 @@ class GatewayManagerClient extends $grpc.Client {
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $3.GatewayInfoList.fromBuffer(value));
+  static final _$updateGatewayNameAndDescription =
+      $grpc.ClientMethod<$3.GatewayInfo, $0.OperationResponse>(
+          '/pb.GatewayManager/UpdateGatewayNameAndDescription',
+          ($3.GatewayInfo value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.OperationResponse.fromBuffer(value));
   static final _$generateOneGatewayWithDefaultServer =
       $grpc.ClientMethod<$0.Empty, $3.GatewayInfo>(
           '/pb.GatewayManager/GenerateOneGatewayWithDefaultServer',
@@ -100,6 +106,15 @@ class GatewayManagerClient extends $grpc.Client {
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$getAllGateway, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.OperationResponse> updateGatewayNameAndDescription(
+      $3.GatewayInfo request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$updateGatewayNameAndDescription,
+        $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -171,6 +186,13 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($3.GatewayInfoList value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.GatewayInfo, $0.OperationResponse>(
+        'UpdateGatewayNameAndDescription',
+        updateGatewayNameAndDescription_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $3.GatewayInfo.fromBuffer(value),
+        ($0.OperationResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Empty, $3.GatewayInfo>(
         'GenerateOneGatewayWithDefaultServer',
         generateOneGatewayWithDefaultServer_Pre,
@@ -219,6 +241,11 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
     return getAllGateway(call, await request);
   }
 
+  $async.Future<$0.OperationResponse> updateGatewayNameAndDescription_Pre(
+      $grpc.ServiceCall call, $async.Future<$3.GatewayInfo> request) async {
+    return updateGatewayNameAndDescription(call, await request);
+  }
+
   $async.Future<$3.GatewayInfo> generateOneGatewayWithDefaultServer_Pre(
       $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
     return generateOneGatewayWithDefaultServer(call, await request);
@@ -244,6 +271,8 @@ abstract class GatewayManagerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $3.GatewayInfo request);
   $async.Future<$3.GatewayInfoList> getAllGateway(
       $grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$0.OperationResponse> updateGatewayNameAndDescription(
+      $grpc.ServiceCall call, $3.GatewayInfo request);
   $async.Future<$3.GatewayInfo> generateOneGatewayWithDefaultServer(
       $grpc.ServiceCall call, $0.Empty request);
   $async.Future<$3.GatewayInfo> generateOneGatewayWithServerUuid(

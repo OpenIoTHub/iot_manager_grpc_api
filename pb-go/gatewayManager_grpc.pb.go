@@ -23,6 +23,7 @@ type GatewayManagerClient interface {
 	UpdateGateway(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	QueryGateway(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*GatewayInfo, error)
 	GetAllGateway(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfoList, error)
+	UpdateGatewayNameAndDescription(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*OperationResponse, error)
 	GenerateOneGatewayWithDefaultServer(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfo, error)
 	GenerateOneGatewayWithServerUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*GatewayInfo, error)
 	GetGatewayJwtByGatewayUuid(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*StringValue, error)
@@ -81,6 +82,15 @@ func (c *gatewayManagerClient) GetAllGateway(ctx context.Context, in *Empty, opt
 	return out, nil
 }
 
+func (c *gatewayManagerClient) UpdateGatewayNameAndDescription(ctx context.Context, in *GatewayInfo, opts ...grpc.CallOption) (*OperationResponse, error) {
+	out := new(OperationResponse)
+	err := c.cc.Invoke(ctx, "/pb.GatewayManager/UpdateGatewayNameAndDescription", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *gatewayManagerClient) GenerateOneGatewayWithDefaultServer(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GatewayInfo, error) {
 	out := new(GatewayInfo)
 	err := c.cc.Invoke(ctx, "/pb.GatewayManager/GenerateOneGatewayWithDefaultServer", in, out, opts...)
@@ -118,6 +128,7 @@ type GatewayManagerServer interface {
 	UpdateGateway(context.Context, *GatewayInfo) (*OperationResponse, error)
 	QueryGateway(context.Context, *GatewayInfo) (*GatewayInfo, error)
 	GetAllGateway(context.Context, *Empty) (*GatewayInfoList, error)
+	UpdateGatewayNameAndDescription(context.Context, *GatewayInfo) (*OperationResponse, error)
 	GenerateOneGatewayWithDefaultServer(context.Context, *Empty) (*GatewayInfo, error)
 	GenerateOneGatewayWithServerUuid(context.Context, *StringValue) (*GatewayInfo, error)
 	GetGatewayJwtByGatewayUuid(context.Context, *StringValue) (*StringValue, error)
@@ -142,6 +153,9 @@ func (UnimplementedGatewayManagerServer) QueryGateway(context.Context, *GatewayI
 }
 func (UnimplementedGatewayManagerServer) GetAllGateway(context.Context, *Empty) (*GatewayInfoList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllGateway not implemented")
+}
+func (UnimplementedGatewayManagerServer) UpdateGatewayNameAndDescription(context.Context, *GatewayInfo) (*OperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateGatewayNameAndDescription not implemented")
 }
 func (UnimplementedGatewayManagerServer) GenerateOneGatewayWithDefaultServer(context.Context, *Empty) (*GatewayInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateOneGatewayWithDefaultServer not implemented")
@@ -255,6 +269,24 @@ func _GatewayManager_GetAllGateway_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GatewayManager_UpdateGatewayNameAndDescription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GatewayInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GatewayManagerServer).UpdateGatewayNameAndDescription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.GatewayManager/UpdateGatewayNameAndDescription",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GatewayManagerServer).UpdateGatewayNameAndDescription(ctx, req.(*GatewayInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _GatewayManager_GenerateOneGatewayWithDefaultServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
@@ -332,6 +364,10 @@ var _GatewayManager_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllGateway",
 			Handler:    _GatewayManager_GetAllGateway_Handler,
+		},
+		{
+			MethodName: "UpdateGatewayNameAndDescription",
+			Handler:    _GatewayManager_UpdateGatewayNameAndDescription_Handler,
 		},
 		{
 			MethodName: "GenerateOneGatewayWithDefaultServer",
