@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: configManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -44,51 +44,38 @@ class ConfigManagerClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
 
-  ConfigManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
-      : super(channel, options: options);
+  ConfigManagerClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.StringValue> getUserConfigByKey(
       $0.StringValue request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getUserConfigByKey, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getUserConfigByKey, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.UserConfigMap> getAllUserConfig($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllUserConfig, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllUserConfig, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> setUserConfigByKey(
       $2.UserConfigMap request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$setUserConfigByKey, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setUserConfigByKey, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> delAllUserConfig(
       $2.UserConfigMap request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$delAllUserConfig, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delAllUserConfig, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> delUserConfigByKey(
       $0.StringValue request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$delUserConfigByKey, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delUserConfigByKey, request, options: options);
   }
 }
 

@@ -2,9 +2,13 @@
 //  Generated code. Do not modify.
 //  source: portManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
+import 'dart:core' as $core;
+import 'dart:convert' as $convert;
+import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use portInfoListDescriptor instead')
 const PortInfoList$json = const {
   '1': 'PortInfoList',
   '2': const [
@@ -12,6 +16,9 @@ const PortInfoList$json = const {
   ],
 };
 
+/// Descriptor for `PortInfoList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List portInfoListDescriptor = $convert.base64Decode('CgxQb3J0SW5mb0xpc3QSMAoMUG9ydEluZm9MaXN0GAEgAygLMgwucGIuUG9ydEluZm9SDFBvcnRJbmZvTGlzdA==');
+@$core.Deprecated('Use httpInfoListDescriptor instead')
 const HttpInfoList$json = const {
   '1': 'HttpInfoList',
   '2': const [
@@ -19,6 +26,9 @@ const HttpInfoList$json = const {
   ],
 };
 
+/// Descriptor for `HttpInfoList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List httpInfoListDescriptor = $convert.base64Decode('CgxIdHRwSW5mb0xpc3QSMAoMSHR0cEluZm9MaXN0GAEgAygLMgwucGIuSHR0cEluZm9SDEh0dHBJbmZvTGlzdA==');
+@$core.Deprecated('Use portInfoDescriptor instead')
 const PortInfo$json = const {
   '1': 'PortInfo',
   '2': const [
@@ -37,6 +47,9 @@ const PortInfo$json = const {
   ],
 };
 
+/// Descriptor for `PortInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List portInfoDescriptor = $convert.base64Decode('CghQb3J0SW5mbxISCgRVVUlEGAEgASgJUgRVVUlEEhIKBE5hbWUYAiABKAlSBE5hbWUSIAoLRGVzY3JpcHRpb24YAyABKAlSC0Rlc2NyaXB0aW9uEhYKBkRvbWFpbhgEIAEoCVIGRG9tYWluEhoKCFVzZXJuYW1lGAUgASgJUghVc2VybmFtZRIaCghQYXNzd29yZBgGIAEoCVIIUGFzc3dvcmQSEgoEUG9ydBgHIAEoBVIEUG9ydBIcCglMb2NhbFBvcnQYCCABKAVSCUxvY2FsUG9ydBIgCgtCaW5kQWxsQWRkchgJIAEoCFILQmluZEFsbEFkZHISKAoPTmV0d29ya1Byb3RvY29sGAogASgJUg9OZXR3b3JrUHJvdG9jb2wSMAoTQXBwbGljYXRpb25Qcm90b2NvbBgLIAEoCVITQXBwbGljYXRpb25Qcm90b2NvbBIaCghIb3N0VVVJRBgMIAEoCVIISG9zdFVVSUQ=');
+@$core.Deprecated('Use httpInfoDescriptor instead')
 const HttpInfo$json = const {
   '1': 'HttpInfo',
   '2': const [
@@ -54,3 +67,5 @@ const HttpInfo$json = const {
   ],
 };
 
+/// Descriptor for `HttpInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List httpInfoDescriptor = $convert.base64Decode('CghIdHRwSW5mbxISCgRVVUlEGAEgASgJUgRVVUlEEhIKBE5hbWUYAiABKAlSBE5hbWUSIAoLRGVzY3JpcHRpb24YAyABKAlSC0Rlc2NyaXB0aW9uEhYKBkRvbWFpbhgEIAEoCVIGRG9tYWluEhoKCFVzZXJuYW1lGAUgASgJUghVc2VybmFtZRIaCghQYXNzd29yZBgGIAEoCVIIUGFzc3dvcmQSHgoKUmVtb3RlQWRkchgHIAEoCVIKUmVtb3RlQWRkchIeCgpSZW1vdGVQb3J0GAggASgFUgpSZW1vdGVQb3J0EigKD05ldHdvcmtQcm90b2NvbBgJIAEoCVIPTmV0d29ya1Byb3RvY29sEjAKE0FwcGxpY2F0aW9uUHJvdG9jb2wYCiABKAlSE0FwcGxpY2F0aW9uUHJvdG9jb2wSIAoLR2F0ZXdheVV1aWQYCyABKAlSC0dhdGV3YXlVdWlk');

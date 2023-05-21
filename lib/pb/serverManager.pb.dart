@@ -2,37 +2,101 @@
 //  Generated code. Do not modify.
 //  source: serverManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class ServerInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ServerInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'Uuid', protoName: 'Uuid')
-    ..aOS(2, 'Name', protoName: 'Name')
-    ..aOS(3, 'ServerHost', protoName: 'ServerHost')
-    ..aOS(4, 'LoginKey', protoName: 'LoginKey')
-    ..a<$core.int>(5, 'TcpPort', $pb.PbFieldType.O3, protoName: 'TcpPort')
-    ..a<$core.int>(6, 'KcpPort', $pb.PbFieldType.O3, protoName: 'KcpPort')
-    ..a<$core.int>(7, 'UdpApiPort', $pb.PbFieldType.O3, protoName: 'UdpApiPort')
-    ..a<$core.int>(8, 'KcpApiPort', $pb.PbFieldType.O3, protoName: 'KcpApiPort')
-    ..a<$core.int>(9, 'TlsPort', $pb.PbFieldType.O3, protoName: 'TlsPort')
-    ..a<$core.int>(10, 'GrpcPort', $pb.PbFieldType.O3, protoName: 'GrpcPort')
-    ..aOS(11, 'Description', protoName: 'Description')
-    ..aOB(12, 'IsPublic', protoName: 'IsPublic')
-    ..aOB(13, 'IsSharedServer', protoName: 'IsSharedServer')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ServerInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Uuid', protoName: 'Uuid')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Name', protoName: 'Name')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ServerHost', protoName: 'ServerHost')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LoginKey', protoName: 'LoginKey')
+    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TcpPort', $pb.PbFieldType.O3, protoName: 'TcpPort')
+    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'KcpPort', $pb.PbFieldType.O3, protoName: 'KcpPort')
+    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UdpApiPort', $pb.PbFieldType.O3, protoName: 'UdpApiPort')
+    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'KcpApiPort', $pb.PbFieldType.O3, protoName: 'KcpApiPort')
+    ..a<$core.int>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TlsPort', $pb.PbFieldType.O3, protoName: 'TlsPort')
+    ..a<$core.int>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'GrpcPort', $pb.PbFieldType.O3, protoName: 'GrpcPort')
+    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Description', protoName: 'Description')
+    ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsPublic', protoName: 'IsPublic')
+    ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsSharedServer', protoName: 'IsSharedServer')
     ..hasRequiredFields = false
   ;
 
   ServerInfo._() : super();
-  factory ServerInfo() => create();
+  factory ServerInfo({
+    $core.String? uuid,
+    $core.String? name,
+    $core.String? serverHost,
+    $core.String? loginKey,
+    $core.int? tcpPort,
+    $core.int? kcpPort,
+    $core.int? udpApiPort,
+    $core.int? kcpApiPort,
+    $core.int? tlsPort,
+    $core.int? grpcPort,
+    $core.String? description,
+    $core.bool? isPublic,
+    $core.bool? isSharedServer,
+  }) {
+    final _result = create();
+    if (uuid != null) {
+      _result.uuid = uuid;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    if (serverHost != null) {
+      _result.serverHost = serverHost;
+    }
+    if (loginKey != null) {
+      _result.loginKey = loginKey;
+    }
+    if (tcpPort != null) {
+      _result.tcpPort = tcpPort;
+    }
+    if (kcpPort != null) {
+      _result.kcpPort = kcpPort;
+    }
+    if (udpApiPort != null) {
+      _result.udpApiPort = udpApiPort;
+    }
+    if (kcpApiPort != null) {
+      _result.kcpApiPort = kcpApiPort;
+    }
+    if (tlsPort != null) {
+      _result.tlsPort = tlsPort;
+    }
+    if (grpcPort != null) {
+      _result.grpcPort = grpcPort;
+    }
+    if (description != null) {
+      _result.description = description;
+    }
+    if (isPublic != null) {
+      _result.isPublic = isPublic;
+    }
+    if (isSharedServer != null) {
+      _result.isSharedServer = isSharedServer;
+    }
+    return _result;
+  }
   factory ServerInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ServerInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   ServerInfo clone() => ServerInfo()..mergeFromMessage(this);
-  ServerInfo copyWith(void Function(ServerInfo) updates) => super.copyWith((message) => updates(message as ServerInfo));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ServerInfo copyWith(void Function(ServerInfo) updates) => super.copyWith((message) => updates(message as ServerInfo)) as ServerInfo; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ServerInfo create() => ServerInfo._();
@@ -40,7 +104,7 @@ class ServerInfo extends $pb.GeneratedMessage {
   static $pb.PbList<ServerInfo> createRepeated() => $pb.PbList<ServerInfo>();
   @$core.pragma('dart2js:noInline')
   static ServerInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ServerInfo>(create);
-  static ServerInfo _defaultInstance;
+  static ServerInfo? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get uuid => $_getSZ(0);
@@ -161,17 +225,33 @@ class ServerInfo extends $pb.GeneratedMessage {
 }
 
 class ServerInfoList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ServerInfoList', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..pc<ServerInfo>(1, 'ServerInfoList', $pb.PbFieldType.PM, protoName: 'ServerInfoList', subBuilder: ServerInfo.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ServerInfoList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..pc<ServerInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ServerInfoList', $pb.PbFieldType.PM, protoName: 'ServerInfoList', subBuilder: ServerInfo.create)
     ..hasRequiredFields = false
   ;
 
   ServerInfoList._() : super();
-  factory ServerInfoList() => create();
+  factory ServerInfoList({
+    $core.Iterable<ServerInfo>? serverInfoList,
+  }) {
+    final _result = create();
+    if (serverInfoList != null) {
+      _result.serverInfoList.addAll(serverInfoList);
+    }
+    return _result;
+  }
   factory ServerInfoList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ServerInfoList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   ServerInfoList clone() => ServerInfoList()..mergeFromMessage(this);
-  ServerInfoList copyWith(void Function(ServerInfoList) updates) => super.copyWith((message) => updates(message as ServerInfoList));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ServerInfoList copyWith(void Function(ServerInfoList) updates) => super.copyWith((message) => updates(message as ServerInfoList)) as ServerInfoList; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ServerInfoList create() => ServerInfoList._();
@@ -179,7 +259,7 @@ class ServerInfoList extends $pb.GeneratedMessage {
   static $pb.PbList<ServerInfoList> createRepeated() => $pb.PbList<ServerInfoList>();
   @$core.pragma('dart2js:noInline')
   static ServerInfoList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ServerInfoList>(create);
-  static ServerInfoList _defaultInstance;
+  static ServerInfoList? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<ServerInfo> get serverInfoList => $_getList(0);

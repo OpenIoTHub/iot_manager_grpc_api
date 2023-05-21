@@ -2,9 +2,13 @@
 //  Generated code. Do not modify.
 //  source: userManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
+import 'dart:core' as $core;
+import 'dart:convert' as $convert;
+import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use loginInfoDescriptor instead')
 const LoginInfo$json = const {
   '1': 'LoginInfo',
   '2': const [
@@ -13,6 +17,9 @@ const LoginInfo$json = const {
   ],
 };
 
+/// Descriptor for `LoginInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginInfoDescriptor = $convert.base64Decode('CglMb2dpbkluZm8SHgoKVXNlck1vYmlsZRgBIAEoCVIKVXNlck1vYmlsZRIaCghQYXNzd29yZBgCIAEoCVIIUGFzc3dvcmQ=');
+@$core.Deprecated('Use updateAvatarDescriptor instead')
 const UpdateAvatar$json = const {
   '1': 'UpdateAvatar',
   '2': const [
@@ -20,6 +27,9 @@ const UpdateAvatar$json = const {
   ],
 };
 
+/// Descriptor for `UpdateAvatar`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateAvatarDescriptor = $convert.base64Decode('CgxVcGRhdGVBdmF0YXISGgoITmV3Qnl0ZXMYASABKAxSCE5ld0J5dGVz');
+@$core.Deprecated('Use userLoginResponseDescriptor instead')
 const UserLoginResponse$json = const {
   '1': 'UserLoginResponse',
   '2': const [
@@ -30,3 +40,5 @@ const UserLoginResponse$json = const {
   ],
 };
 
+/// Descriptor for `UserLoginResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userLoginResponseDescriptor = $convert.base64Decode('ChFVc2VyTG9naW5SZXNwb25zZRISCgRDb2RlGAEgASgFUgRDb2RlEhAKA01zZxgCIAEoCVIDTXNnEhQKBVRva2VuGAMgASgJUgVUb2tlbhIoCghVc2VySW5mbxgEIAEoCzIMLnBiLlVzZXJJbmZvUghVc2VySW5mbw==');

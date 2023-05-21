@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: mqttDeviceManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -45,50 +45,37 @@ class MqttDeviceManagerClient extends $grpc.Client {
           ($core.List<$core.int> value) => $5.MqttBrokerList.fromBuffer(value));
 
   MqttDeviceManagerClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options})
-      : super(channel, options: options);
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.OperationResponse> addMqttDevice(
       $5.MqttDeviceInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$addMqttDevice, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$addMqttDevice, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> delMqttDevice(
       $5.MqttDeviceInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$delMqttDevice, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delMqttDevice, request, options: options);
   }
 
   $grpc.ResponseFuture<$5.MqttDeviceInfoList> getAllMqttDevice($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllMqttDevice, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllMqttDevice, request, options: options);
   }
 
   $grpc.ResponseFuture<$5.MqttInfo> generateMqttUsernamePassword(
       $5.MqttDeviceInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$generateMqttUsernamePassword, $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$generateMqttUsernamePassword, request,
         options: options);
-    return $grpc.ResponseFuture(call);
   }
 
   $grpc.ResponseFuture<$5.MqttBrokerList> getAllMqttBrokers($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllMqttBrokers, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllMqttBrokers, request, options: options);
   }
 }
 

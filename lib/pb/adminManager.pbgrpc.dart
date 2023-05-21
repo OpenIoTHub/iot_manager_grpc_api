@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: adminManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -25,22 +25,19 @@ class AdminManagerClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
 
-  AdminManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
-      : super(channel, options: options);
+  AdminManagerClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.UserInfoList> getAllUser($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllUser, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllUser, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> banUser($0.UserInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$banUser, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$banUser, request, options: options);
   }
 }
 

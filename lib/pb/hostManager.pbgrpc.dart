@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: hostManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -44,45 +44,34 @@ class HostManagerClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $0.OperationResponse.fromBuffer(value));
 
-  HostManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
-      : super(channel, options: options);
+  HostManagerClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$4.HostInfoList> getAllHosts($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllHosts, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllHosts, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> addHost($4.HostInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$addHost, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$addHost, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> updateHost($4.HostInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$updateHost, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateHost, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> delHost($4.HostInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$delHost, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delHost, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> setDeviceMac($4.HostInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$setDeviceMac, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setDeviceMac, request, options: options);
   }
 }
 

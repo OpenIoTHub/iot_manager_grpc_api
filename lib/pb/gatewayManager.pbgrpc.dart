@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: gatewayManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -66,84 +66,63 @@ class GatewayManagerClient extends $grpc.Client {
           ($0.StringValue value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.StringValue.fromBuffer(value));
 
-  GatewayManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
-      : super(channel, options: options);
+  GatewayManagerClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.OperationResponse> addGateway($3.GatewayInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$addGateway, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$addGateway, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> delGateway($3.GatewayInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$delGateway, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delGateway, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> updateGateway(
       $3.GatewayInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$updateGateway, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateGateway, request, options: options);
   }
 
   $grpc.ResponseFuture<$3.GatewayInfo> queryGateway($3.GatewayInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$queryGateway, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$queryGateway, request, options: options);
   }
 
   $grpc.ResponseFuture<$3.GatewayInfoList> getAllGateway($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllGateway, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllGateway, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> updateGatewayNameAndDescription(
       $3.GatewayInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$updateGatewayNameAndDescription,
-        $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateGatewayNameAndDescription, request,
         options: options);
-    return $grpc.ResponseFuture(call);
   }
 
   $grpc.ResponseFuture<$3.GatewayInfo> generateOneGatewayWithDefaultServer(
       $0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$generateOneGatewayWithDefaultServer,
-        $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$generateOneGatewayWithDefaultServer, request,
         options: options);
-    return $grpc.ResponseFuture(call);
   }
 
   $grpc.ResponseFuture<$3.GatewayInfo> generateOneGatewayWithServerUuid(
       $0.StringValue request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$generateOneGatewayWithServerUuid,
-        $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$generateOneGatewayWithServerUuid, request,
         options: options);
-    return $grpc.ResponseFuture(call);
   }
 
   $grpc.ResponseFuture<$0.StringValue> getGatewayJwtByGatewayUuid(
       $0.StringValue request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getGatewayJwtByGatewayUuid, $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getGatewayJwtByGatewayUuid, request,
         options: options);
-    return $grpc.ResponseFuture(call);
   }
 }
 

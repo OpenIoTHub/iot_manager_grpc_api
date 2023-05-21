@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: serverManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -53,62 +53,45 @@ class ServerManagerClient extends $grpc.Client {
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $7.ServerInfoList.fromBuffer(value));
 
-  ServerManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
-      : super(channel, options: options);
+  ServerManagerClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.OperationResponse> addServer($7.ServerInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$addServer, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$addServer, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> delServer($7.ServerInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$delServer, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delServer, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> updateServer($7.ServerInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$updateServer, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateServer, request, options: options);
   }
 
   $grpc.ResponseFuture<$7.ServerInfoList> queryServer($0.StringValue request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$queryServer, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$queryServer, request, options: options);
   }
 
   $grpc.ResponseFuture<$7.ServerInfoList> getAllServer($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllServer, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllServer, request, options: options);
   }
 
   $grpc.ResponseFuture<$7.ServerInfoList> getAllMyServers($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllMyServers, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllMyServers, request, options: options);
   }
 
   $grpc.ResponseFuture<$7.ServerInfoList> getAllMySharedServers(
       $0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllMySharedServers, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllMySharedServers, request, options: options);
   }
 }
 

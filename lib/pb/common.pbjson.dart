@@ -2,13 +2,20 @@
 //  Generated code. Do not modify.
 //  source: common.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
+import 'dart:core' as $core;
+import 'dart:convert' as $convert;
+import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use emptyDescriptor instead')
 const Empty$json = const {
   '1': 'Empty',
 };
 
+/// Descriptor for `Empty`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List emptyDescriptor = $convert.base64Decode('CgVFbXB0eQ==');
+@$core.Deprecated('Use stringValueDescriptor instead')
 const StringValue$json = const {
   '1': 'StringValue',
   '2': const [
@@ -16,6 +23,9 @@ const StringValue$json = const {
   ],
 };
 
+/// Descriptor for `StringValue`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List stringValueDescriptor = $convert.base64Decode('CgtTdHJpbmdWYWx1ZRIUCgVWYWx1ZRgBIAEoCVIFVmFsdWU=');
+@$core.Deprecated('Use bytesValueDescriptor instead')
 const BytesValue$json = const {
   '1': 'BytesValue',
   '2': const [
@@ -23,6 +33,9 @@ const BytesValue$json = const {
   ],
 };
 
+/// Descriptor for `BytesValue`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List bytesValueDescriptor = $convert.base64Decode('CgpCeXRlc1ZhbHVlEhQKBVZhbHVlGAEgASgMUgVWYWx1ZQ==');
+@$core.Deprecated('Use operationResponseDescriptor instead')
 const OperationResponse$json = const {
   '1': 'OperationResponse',
   '2': const [
@@ -31,6 +44,9 @@ const OperationResponse$json = const {
   ],
 };
 
+/// Descriptor for `OperationResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List operationResponseDescriptor = $convert.base64Decode('ChFPcGVyYXRpb25SZXNwb25zZRISCgRDb2RlGAEgASgFUgRDb2RlEhAKA01zZxgCIAEoCVIDTXNn');
+@$core.Deprecated('Use userInfoDescriptor instead')
 const UserInfo$json = const {
   '1': 'UserInfo',
   '2': const [
@@ -42,6 +58,9 @@ const UserInfo$json = const {
   ],
 };
 
+/// Descriptor for `UserInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userInfoDescriptor = $convert.base64Decode('CghVc2VySW5mbxISCgRVdWlkGAEgASgJUgRVdWlkEhIKBE5hbWUYAiABKAlSBE5hbWUSFAoFRW1haWwYAyABKAlSBUVtYWlsEhYKBk1vYmlsZRgEIAEoCVIGTW9iaWxlEhYKBkF2YXRhchgFIAEoCVIGQXZhdGFy');
+@$core.Deprecated('Use wechatUserInfoDescriptor instead')
 const WechatUserInfo$json = const {
   '1': 'WechatUserInfo',
   '2': const [
@@ -54,6 +73,9 @@ const WechatUserInfo$json = const {
   ],
 };
 
+/// Descriptor for `WechatUserInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wechatUserInfoDescriptor = $convert.base64Decode('Cg5XZWNoYXRVc2VySW5mbxIhCgxhY2Nlc3NfdG9rZW4YASABKAlSC2FjY2Vzc1Rva2VuEh0KCmV4cGlyZXNfaW4YAiABKAVSCWV4cGlyZXNJbhIjCg1yZWZyZXNoX3Rva2VuGAMgASgJUgxyZWZyZXNoVG9rZW4SFgoGb3BlbmlkGAQgASgJUgZvcGVuaWQSFAoFc2NvcGUYBSABKAlSBXNjb3BlEhgKB3VuaW9uaWQYBiABKAlSB3VuaW9uaWQ=');
+@$core.Deprecated('Use userInfoListDescriptor instead')
 const UserInfoList$json = const {
   '1': 'UserInfoList',
   '2': const [
@@ -61,3 +83,5 @@ const UserInfoList$json = const {
   ],
 };
 
+/// Descriptor for `UserInfoList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userInfoListDescriptor = $convert.base64Decode('CgxVc2VySW5mb0xpc3QSMAoMVXNlckluZm9MaXN0GAEgAygLMgwucGIuVXNlckluZm9SDFVzZXJJbmZvTGlzdA==');

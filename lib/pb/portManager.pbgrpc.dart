@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: portManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -48,55 +48,43 @@ class PortManagerClient extends $grpc.Client {
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $6.HttpInfoList.fromBuffer(value));
 
-  PortManagerClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
-      : super(channel, options: options);
+  PortManagerClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$6.PortInfoList> getAllPorts($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllPorts, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllPorts, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> addPort($6.PortInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$addPort, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$addPort, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> updatePort($6.PortInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$updatePort, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updatePort, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.OperationResponse> delPort($6.PortInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$delPort, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delPort, request, options: options);
   }
 
   $grpc.ResponseFuture<$6.PortInfoList> getAllPortInfoListByServerUuid(
       $0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllPortInfoListByServerUuid, $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllPortInfoListByServerUuid, request,
         options: options);
-    return $grpc.ResponseFuture(call);
   }
 
   $grpc.ResponseFuture<$6.HttpInfoList> getAllHttpInfoListByServerUuid(
       $0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$getAllHttpInfoListByServerUuid, $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllHttpInfoListByServerUuid, request,
         options: options);
-    return $grpc.ResponseFuture(call);
   }
 }
 

@@ -2,25 +2,41 @@
 //  Generated code. Do not modify.
 //  source: hostManager.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class HostInfoList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('HostInfoList', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..pc<HostInfo>(1, 'HostInfoList', $pb.PbFieldType.PM, protoName: 'HostInfoList', subBuilder: HostInfo.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HostInfoList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..pc<HostInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'HostInfoList', $pb.PbFieldType.PM, protoName: 'HostInfoList', subBuilder: HostInfo.create)
     ..hasRequiredFields = false
   ;
 
   HostInfoList._() : super();
-  factory HostInfoList() => create();
+  factory HostInfoList({
+    $core.Iterable<HostInfo>? hostInfoList,
+  }) {
+    final _result = create();
+    if (hostInfoList != null) {
+      _result.hostInfoList.addAll(hostInfoList);
+    }
+    return _result;
+  }
   factory HostInfoList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory HostInfoList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   HostInfoList clone() => HostInfoList()..mergeFromMessage(this);
-  HostInfoList copyWith(void Function(HostInfoList) updates) => super.copyWith((message) => updates(message as HostInfoList));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  HostInfoList copyWith(void Function(HostInfoList) updates) => super.copyWith((message) => updates(message as HostInfoList)) as HostInfoList; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static HostInfoList create() => HostInfoList._();
@@ -28,29 +44,65 @@ class HostInfoList extends $pb.GeneratedMessage {
   static $pb.PbList<HostInfoList> createRepeated() => $pb.PbList<HostInfoList>();
   @$core.pragma('dart2js:noInline')
   static HostInfoList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<HostInfoList>(create);
-  static HostInfoList _defaultInstance;
+  static HostInfoList? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<HostInfo> get hostInfoList => $_getList(0);
 }
 
 class HostInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('HostInfo', package: const $pb.PackageName('pb'), createEmptyInstance: create)
-    ..aOS(1, 'UUID', protoName: 'UUID')
-    ..aOS(2, 'Name', protoName: 'Name')
-    ..aOS(3, 'Description', protoName: 'Description')
-    ..aOS(4, 'HostAddr', protoName: 'HostAddr')
-    ..aOS(5, 'GatewayUUID', protoName: 'GatewayUUID')
-    ..aOS(6, 'Mac', protoName: 'Mac')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HostInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UUID', protoName: 'UUID')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Name', protoName: 'Name')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Description', protoName: 'Description')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'HostAddr', protoName: 'HostAddr')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'GatewayUUID', protoName: 'GatewayUUID')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Mac', protoName: 'Mac')
     ..hasRequiredFields = false
   ;
 
   HostInfo._() : super();
-  factory HostInfo() => create();
+  factory HostInfo({
+    $core.String? uUID,
+    $core.String? name,
+    $core.String? description,
+    $core.String? hostAddr,
+    $core.String? gatewayUUID,
+    $core.String? mac,
+  }) {
+    final _result = create();
+    if (uUID != null) {
+      _result.uUID = uUID;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    if (description != null) {
+      _result.description = description;
+    }
+    if (hostAddr != null) {
+      _result.hostAddr = hostAddr;
+    }
+    if (gatewayUUID != null) {
+      _result.gatewayUUID = gatewayUUID;
+    }
+    if (mac != null) {
+      _result.mac = mac;
+    }
+    return _result;
+  }
   factory HostInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory HostInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   HostInfo clone() => HostInfo()..mergeFromMessage(this);
-  HostInfo copyWith(void Function(HostInfo) updates) => super.copyWith((message) => updates(message as HostInfo));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  HostInfo copyWith(void Function(HostInfo) updates) => super.copyWith((message) => updates(message as HostInfo)) as HostInfo; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static HostInfo create() => HostInfo._();
@@ -58,7 +110,7 @@ class HostInfo extends $pb.GeneratedMessage {
   static $pb.PbList<HostInfo> createRepeated() => $pb.PbList<HostInfo>();
   @$core.pragma('dart2js:noInline')
   static HostInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<HostInfo>(create);
-  static HostInfo _defaultInstance;
+  static HostInfo? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get uUID => $_getSZ(0);
