@@ -1,47 +1,52 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: mqttDeviceManager.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class MqttDeviceInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MqttDeviceInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DeviceId', protoName: 'DeviceId')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DeviceModel', protoName: 'DeviceModel')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DeviceDefaultName', protoName: 'DeviceDefaultName')
-    ..aOM<MqttInfo>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MqttInfo', protoName: 'MqttInfo', subBuilder: MqttInfo.create)
-    ..hasRequiredFields = false
-  ;
-
-  MqttDeviceInfo._() : super();
   factory MqttDeviceInfo({
     $core.String? deviceId,
     $core.String? deviceModel,
     $core.String? deviceDefaultName,
     MqttInfo? mqttInfo,
   }) {
-    final _result = create();
+    final $result = create();
     if (deviceId != null) {
-      _result.deviceId = deviceId;
+      $result.deviceId = deviceId;
     }
     if (deviceModel != null) {
-      _result.deviceModel = deviceModel;
+      $result.deviceModel = deviceModel;
     }
     if (deviceDefaultName != null) {
-      _result.deviceDefaultName = deviceDefaultName;
+      $result.deviceDefaultName = deviceDefaultName;
     }
     if (mqttInfo != null) {
-      _result.mqttInfo = mqttInfo;
+      $result.mqttInfo = mqttInfo;
     }
-    return _result;
+    return $result;
   }
+  MqttDeviceInfo._() : super();
   factory MqttDeviceInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MqttDeviceInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MqttDeviceInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'DeviceId', protoName: 'DeviceId')
+    ..aOS(2, _omitFieldNames ? '' : 'DeviceModel', protoName: 'DeviceModel')
+    ..aOS(3, _omitFieldNames ? '' : 'DeviceDefaultName', protoName: 'DeviceDefaultName')
+    ..aOM<MqttInfo>(4, _omitFieldNames ? '' : 'MqttInfo', protoName: 'MqttInfo', subBuilder: MqttInfo.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -51,8 +56,10 @@ class MqttDeviceInfo extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  MqttDeviceInfo copyWith(void Function(MqttDeviceInfo) updates) => super.copyWith((message) => updates(message as MqttDeviceInfo)) as MqttDeviceInfo; // ignore: deprecated_member_use
+  MqttDeviceInfo copyWith(void Function(MqttDeviceInfo) updates) => super.copyWith((message) => updates(message as MqttDeviceInfo)) as MqttDeviceInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static MqttDeviceInfo create() => MqttDeviceInfo._();
   MqttDeviceInfo createEmptyInstance() => create();
@@ -61,6 +68,7 @@ class MqttDeviceInfo extends $pb.GeneratedMessage {
   static MqttDeviceInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MqttDeviceInfo>(create);
   static MqttDeviceInfo? _defaultInstance;
 
+  /// String ip;
   @$pb.TagNumber(1)
   $core.String get deviceId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -70,6 +78,7 @@ class MqttDeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDeviceId() => clearField(1);
 
+  /// int port;
   @$pb.TagNumber(2)
   $core.String get deviceModel => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -101,23 +110,24 @@ class MqttDeviceInfo extends $pb.GeneratedMessage {
 }
 
 class MqttDeviceInfoList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MqttDeviceInfoList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..pc<MqttDeviceInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MqttDeviceInfoList', $pb.PbFieldType.PM, protoName: 'MqttDeviceInfoList', subBuilder: MqttDeviceInfo.create)
-    ..hasRequiredFields = false
-  ;
-
-  MqttDeviceInfoList._() : super();
   factory MqttDeviceInfoList({
     $core.Iterable<MqttDeviceInfo>? mqttDeviceInfoList,
   }) {
-    final _result = create();
+    final $result = create();
     if (mqttDeviceInfoList != null) {
-      _result.mqttDeviceInfoList.addAll(mqttDeviceInfoList);
+      $result.mqttDeviceInfoList.addAll(mqttDeviceInfoList);
     }
-    return _result;
+    return $result;
   }
+  MqttDeviceInfoList._() : super();
   factory MqttDeviceInfoList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MqttDeviceInfoList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MqttDeviceInfoList', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..pc<MqttDeviceInfo>(1, _omitFieldNames ? '' : 'MqttDeviceInfoList', $pb.PbFieldType.PM, protoName: 'MqttDeviceInfoList', subBuilder: MqttDeviceInfo.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -127,8 +137,10 @@ class MqttDeviceInfoList extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  MqttDeviceInfoList copyWith(void Function(MqttDeviceInfoList) updates) => super.copyWith((message) => updates(message as MqttDeviceInfoList)) as MqttDeviceInfoList; // ignore: deprecated_member_use
+  MqttDeviceInfoList copyWith(void Function(MqttDeviceInfoList) updates) => super.copyWith((message) => updates(message as MqttDeviceInfoList)) as MqttDeviceInfoList;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static MqttDeviceInfoList create() => MqttDeviceInfoList._();
   MqttDeviceInfoList createEmptyInstance() => create();
@@ -142,17 +154,6 @@ class MqttDeviceInfoList extends $pb.GeneratedMessage {
 }
 
 class MqttInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MqttInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MqttServerHost', protoName: 'MqttServerHost')
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MqttServerPort', $pb.PbFieldType.O3, protoName: 'MqttServerPort')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MqttClientUserName', protoName: 'MqttClientUserName')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MqttClientUserPassword', protoName: 'MqttClientUserPassword')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MqttClientId', protoName: 'MqttClientId')
-    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SSLorTLS', protoName: 'SSLorTLS')
-    ..hasRequiredFields = false
-  ;
-
-  MqttInfo._() : super();
   factory MqttInfo({
     $core.String? mqttServerHost,
     $core.int? mqttServerPort,
@@ -161,29 +162,41 @@ class MqttInfo extends $pb.GeneratedMessage {
     $core.String? mqttClientId,
     $core.bool? sSLorTLS,
   }) {
-    final _result = create();
+    final $result = create();
     if (mqttServerHost != null) {
-      _result.mqttServerHost = mqttServerHost;
+      $result.mqttServerHost = mqttServerHost;
     }
     if (mqttServerPort != null) {
-      _result.mqttServerPort = mqttServerPort;
+      $result.mqttServerPort = mqttServerPort;
     }
     if (mqttClientUserName != null) {
-      _result.mqttClientUserName = mqttClientUserName;
+      $result.mqttClientUserName = mqttClientUserName;
     }
     if (mqttClientUserPassword != null) {
-      _result.mqttClientUserPassword = mqttClientUserPassword;
+      $result.mqttClientUserPassword = mqttClientUserPassword;
     }
     if (mqttClientId != null) {
-      _result.mqttClientId = mqttClientId;
+      $result.mqttClientId = mqttClientId;
     }
     if (sSLorTLS != null) {
-      _result.sSLorTLS = sSLorTLS;
+      $result.sSLorTLS = sSLorTLS;
     }
-    return _result;
+    return $result;
   }
+  MqttInfo._() : super();
   factory MqttInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MqttInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MqttInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'MqttServerHost', protoName: 'MqttServerHost')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'MqttServerPort', $pb.PbFieldType.O3, protoName: 'MqttServerPort')
+    ..aOS(3, _omitFieldNames ? '' : 'MqttClientUserName', protoName: 'MqttClientUserName')
+    ..aOS(4, _omitFieldNames ? '' : 'MqttClientUserPassword', protoName: 'MqttClientUserPassword')
+    ..aOS(5, _omitFieldNames ? '' : 'MqttClientId', protoName: 'MqttClientId')
+    ..aOB(6, _omitFieldNames ? '' : 'SSLorTLS', protoName: 'SSLorTLS')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -193,8 +206,10 @@ class MqttInfo extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  MqttInfo copyWith(void Function(MqttInfo) updates) => super.copyWith((message) => updates(message as MqttInfo)) as MqttInfo; // ignore: deprecated_member_use
+  MqttInfo copyWith(void Function(MqttInfo) updates) => super.copyWith((message) => updates(message as MqttInfo)) as MqttInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static MqttInfo create() => MqttInfo._();
   MqttInfo createEmptyInstance() => create();
@@ -203,6 +218,7 @@ class MqttInfo extends $pb.GeneratedMessage {
   static MqttInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MqttInfo>(create);
   static MqttInfo? _defaultInstance;
 
+  /// String ip;
   @$pb.TagNumber(1)
   $core.String get mqttServerHost => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -212,6 +228,7 @@ class MqttInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearMqttServerHost() => clearField(1);
 
+  /// int port;
   @$pb.TagNumber(2)
   $core.int get mqttServerPort => $_getIZ(1);
   @$pb.TagNumber(2)
@@ -259,23 +276,24 @@ class MqttInfo extends $pb.GeneratedMessage {
 }
 
 class MqttBrokerList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MqttBrokerList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..pc<MqttBroker>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MqttBrokerList', $pb.PbFieldType.PM, protoName: 'MqttBrokerList', subBuilder: MqttBroker.create)
-    ..hasRequiredFields = false
-  ;
-
-  MqttBrokerList._() : super();
   factory MqttBrokerList({
     $core.Iterable<MqttBroker>? mqttBrokerList,
   }) {
-    final _result = create();
+    final $result = create();
     if (mqttBrokerList != null) {
-      _result.mqttBrokerList.addAll(mqttBrokerList);
+      $result.mqttBrokerList.addAll(mqttBrokerList);
     }
-    return _result;
+    return $result;
   }
+  MqttBrokerList._() : super();
   factory MqttBrokerList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MqttBrokerList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MqttBrokerList', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..pc<MqttBroker>(1, _omitFieldNames ? '' : 'MqttBrokerList', $pb.PbFieldType.PM, protoName: 'MqttBrokerList', subBuilder: MqttBroker.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -285,8 +303,10 @@ class MqttBrokerList extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  MqttBrokerList copyWith(void Function(MqttBrokerList) updates) => super.copyWith((message) => updates(message as MqttBrokerList)) as MqttBrokerList; // ignore: deprecated_member_use
+  MqttBrokerList copyWith(void Function(MqttBrokerList) updates) => super.copyWith((message) => updates(message as MqttBrokerList)) as MqttBrokerList;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static MqttBrokerList create() => MqttBrokerList._();
   MqttBrokerList createEmptyInstance() => create();
@@ -300,18 +320,6 @@ class MqttBrokerList extends $pb.GeneratedMessage {
 }
 
 class MqttBroker extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MqttBroker', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Name', protoName: 'Name')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Description', protoName: 'Description')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Country', protoName: 'Country')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Zone', protoName: 'Zone')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Host', protoName: 'Host')
-    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Port', $pb.PbFieldType.O3, protoName: 'Port')
-    ..aOB(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SSLorTLS', protoName: 'SSLorTLS')
-    ..hasRequiredFields = false
-  ;
-
-  MqttBroker._() : super();
   factory MqttBroker({
     $core.String? name,
     $core.String? description,
@@ -321,32 +329,45 @@ class MqttBroker extends $pb.GeneratedMessage {
     $core.int? port,
     $core.bool? sSLorTLS,
   }) {
-    final _result = create();
+    final $result = create();
     if (name != null) {
-      _result.name = name;
+      $result.name = name;
     }
     if (description != null) {
-      _result.description = description;
+      $result.description = description;
     }
     if (country != null) {
-      _result.country = country;
+      $result.country = country;
     }
     if (zone != null) {
-      _result.zone = zone;
+      $result.zone = zone;
     }
     if (host != null) {
-      _result.host = host;
+      $result.host = host;
     }
     if (port != null) {
-      _result.port = port;
+      $result.port = port;
     }
     if (sSLorTLS != null) {
-      _result.sSLorTLS = sSLorTLS;
+      $result.sSLorTLS = sSLorTLS;
     }
-    return _result;
+    return $result;
   }
+  MqttBroker._() : super();
   factory MqttBroker.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MqttBroker.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MqttBroker', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'Name', protoName: 'Name')
+    ..aOS(2, _omitFieldNames ? '' : 'Description', protoName: 'Description')
+    ..aOS(3, _omitFieldNames ? '' : 'Country', protoName: 'Country')
+    ..aOS(4, _omitFieldNames ? '' : 'Zone', protoName: 'Zone')
+    ..aOS(5, _omitFieldNames ? '' : 'Host', protoName: 'Host')
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'Port', $pb.PbFieldType.O3, protoName: 'Port')
+    ..aOB(7, _omitFieldNames ? '' : 'SSLorTLS', protoName: 'SSLorTLS')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -356,8 +377,10 @@ class MqttBroker extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  MqttBroker copyWith(void Function(MqttBroker) updates) => super.copyWith((message) => updates(message as MqttBroker)) as MqttBroker; // ignore: deprecated_member_use
+  MqttBroker copyWith(void Function(MqttBroker) updates) => super.copyWith((message) => updates(message as MqttBroker)) as MqttBroker;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static MqttBroker create() => MqttBroker._();
   MqttBroker createEmptyInstance() => create();
@@ -430,3 +453,6 @@ class MqttBroker extends $pb.GeneratedMessage {
   void clearSSLorTLS() => clearField(7);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

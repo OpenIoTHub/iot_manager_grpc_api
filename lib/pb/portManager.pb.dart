@@ -1,32 +1,38 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: portManager.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+/// 手动添加的局域网主机
 class PortInfoList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PortInfoList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..pc<PortInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PortInfoList', $pb.PbFieldType.PM, protoName: 'PortInfoList', subBuilder: PortInfo.create)
-    ..hasRequiredFields = false
-  ;
-
-  PortInfoList._() : super();
   factory PortInfoList({
     $core.Iterable<PortInfo>? portInfoList,
   }) {
-    final _result = create();
+    final $result = create();
     if (portInfoList != null) {
-      _result.portInfoList.addAll(portInfoList);
+      $result.portInfoList.addAll(portInfoList);
     }
-    return _result;
+    return $result;
   }
+  PortInfoList._() : super();
   factory PortInfoList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory PortInfoList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PortInfoList', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..pc<PortInfo>(1, _omitFieldNames ? '' : 'PortInfoList', $pb.PbFieldType.PM, protoName: 'PortInfoList', subBuilder: PortInfo.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -36,8 +42,10 @@ class PortInfoList extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PortInfoList copyWith(void Function(PortInfoList) updates) => super.copyWith((message) => updates(message as PortInfoList)) as PortInfoList; // ignore: deprecated_member_use
+  PortInfoList copyWith(void Function(PortInfoList) updates) => super.copyWith((message) => updates(message as PortInfoList)) as PortInfoList;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PortInfoList create() => PortInfoList._();
   PortInfoList createEmptyInstance() => create();
@@ -51,23 +59,24 @@ class PortInfoList extends $pb.GeneratedMessage {
 }
 
 class HttpInfoList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HttpInfoList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..pc<HttpInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'HttpInfoList', $pb.PbFieldType.PM, protoName: 'HttpInfoList', subBuilder: HttpInfo.create)
-    ..hasRequiredFields = false
-  ;
-
-  HttpInfoList._() : super();
   factory HttpInfoList({
     $core.Iterable<HttpInfo>? httpInfoList,
   }) {
-    final _result = create();
+    final $result = create();
     if (httpInfoList != null) {
-      _result.httpInfoList.addAll(httpInfoList);
+      $result.httpInfoList.addAll(httpInfoList);
     }
-    return _result;
+    return $result;
   }
+  HttpInfoList._() : super();
   factory HttpInfoList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory HttpInfoList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'HttpInfoList', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..pc<HttpInfo>(1, _omitFieldNames ? '' : 'HttpInfoList', $pb.PbFieldType.PM, protoName: 'HttpInfoList', subBuilder: HttpInfo.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -77,8 +86,10 @@ class HttpInfoList extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  HttpInfoList copyWith(void Function(HttpInfoList) updates) => super.copyWith((message) => updates(message as HttpInfoList)) as HttpInfoList; // ignore: deprecated_member_use
+  HttpInfoList copyWith(void Function(HttpInfoList) updates) => super.copyWith((message) => updates(message as HttpInfoList)) as HttpInfoList;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static HttpInfoList create() => HttpInfoList._();
   HttpInfoList createEmptyInstance() => create();
@@ -92,23 +103,6 @@ class HttpInfoList extends $pb.GeneratedMessage {
 }
 
 class PortInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PortInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UUID', protoName: 'UUID')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Name', protoName: 'Name')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Description', protoName: 'Description')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Domain', protoName: 'Domain')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Username', protoName: 'Username')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Password', protoName: 'Password')
-    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Port', $pb.PbFieldType.O3, protoName: 'Port')
-    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LocalPort', $pb.PbFieldType.O3, protoName: 'LocalPort')
-    ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BindAllAddr', protoName: 'BindAllAddr')
-    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'NetworkProtocol', protoName: 'NetworkProtocol')
-    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ApplicationProtocol', protoName: 'ApplicationProtocol')
-    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'HostUUID', protoName: 'HostUUID')
-    ..hasRequiredFields = false
-  ;
-
-  PortInfo._() : super();
   factory PortInfo({
     $core.String? uUID,
     $core.String? name,
@@ -123,47 +117,65 @@ class PortInfo extends $pb.GeneratedMessage {
     $core.String? applicationProtocol,
     $core.String? hostUUID,
   }) {
-    final _result = create();
+    final $result = create();
     if (uUID != null) {
-      _result.uUID = uUID;
+      $result.uUID = uUID;
     }
     if (name != null) {
-      _result.name = name;
+      $result.name = name;
     }
     if (description != null) {
-      _result.description = description;
+      $result.description = description;
     }
     if (domain != null) {
-      _result.domain = domain;
+      $result.domain = domain;
     }
     if (username != null) {
-      _result.username = username;
+      $result.username = username;
     }
     if (password != null) {
-      _result.password = password;
+      $result.password = password;
     }
     if (port != null) {
-      _result.port = port;
+      $result.port = port;
     }
     if (localPort != null) {
-      _result.localPort = localPort;
+      $result.localPort = localPort;
     }
     if (bindAllAddr != null) {
-      _result.bindAllAddr = bindAllAddr;
+      $result.bindAllAddr = bindAllAddr;
     }
     if (networkProtocol != null) {
-      _result.networkProtocol = networkProtocol;
+      $result.networkProtocol = networkProtocol;
     }
     if (applicationProtocol != null) {
-      _result.applicationProtocol = applicationProtocol;
+      $result.applicationProtocol = applicationProtocol;
     }
     if (hostUUID != null) {
-      _result.hostUUID = hostUUID;
+      $result.hostUUID = hostUUID;
     }
-    return _result;
+    return $result;
   }
+  PortInfo._() : super();
   factory PortInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory PortInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PortInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'UUID', protoName: 'UUID')
+    ..aOS(2, _omitFieldNames ? '' : 'Name', protoName: 'Name')
+    ..aOS(3, _omitFieldNames ? '' : 'Description', protoName: 'Description')
+    ..aOS(4, _omitFieldNames ? '' : 'Domain', protoName: 'Domain')
+    ..aOS(5, _omitFieldNames ? '' : 'Username', protoName: 'Username')
+    ..aOS(6, _omitFieldNames ? '' : 'Password', protoName: 'Password')
+    ..a<$core.int>(7, _omitFieldNames ? '' : 'Port', $pb.PbFieldType.O3, protoName: 'Port')
+    ..a<$core.int>(8, _omitFieldNames ? '' : 'LocalPort', $pb.PbFieldType.O3, protoName: 'LocalPort')
+    ..aOB(9, _omitFieldNames ? '' : 'BindAllAddr', protoName: 'BindAllAddr')
+    ..aOS(10, _omitFieldNames ? '' : 'NetworkProtocol', protoName: 'NetworkProtocol')
+    ..aOS(11, _omitFieldNames ? '' : 'ApplicationProtocol', protoName: 'ApplicationProtocol')
+    ..aOS(12, _omitFieldNames ? '' : 'HostUUID', protoName: 'HostUUID')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -173,8 +185,10 @@ class PortInfo extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PortInfo copyWith(void Function(PortInfo) updates) => super.copyWith((message) => updates(message as PortInfo)) as PortInfo; // ignore: deprecated_member_use
+  PortInfo copyWith(void Function(PortInfo) updates) => super.copyWith((message) => updates(message as PortInfo)) as PortInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PortInfo create() => PortInfo._();
   PortInfo createEmptyInstance() => create();
@@ -293,22 +307,6 @@ class PortInfo extends $pb.GeneratedMessage {
 }
 
 class HttpInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HttpInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UUID', protoName: 'UUID')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Name', protoName: 'Name')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Description', protoName: 'Description')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Domain', protoName: 'Domain')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Username', protoName: 'Username')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Password', protoName: 'Password')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'RemoteAddr', protoName: 'RemoteAddr')
-    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'RemotePort', $pb.PbFieldType.O3, protoName: 'RemotePort')
-    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'NetworkProtocol', protoName: 'NetworkProtocol')
-    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ApplicationProtocol', protoName: 'ApplicationProtocol')
-    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'GatewayUuid', protoName: 'GatewayUuid')
-    ..hasRequiredFields = false
-  ;
-
-  HttpInfo._() : super();
   factory HttpInfo({
     $core.String? uUID,
     $core.String? name,
@@ -322,44 +320,61 @@ class HttpInfo extends $pb.GeneratedMessage {
     $core.String? applicationProtocol,
     $core.String? gatewayUuid,
   }) {
-    final _result = create();
+    final $result = create();
     if (uUID != null) {
-      _result.uUID = uUID;
+      $result.uUID = uUID;
     }
     if (name != null) {
-      _result.name = name;
+      $result.name = name;
     }
     if (description != null) {
-      _result.description = description;
+      $result.description = description;
     }
     if (domain != null) {
-      _result.domain = domain;
+      $result.domain = domain;
     }
     if (username != null) {
-      _result.username = username;
+      $result.username = username;
     }
     if (password != null) {
-      _result.password = password;
+      $result.password = password;
     }
     if (remoteAddr != null) {
-      _result.remoteAddr = remoteAddr;
+      $result.remoteAddr = remoteAddr;
     }
     if (remotePort != null) {
-      _result.remotePort = remotePort;
+      $result.remotePort = remotePort;
     }
     if (networkProtocol != null) {
-      _result.networkProtocol = networkProtocol;
+      $result.networkProtocol = networkProtocol;
     }
     if (applicationProtocol != null) {
-      _result.applicationProtocol = applicationProtocol;
+      $result.applicationProtocol = applicationProtocol;
     }
     if (gatewayUuid != null) {
-      _result.gatewayUuid = gatewayUuid;
+      $result.gatewayUuid = gatewayUuid;
     }
-    return _result;
+    return $result;
   }
+  HttpInfo._() : super();
   factory HttpInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory HttpInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'HttpInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'UUID', protoName: 'UUID')
+    ..aOS(2, _omitFieldNames ? '' : 'Name', protoName: 'Name')
+    ..aOS(3, _omitFieldNames ? '' : 'Description', protoName: 'Description')
+    ..aOS(4, _omitFieldNames ? '' : 'Domain', protoName: 'Domain')
+    ..aOS(5, _omitFieldNames ? '' : 'Username', protoName: 'Username')
+    ..aOS(6, _omitFieldNames ? '' : 'Password', protoName: 'Password')
+    ..aOS(7, _omitFieldNames ? '' : 'RemoteAddr', protoName: 'RemoteAddr')
+    ..a<$core.int>(8, _omitFieldNames ? '' : 'RemotePort', $pb.PbFieldType.O3, protoName: 'RemotePort')
+    ..aOS(9, _omitFieldNames ? '' : 'NetworkProtocol', protoName: 'NetworkProtocol')
+    ..aOS(10, _omitFieldNames ? '' : 'ApplicationProtocol', protoName: 'ApplicationProtocol')
+    ..aOS(11, _omitFieldNames ? '' : 'GatewayUuid', protoName: 'GatewayUuid')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -369,8 +384,10 @@ class HttpInfo extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  HttpInfo copyWith(void Function(HttpInfo) updates) => super.copyWith((message) => updates(message as HttpInfo)) as HttpInfo; // ignore: deprecated_member_use
+  HttpInfo copyWith(void Function(HttpInfo) updates) => super.copyWith((message) => updates(message as HttpInfo)) as HttpInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static HttpInfo create() => HttpInfo._();
   HttpInfo createEmptyInstance() => create();
@@ -479,3 +496,6 @@ class HttpInfo extends $pb.GeneratedMessage {
   void clearGatewayUuid() => clearField(11);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

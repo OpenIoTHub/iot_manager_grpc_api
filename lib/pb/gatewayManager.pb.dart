@@ -1,27 +1,19 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: gatewayManager.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class GatewayInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GatewayInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'GatewayUuid', protoName: 'GatewayUuid')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ServerUuid', protoName: 'ServerUuid')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Name', protoName: 'Name')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Description', protoName: 'Description')
-    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Status', protoName: 'Status')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'GatewayJwt', protoName: 'GatewayJwt')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'OpenIoTHubJwt', protoName: 'OpenIoTHubJwt')
-    ..hasRequiredFields = false
-  ;
-
-  GatewayInfo._() : super();
   factory GatewayInfo({
     $core.String? gatewayUuid,
     $core.String? serverUuid,
@@ -31,32 +23,45 @@ class GatewayInfo extends $pb.GeneratedMessage {
     $core.String? gatewayJwt,
     $core.String? openIoTHubJwt,
   }) {
-    final _result = create();
+    final $result = create();
     if (gatewayUuid != null) {
-      _result.gatewayUuid = gatewayUuid;
+      $result.gatewayUuid = gatewayUuid;
     }
     if (serverUuid != null) {
-      _result.serverUuid = serverUuid;
+      $result.serverUuid = serverUuid;
     }
     if (name != null) {
-      _result.name = name;
+      $result.name = name;
     }
     if (description != null) {
-      _result.description = description;
+      $result.description = description;
     }
     if (status != null) {
-      _result.status = status;
+      $result.status = status;
     }
     if (gatewayJwt != null) {
-      _result.gatewayJwt = gatewayJwt;
+      $result.gatewayJwt = gatewayJwt;
     }
     if (openIoTHubJwt != null) {
-      _result.openIoTHubJwt = openIoTHubJwt;
+      $result.openIoTHubJwt = openIoTHubJwt;
     }
-    return _result;
+    return $result;
   }
+  GatewayInfo._() : super();
   factory GatewayInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GatewayInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GatewayInfo', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'GatewayUuid', protoName: 'GatewayUuid')
+    ..aOS(2, _omitFieldNames ? '' : 'ServerUuid', protoName: 'ServerUuid')
+    ..aOS(3, _omitFieldNames ? '' : 'Name', protoName: 'Name')
+    ..aOS(4, _omitFieldNames ? '' : 'Description', protoName: 'Description')
+    ..aOB(5, _omitFieldNames ? '' : 'Status', protoName: 'Status')
+    ..aOS(6, _omitFieldNames ? '' : 'GatewayJwt', protoName: 'GatewayJwt')
+    ..aOS(7, _omitFieldNames ? '' : 'OpenIoTHubJwt', protoName: 'OpenIoTHubJwt')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -66,8 +71,10 @@ class GatewayInfo extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  GatewayInfo copyWith(void Function(GatewayInfo) updates) => super.copyWith((message) => updates(message as GatewayInfo)) as GatewayInfo; // ignore: deprecated_member_use
+  GatewayInfo copyWith(void Function(GatewayInfo) updates) => super.copyWith((message) => updates(message as GatewayInfo)) as GatewayInfo;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GatewayInfo create() => GatewayInfo._();
   GatewayInfo createEmptyInstance() => create();
@@ -112,6 +119,7 @@ class GatewayInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDescription() => clearField(4);
 
+  /// 在线状态
   @$pb.TagNumber(5)
   $core.bool get status => $_getBF(4);
   @$pb.TagNumber(5)
@@ -141,23 +149,24 @@ class GatewayInfo extends $pb.GeneratedMessage {
 }
 
 class GatewayInfoList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GatewayInfoList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..pc<GatewayInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'GatewayInfoList', $pb.PbFieldType.PM, protoName: 'GatewayInfoList', subBuilder: GatewayInfo.create)
-    ..hasRequiredFields = false
-  ;
-
-  GatewayInfoList._() : super();
   factory GatewayInfoList({
     $core.Iterable<GatewayInfo>? gatewayInfoList,
   }) {
-    final _result = create();
+    final $result = create();
     if (gatewayInfoList != null) {
-      _result.gatewayInfoList.addAll(gatewayInfoList);
+      $result.gatewayInfoList.addAll(gatewayInfoList);
     }
-    return _result;
+    return $result;
   }
+  GatewayInfoList._() : super();
   factory GatewayInfoList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GatewayInfoList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GatewayInfoList', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
+    ..pc<GatewayInfo>(1, _omitFieldNames ? '' : 'GatewayInfoList', $pb.PbFieldType.PM, protoName: 'GatewayInfoList', subBuilder: GatewayInfo.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -167,8 +176,10 @@ class GatewayInfoList extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  GatewayInfoList copyWith(void Function(GatewayInfoList) updates) => super.copyWith((message) => updates(message as GatewayInfoList)) as GatewayInfoList; // ignore: deprecated_member_use
+  GatewayInfoList copyWith(void Function(GatewayInfoList) updates) => super.copyWith((message) => updates(message as GatewayInfoList)) as GatewayInfoList;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GatewayInfoList create() => GatewayInfoList._();
   GatewayInfoList createEmptyInstance() => create();
@@ -181,3 +192,6 @@ class GatewayInfoList extends $pb.GeneratedMessage {
   $core.List<GatewayInfo> get gatewayInfoList => $_getList(0);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
